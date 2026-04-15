@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://besqjq1icnv5p"]
+
+[ext_resource type="Texture2D" uid="uid://cmvrheyi31ucm" path="res://player/shot.png" id="1_1y6ct"]
+[ext_resource type="Script" uid="uid://c3n5luaf7yce4" path="res://player/bullet.gd" id="2_j40gx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j40gx"]
+atlas = ExtResource("1_1y6ct")
+region = Rect2(0, 0, 6, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boyjm"]
+atlas = ExtResource("1_1y6ct")
+region = Rect2(6, 0, 6, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_42du2"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j40gx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boyjm")
+}],
+"loop": true,
+"name": &"shot",
+"speed": 10.0
+}]
+
+[node name="Bullet" type="AnimatedSprite2D" unique_id=697000331]
+sprite_frames = SubResource("SpriteFrames_42du2")
+animation = &"shot"
+frame = 1
+frame_progress = 0.56956965
+script = ExtResource("2_j40gx")
+
+[node name="Timer" type="Timer" parent="." unique_id=1137612779]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
