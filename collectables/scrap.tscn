@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c3jswnbm50tkw"]
+
+[ext_resource type="PackedScene" uid="uid://bifhteewgl776" path="res://collectables/collectable.tscn" id="1_hi606"]
+[ext_resource type="Resource" uid="uid://dhry8oj3t2s7d" path="res://inventory/items/scrap.tres" id="2_3rgkt"]
+[ext_resource type="Texture2D" uid="uid://ex0aw4tpn4nn" path="res://assets/BarIron.png" id="2_r2tns"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rgkt"]
+resource_local_to_scene = true
+size = Vector2(16, 16)
+
+[node name="scrap" unique_id=370219150 instance=ExtResource("1_hi606")]
+itemRes = ExtResource("2_3rgkt")
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1802944886]
+shape = SubResource("RectangleShape2D_3rgkt")
+
+[node name="Sprite2D" parent="." index="1" unique_id=1642645758]
+texture = ExtResource("2_r2tns")

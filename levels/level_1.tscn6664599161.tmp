@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://c3jswnbm50tkw" path="res://collectables/scrap.tscn" id="4_kx6l7"]
 [ext_resource type="Script" uid="uid://6f8owh75ybkd" path="res://levels/canvas_layer.gd" id="5_btoec"]
 [ext_resource type="PackedScene" uid="uid://drt8b5n0ugujr" path="res://collectables/inventory_gui.tscn" id="5_n46q3"]
-[ext_resource type="PackedScene" uid="uid://kytuoe5pi0c" path="res://collectables/key.tscn" id="7_gwceb"]
 
 [node name="Level1" unique_id=127639740 instance=ExtResource("1_vn7o3")]
 
@@ -28,9 +27,6 @@ tile_map_data = PackedByteArray("AAAXAAIAAQAAAAIAAAAXAAMAAQAAAAMAAAAYAAIAAQABAAI
 
 [node name="Player" parent="." index="3" unique_id=338436204]
 position = Vector2(200, 35)
-speed = null
-jump = null
-jump_horizontal = null
 
 [node name="Camera2D" parent="Player" index="3" unique_id=1679476865]
 position = Vector2(0, 0)
@@ -40,7 +36,10 @@ limit_right = 1002
 limit_bottom = 72
 editor_draw_limits = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="4" unique_id=27736952]
+[node name="scrap" parent="." index="4" unique_id=370219150 instance=ExtResource("4_kx6l7")]
+position = Vector2(304, 40)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="5" unique_id=27736952]
 process_mode = 3
 script = ExtResource("5_btoec")
 
@@ -56,12 +55,6 @@ offset_right = 108.0
 offset_bottom = 67.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="scrap" parent="." index="5" unique_id=370219150 instance=ExtResource("4_kx6l7")]
-position = Vector2(352, 40)
-
-[node name="key" parent="." index="6" unique_id=176395047 instance=ExtResource("7_gwceb")]
-position = Vector2(416, 40)
 
 [connection signal="closed" from="CanvasLayer/InventoryGui" to="Player" method="_on_inventory_gui_closed"]
 [connection signal="opened" from="CanvasLayer/InventoryGui" to="Player" method="_on_inventory_gui_opened"]
