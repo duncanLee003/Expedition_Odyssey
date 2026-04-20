@@ -21,11 +21,15 @@ func insert(isg: ItemStackGui):
 func takeItem():
 	var item = itemStackGui
 	
-	container.remove_child(itemStackGui)
-	itemStackGui = null
-	backgroundSprite.frame = 0
+
 	
 	return item
 
 func isEmpty():
 	return !itemStackGui
+
+func clear() -> void:
+	if itemStackGui:
+		container.remove_child(itemStackGui)
+		itemStackGui = null
+	backgroundSprite.frame = 0

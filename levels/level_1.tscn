@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c3jswnbm50tkw" path="res://collectables/scrap.tscn" id="4_kx6l7"]
 [ext_resource type="Script" uid="uid://6f8owh75ybkd" path="res://levels/canvas_layer.gd" id="5_btoec"]
 [ext_resource type="PackedScene" uid="uid://drt8b5n0ugujr" path="res://collectables/inventory_gui.tscn" id="5_n46q3"]
+[ext_resource type="PackedScene" uid="uid://bt0jp0emlo206" path="res://collectables/hotbar.tscn" id="6_l53as"]
 [ext_resource type="PackedScene" uid="uid://kytuoe5pi0c" path="res://collectables/key.tscn" id="7_gwceb"]
 
 [node name="Level1" unique_id=127639740 instance=ExtResource("1_vn7o3")]
@@ -53,6 +54,16 @@ offset_right = 108.0
 offset_bottom = 67.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Hotbar" parent="CanvasLayer" index="1" unique_id=70349537 instance=ExtResource("6_l53as")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -26.0
+offset_right = 122.0
+offset_bottom = -6.0
+grow_vertical = 0
 
 [node name="scrap" parent="." index="5" unique_id=370219150 instance=ExtResource("4_kx6l7")]
 position = Vector2(352, 40)
