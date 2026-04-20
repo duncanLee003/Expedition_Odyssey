@@ -28,9 +28,6 @@ tile_map_data = PackedByteArray("AAAXAAIAAQAAAAIAAAAXAAMAAQAAAAMAAAAYAAIAAQABAAI
 
 [node name="Player" parent="." index="3" unique_id=338436204]
 position = Vector2(200, 35)
-speed = null
-jump = null
-jump_horizontal = null
 
 [node name="Camera2D" parent="Player" index="3" unique_id=1679476865]
 position = Vector2(0, 0)

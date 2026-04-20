@@ -12,6 +12,7 @@ func _input_event(viewport, event, shape_idx):
 		if player:
 			collect(player.inventory)
 
+
 func collect(inventory: Inventory):
 	inventory.insert(itemRes)
 	queue_free()

@@ -20,6 +20,7 @@ var character_sprite : Sprite2D
 var muzzle_position
 
 func _ready():
+	add_to_group("player")
 	current_state = State.Idle
 	muzzle_position = muzzle.position
 	
