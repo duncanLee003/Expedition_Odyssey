@@ -20,3 +20,12 @@ func insert(item: InventoryItem):
 			slots[i].amount = 1
 			updated.emit()
 			return
+
+func removeItemAtIndex(index: int):
+	slots[index] = InventorySlot.new()
+
+func insertSlot(index: int, inventorySlot:InventorySlot):
+	var oldIndex: int = slots.find(inventorySlot)
+	removeItemAtIndex(oldIndex)
+	
+	slots[index] = inventorySlot
