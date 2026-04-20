@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://drt8b5n0ugujr" path="res://collectables/inventory_gui.tscn" id="5_n46q3"]
 [ext_resource type="PackedScene" uid="uid://bt0jp0emlo206" path="res://collectables/hotbar.tscn" id="6_l53as"]
 [ext_resource type="PackedScene" uid="uid://kytuoe5pi0c" path="res://collectables/key.tscn" id="7_gwceb"]
+[ext_resource type="PackedScene" uid="uid://b0pv7kntumxq" path="res://interaction/chest.tscn" id="9_3sk1a"]
 
 [node name="Level1" unique_id=127639740 instance=ExtResource("1_vn7o3")]
 
@@ -73,6 +74,9 @@ position = Vector2(416, 40)
 
 [node name="scrap2" parent="." index="7" unique_id=347722706 instance=ExtResource("4_kx6l7")]
 position = Vector2(328, 40)
+
+[node name="chest" parent="." index="8" unique_id=177104523 instance=ExtResource("9_3sk1a")]
+position = Vector2(104, 40)
 
 [connection signal="closed" from="CanvasLayer/InventoryGui" to="Player" method="_on_inventory_gui_closed"]
 [connection signal="opened" from="CanvasLayer/InventoryGui" to="Player" method="_on_inventory_gui_opened"]

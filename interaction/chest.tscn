@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b0pv7kntumxq"]
+
+[ext_resource type="Script" uid="uid://cemmjqst75a0q" path="res://interaction/chest.gd" id="1_lqxs4"]
+[ext_resource type="Texture2D" uid="uid://k5nji5e54uaq" path="res://assets/BigTreasureChest.png" id="1_xfj3s"]
+[ext_resource type="PackedScene" uid="uid://dqmfr23cqb4hj" path="res://interaction/interaction area/interaction_area.tscn" id="2_lqxs4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbcvg"]
+size = Vector2(34, 18)
+
+[node name="chest" type="Node2D" unique_id=177104523]
+z_index = -1
+script = ExtResource("1_lqxs4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1752305873]
+texture = ExtResource("1_xfj3s")
+hframes = 2
+
+[node name="InteractionArea" parent="." unique_id=1731426236 instance=ExtResource("2_lqxs4")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1635869277]
+shape = SubResource("RectangleShape2D_xbcvg")
