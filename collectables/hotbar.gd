@@ -36,3 +36,6 @@ func get_selected_item() -> InventoryItem:
 		return null
 	
 	return inventory.slots[currently_selected].item
+
+func get_selected_index() -> int:
+	return currently_selected

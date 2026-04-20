@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cemmjqst75a0q" path="res://interaction/chest.gd" id="1_lqxs4"]
 [ext_resource type="Texture2D" uid="uid://k5nji5e54uaq" path="res://assets/BigTreasureChest.png" id="1_xfj3s"]
 [ext_resource type="PackedScene" uid="uid://dqmfr23cqb4hj" path="res://interaction/interaction area/interaction_area.tscn" id="2_lqxs4"]
+[ext_resource type="AudioStream" uid="uid://k2f1thafjl21" path="res://assets/sound/locked.mp3" id="4_sllev"]
+[ext_resource type="AudioStream" uid="uid://cfsn2dssef434" path="res://assets/sound/opensound.wav" id="5_c8euu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbcvg"]
 size = Vector2(34, 18)
@@ -19,3 +21,9 @@ hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1635869277]
 shape = SubResource("RectangleShape2D_xbcvg")
+
+[node name="LockedSound" type="AudioStreamPlayer2D" parent="." unique_id=835432644]
+stream = ExtResource("4_sllev")
+
+[node name="OpenSound" type="AudioStreamPlayer2D" parent="." unique_id=1441008813]
+stream = ExtResource("5_c8euu")

@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://6f8owh75ybkd" path="res://levels/canvas_layer.gd" id="5_btoec"]
 [ext_resource type="PackedScene" uid="uid://drt8b5n0ugujr" path="res://collectables/inventory_gui.tscn" id="5_n46q3"]
 [ext_resource type="PackedScene" uid="uid://bt0jp0emlo206" path="res://collectables/hotbar.tscn" id="6_l53as"]
+[ext_resource type="FontFile" uid="uid://bnyjg3csk3b8j" path="res://assets/NormalFont.ttf" id="7_08mmt"]
 [ext_resource type="PackedScene" uid="uid://kytuoe5pi0c" path="res://collectables/key.tscn" id="7_gwceb"]
 [ext_resource type="PackedScene" uid="uid://b0pv7kntumxq" path="res://interaction/chest.tscn" id="9_3sk1a"]
 
@@ -65,6 +66,22 @@ offset_top = -26.0
 offset_right = 122.0
 offset_bottom = -6.0
 grow_vertical = 0
+
+[node name="MessageLabel" type="Label" parent="CanvasLayer" index="2" unique_id=1916288527 groups=["ui_message"]]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -38.0
+offset_right = -24.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("7_08mmt")
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="scrap" parent="." index="5" unique_id=370219150 instance=ExtResource("4_kx6l7")]
 position = Vector2(352, 40)
