@@ -12,9 +12,13 @@ extends Panel
 var currently_selected: int = 0
 
 func _ready():
+	
 	add_to_group("hotbar")
 	update()
 	inventory.updated.connect(update)
+	for i in range(slots.size()):
+		slots[i].index = i
+		slots[i].slot_pressed.connect(select_slot)
 
 func update() -> void:
 	for i in range(slots.size()):
@@ -30,6 +34,7 @@ func _unhandled_input(event) -> void:
 		inventory.use_item_At_index(currently_selected)
 	if event.is_action_pressed("move_selector"):
 		move_selector()
+	
 
 func get_selected_item() -> InventoryItem:
 	if currently_selected < 0 or currently_selected >= inventory.slots.size():
@@ -39,3 +44,16 @@ func get_selected_item() -> InventoryItem:
 
 func get_selected_index() -> int:
 	return currently_selected
+
+func select_slot(index: int) -> void:
+	if slots.is_empty():
+		return
+
+	index = clamp(index, 0, slots.size() - 1)
+	currently_selected = index
+
+	var slot = slots[index]
+	if !slot:
+		return
+
+	selector.global_position = slot.global_position

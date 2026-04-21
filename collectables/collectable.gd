@@ -3,6 +3,7 @@ extends Area2D
 @export var itemRes: InventoryItem
 @export var item_id: String
 
+
 func _ready():
 	input_pickable = true  # IMPORTANT for clicking
 

@@ -7,6 +7,9 @@ class_name ItemStackGui
 
 var inventorySlot: InventorySlot
 
+func _ready():
+	z_index = 10
+
 func update():
 	if !inventorySlot || !inventorySlot.item: return
 	

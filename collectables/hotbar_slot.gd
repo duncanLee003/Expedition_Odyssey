@@ -1,7 +1,17 @@
 extends Button
 
+signal slot_pressed(index: int)
+
 @onready var background_sprite: Sprite2D = $background
 @onready var item_stack_gui: ItemStackGui = $CenterContainer/Panel
+
+var index: int
+
+func _ready():
+	pressed.connect(_on_pressed)
+
+func _on_pressed():
+	slot_pressed.emit(index)
 
 func update_to_slot(slot: InventorySlot) -> void:
 	if !slot.item:
@@ -14,4 +24,3 @@ func update_to_slot(slot: InventorySlot) -> void:
 	item_stack_gui.visible = true
 	
 	background_sprite.frame = 1
-	

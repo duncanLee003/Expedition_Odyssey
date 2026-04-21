@@ -9,13 +9,17 @@ var isOpen: bool = false
 @onready var inventory: Inventory = preload("res://inventory/playerInventory.tres")
 @onready var ItemStackGuiClass = preload("res://collectables/itemsStackGui.tscn")
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
+@onready var hotbar = null
 
 var itemInHand: ItemStackGui
 
 func _ready():
+	await get_tree().process_frame
+	hotbar = get_tree().get_first_node_in_group("hotbar")
 	connectSlots()
 	inventory.updated.connect(update)
 	update()
+	
 	
 func connectSlots():
 	for i in range(slots.size()):
@@ -52,8 +56,15 @@ func close():
 	isOpen = false
 	closed.emit()
 	
-	
+
+
 func onSlotClicked(slot):
+	var index = slot.index
+	
+	
+	# 🔥 tell hotbar to move selection
+	hotbar.select_slot(index)
+	
 	if slot.isEmpty():
 		if !itemInHand: return
 		
@@ -64,7 +75,7 @@ func onSlotClicked(slot):
 		takeItemFromSlot(slot)
 		return
 	
-	if slot.itemStackGui.inventoirySlot.item.name == itemInHand.inventorySlot.item.name:
+	if slot.itemStackGui.inventorySlot.item.name == itemInHand.inventorySlot.item.name:
 		stackItems(slot)
 		return
 	
@@ -76,11 +87,18 @@ func takeItemFromSlot(slot):
 	updateItemInHand()
 
 func insertItemInSlot(slot):
+	if !itemInHand:
+		return
+
 	var item = itemInHand
-	
+
 	remove_child(itemInHand)
 	itemInHand = null
-	
+
+	# 🔥 only update if actually changing slot content
+	if slot.itemStackGui == item:
+		return
+
 	slot.insert(item)
 	
 func swapItems(slot):
@@ -94,7 +112,7 @@ func swapItems(slot):
 	
 func stackItems(slot):
 	var slotItem: ItemStackGui = slot.itemStackGui
-	var maxAmount = slotItem.inventorySlot.item.maxAmountPrStack
+	var maxAmount = slotItem.inventorySlot.item.max_amount_per_stack
 	var totalAmount  = slotItem.inventorySlot.amount + itemInHand.inventorySlot.amount
 	
 	if slotItem.inventorySlot.amount == maxAmount:
