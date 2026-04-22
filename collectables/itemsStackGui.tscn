@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cxo5wgehcrudr"]
+
+[ext_resource type="Script" uid="uid://c2ducwrpp70sd" path="res://collectables/itemStackGui.gd" id="1_44uox"]
+[ext_resource type="FontFile" uid="uid://bnyjg3csk3b8j" path="res://assets/NormalFont.ttf" id="1_ip1di"]
+
+[node name="Panel" type="Panel" unique_id=1500035920]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_44uox")
+
+[node name="item" type="Sprite2D" parent="." unique_id=1257792935]
+
+[node name="Label" type="Label" parent="." unique_id=1848606944]
+custom_minimum_size = Vector2(11, 14)
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 9.0
+offset_bottom = 12.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.2)
+theme_override_fonts/font = ExtResource("1_ip1di")
+theme_override_font_sizes/font_size = 8
+text = "99"
+horizontal_alignment = 2

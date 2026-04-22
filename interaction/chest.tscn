@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b0pv7kntumxq"]
+
+[ext_resource type="Texture2D" uid="uid://k5nji5e54uaq" path="res://assets/BigTreasureChest.png" id="1_xfj3s"]
+[ext_resource type="Texture2D" uid="uid://3ol5hl356hle" path="res://assets/pointcursor.png" id="3_sllev"]
+[ext_resource type="Script" uid="uid://vc1sso432xv5" path="res://interaction/chestfunction.gd" id="4_c8euu"]
+[ext_resource type="AudioStream" uid="uid://k2f1thafjl21" path="res://assets/sound/locked.mp3" id="4_sllev"]
+[ext_resource type="AudioStream" uid="uid://cfsn2dssef434" path="res://assets/sound/opensound.wav" id="5_c8euu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sllev"]
+
+[node name="chest" type="Node2D" unique_id=177104523]
+z_index = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1752305873]
+texture = ExtResource("1_xfj3s")
+hframes = 2
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1070945887]
+script = ExtResource("4_c8euu")
+interact_cursor = ExtResource("3_sllev")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1419729913]
+shape = SubResource("RectangleShape2D_sllev")
+
+[node name="LockedSound" type="AudioStreamPlayer2D" parent="." unique_id=835432644]
+stream = ExtResource("4_sllev")
+
+[node name="OpenSound" type="AudioStreamPlayer2D" parent="." unique_id=1441008813]
+stream = ExtResource("5_c8euu")

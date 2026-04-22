@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://kytuoe5pi0c"]
+
+[ext_resource type="PackedScene" uid="uid://bifhteewgl776" path="res://collectables/collectable.tscn" id="1_ja6b0"]
+[ext_resource type="Texture2D" uid="uid://boe4vo8qsgv11" path="res://assets/SilverKey.png" id="1_mrjhw"]
+[ext_resource type="Resource" uid="uid://shawa5o4u3q2" path="res://inventory/items/key.tres" id="2_8meyv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0e8id"]
+resource_local_to_scene = true
+size = Vector2(16, 16)
+
+[node name="key" unique_id=370219150 instance=ExtResource("1_ja6b0")]
+itemRes = ExtResource("2_8meyv")
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1802944886]
+shape = SubResource("RectangleShape2D_0e8id")
+
+[node name="Sprite2D" parent="." index="1" unique_id=1642645758]
+texture = ExtResource("1_mrjhw")

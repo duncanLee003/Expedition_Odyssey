@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://buqs55x4oe6y3"]
+
+[ext_resource type="Script" uid="uid://cyod3yh2gvsoq" path="res://collectables/hotbar_slot.gd" id="1_orole"]
+[ext_resource type="Texture2D" uid="uid://0ou265vp4rn7" path="res://assets/inventorySlot.png" id="2_orole"]
+[ext_resource type="PackedScene" uid="uid://cxo5wgehcrudr" path="res://collectables/itemsStackGui.tscn" id="3_6rff3"]
+
+[node name="Slot" type="Button" unique_id=993755386]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 20)
+offset_right = 20.0
+offset_bottom = 20.0
+script = ExtResource("1_orole")
+
+[node name="background" type="Sprite2D" parent="." unique_id=1421474474]
+texture = ExtResource("2_orole")
+centered = false
+vframes = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1886961182]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="Panel" parent="CenterContainer" unique_id=1500035920 instance=ExtResource("3_6rff3")]
+layout_mode = 2

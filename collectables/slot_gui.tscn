@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://kx1b4tp770bu"]
+
+[ext_resource type="Script" uid="uid://cmskv5cnyegf1" path="res://collectables/slot_gui.gd" id="1_chgly"]
+[ext_resource type="Texture2D" uid="uid://0ou265vp4rn7" path="res://assets/inventorySlot.png" id="1_xiyl5"]
+
+[node name="Slot" type="Button" unique_id=993755386]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 20)
+offset_right = 20.0
+offset_bottom = 20.0
+script = ExtResource("1_chgly")
+
+[node name="background" type="Sprite2D" parent="." unique_id=1421474474]
+texture = ExtResource("1_xiyl5")
+centered = false
+vframes = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1886961182]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 20.0

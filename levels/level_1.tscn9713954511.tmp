@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://kytuoe5pi0c" path="res://collectables/key.tscn" id="7_gwceb"]
 [ext_resource type="PackedScene" uid="uid://b0pv7kntumxq" path="res://interaction/chest.tscn" id="9_3sk1a"]
 [ext_resource type="Script" uid="uid://bakp3d72obny5" path="res://scripts/game_manager.gd" id="11_5ot28"]
-[ext_resource type="PackedScene" uid="uid://do3t7sw14y26g" path="res://levels/Door/door.tscn" id="12_aerfg"]
 
 [node name="Level1" unique_id=127639740 instance=ExtResource("1_vn7o3")]
 
@@ -58,7 +57,6 @@ offset_right = 108.0
 offset_bottom = 67.5
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="Hotbar" parent="CanvasLayer" index="1" unique_id=70349537 instance=ExtResource("6_l53as")]
 anchors_preset = 2
@@ -69,7 +67,6 @@ offset_top = -26.0
 offset_right = 122.0
 offset_bottom = -6.0
 grow_vertical = 0
-metadata/_edit_use_anchors_ = true
 
 [node name="MessageLabel" type="Label" parent="CanvasLayer" index="2" unique_id=1916288527 groups=["ui_message"]]
 anchors_preset = 3
@@ -86,7 +83,6 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("7_08mmt")
 horizontal_alignment = 2
 vertical_alignment = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="scrap" parent="." index="5" unique_id=370219150 instance=ExtResource("4_kx6l7")]
 position = Vector2(352, 40)
@@ -102,10 +98,6 @@ position = Vector2(104, 40)
 
 [node name="GameManager" type="Node" parent="." index="9" unique_id=59664598]
 script = ExtResource("11_5ot28")
-
-[node name="Door" parent="." index="10" unique_id=721422417 instance=ExtResource("12_aerfg")]
-position = Vector2(592, 51)
-next_scene = "Level1pc"
 
 [connection signal="closed" from="CanvasLayer/InventoryGui" to="Player" method="_on_inventory_gui_closed"]
 [connection signal="opened" from="CanvasLayer/InventoryGui" to="Player" method="_on_inventory_gui_opened"]

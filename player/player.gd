@@ -10,6 +10,8 @@ const GRAVITY = 20
 @export  var jump : int = -400
 @export  var jump_horizontal : int = 100
 
+@export var inventory: Inventory
+
 enum State {Idle, Run, Jump, Shoot}
 
 var current_state: State
@@ -18,6 +20,7 @@ var character_sprite : Sprite2D
 var muzzle_position
 
 func _ready():
+	add_to_group("player")
 	current_state = State.Idle
 	muzzle_position = muzzle.position
 	
@@ -103,3 +106,12 @@ func input_movement():
 	var direction : float = Input.get_axis("move_left", "move_right")
 	
 	return direction
+
+
+func _on_inventory_gui_closed() -> void:
+	get_tree().paused = false
+
+
+func _on_inventory_gui_opened() -> void:
+	get_tree().paused = true
+	
