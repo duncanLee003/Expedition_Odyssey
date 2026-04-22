@@ -8,15 +8,15 @@ func _on_exit_area_2d_body_entered(body: Node2D) -> void:
 
 	var player = body
 
-	# prevent movement immediately
+	#stops movement
 	player.set_physics_process(false)
 	player.velocity = Vector2.ZERO
 
-	# optional: disable input if you have input system
+	#maybe optional??
 	if player.has_method("set_can_move"):
 		player.set_can_move(false)
 
-	# small delay before transition (feels better)
+	#delay
 	await get_tree().create_timer(0.2).timeout
 
 	SceneManager.transition_to_scene(next_scene)

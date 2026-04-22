@@ -62,7 +62,7 @@ func onSlotClicked(slot):
 	var index = slot.index
 	
 	
-	# 🔥 tell hotbar to move selection
+	#move selection in hotbar
 	hotbar.select_slot(index)
 	
 	if slot.isEmpty():
@@ -95,7 +95,7 @@ func insertItemInSlot(slot):
 	remove_child(itemInHand)
 	itemInHand = null
 
-	# 🔥 only update if actually changing slot content
+	#updates if slot changing
 	if slot.itemStackGui == item:
 		return
 

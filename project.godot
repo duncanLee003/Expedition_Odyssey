@@ -21,6 +21,7 @@ GameManager="*uid://bakp3d72obny5"
 InteractionManager="*uid://c36y5e2aaenpa"
 SceneManager="*uid://cvbd53n1lcl88"
 Fade="*uid://dokqkkny7vaqb"
+GameState="*uid://b77yp8rr0qm33"
 
 [display]
 

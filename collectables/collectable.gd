@@ -5,7 +5,7 @@ extends Area2D
 
 
 func _ready():
-	input_pickable = true  # IMPORTANT for clicking
+	input_pickable = true  
 
 
 func _input_event(viewport, event, shape_idx):
