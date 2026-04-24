@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://df5frhnk3m3jb"]
+
+[ext_resource type="Texture2D" uid="uid://bfshee0ce8fri" path="res://assets/UI_TravelBook_BookCover01a.png" id="1_5yf55"]
+[ext_resource type="Script" uid="uid://x8ck008tjmc6" path="res://interaction/pcinterface.gd" id="1_d7no5"]
+
+[node name="pcinterface" type="Node2D" unique_id=144254336]
+script = ExtResource("1_d7no5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1184410944]
+position = Vector2(134.5, -81)
+scale = Vector2(1.2008929, 1.0124999)
+texture = ExtResource("1_5yf55")

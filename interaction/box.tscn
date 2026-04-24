@@ -10,7 +10,7 @@ friction = 0.55
 size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l2cab"]
-size = Vector2(32, 5)
+size = Vector2(32, 6)
 
 [node name="Pushbox" type="RigidBody2D" unique_id=1977105399]
 collision_layer = 2
@@ -34,6 +34,5 @@ shape = SubResource("RectangleShape2D_1vlxp")
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=75859195]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1752068643]
-position = Vector2(16, -29.5)
 shape = SubResource("RectangleShape2D_l2cab")
 debug_color = Color(0.6970269, 0.34796333, 0.8850258, 0.41960785)
