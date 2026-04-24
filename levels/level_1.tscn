@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://b0pv7kntumxq" path="res://interaction/chest.tscn" id="9_3sk1a"]
 [ext_resource type="Script" uid="uid://bakp3d72obny5" path="res://scripts/game_manager.gd" id="11_5ot28"]
 [ext_resource type="PackedScene" uid="uid://do3t7sw14y26g" path="res://levels/Door/door.tscn" id="12_aerfg"]
+[ext_resource type="PackedScene" uid="uid://csdfcenmsk1fs" path="res://levels/Door/barrier.tscn" id="13_nmsli"]
+[ext_resource type="PackedScene" uid="uid://okwmp5ejkyhq" path="res://interaction/box.tscn" id="14_betor"]
 
 [node name="Level1" unique_id=127639740 instance=ExtResource("1_vn7o3")]
 
@@ -104,8 +106,17 @@ position = Vector2(104, 40)
 script = ExtResource("11_5ot28")
 
 [node name="Door" parent="." index="10" unique_id=721422417 instance=ExtResource("12_aerfg")]
-position = Vector2(592, 51)
+position = Vector2(608, 8)
+scale = Vector2(-1, -1)
 next_scene = "Level1pc"
+
+[node name="Barrier" parent="." index="11" unique_id=1180394280 instance=ExtResource("13_nmsli")]
+position = Vector2(544, 56)
+
+[node name="Pushbox" parent="." index="12" unique_id=1977105399 instance=ExtResource("14_betor")]
+position = Vector2(376, 24)
+mass = 2.7
+gravity_scale = 5.945
 
 [connection signal="closed" from="CanvasLayer/InventoryGui" to="Player" method="_on_inventory_gui_closed"]
 [connection signal="opened" from="CanvasLayer/InventoryGui" to="Player" method="_on_inventory_gui_opened"]

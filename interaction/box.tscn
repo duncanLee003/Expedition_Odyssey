@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://okwmp5ejkyhq"]
+
+[ext_resource type="Script" uid="uid://dhfup8vfd7txu" path="res://interaction/box.gd" id="1_1vlxp"]
+[ext_resource type="Texture2D" uid="uid://bmfd4jh4eog3m" path="res://assets/all-rock-tiles_03.png" id="1_fsdg6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1vlxp"]
+friction = 0.55
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vlxp"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2cab"]
+size = Vector2(32, 5)
+
+[node name="Pushbox" type="RigidBody2D" unique_id=1977105399]
+collision_layer = 2
+collision_mask = 3
+mass = 6.0
+physics_material_override = SubResource("PhysicsMaterial_1vlxp")
+gravity_scale = 5.9
+can_sleep = false
+continuous_cd = 2
+linear_damp = 59.0
+script = ExtResource("1_1vlxp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1511083834]
+position = Vector2(16, -16)
+texture = ExtResource("1_fsdg6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1793012651]
+position = Vector2(16, -16)
+shape = SubResource("RectangleShape2D_1vlxp")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=75859195]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1752068643]
+position = Vector2(16, -29.5)
+shape = SubResource("RectangleShape2D_l2cab")
+debug_color = Color(0.6970269, 0.34796333, 0.8850258, 0.41960785)
