@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cb74e8v4d1lpg"]
+
+[ext_resource type="Script" uid="uid://d0eudi382j847" path="res://pressureplates/moveabledoor.gd" id="1_r6xp0"]
+[ext_resource type="Texture2D" uid="uid://cwblnctkso7u8" path="res://assets/gate-03.png" id="2_5ps07"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_348wh"]
+size = Vector2(10, 64)
+
+[node name="moveabledoor" type="StaticBody2D" unique_id=1380649683]
+script = ExtResource("1_r6xp0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=454118158]
+position = Vector2(7, -32)
+scale = Vector2(0.29166666, 1.3333334)
+texture = ExtResource("2_5ps07")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1076272623]
+position = Vector2(5, -32)
+shape = SubResource("RectangleShape2D_348wh")

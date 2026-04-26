@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://dp7jeiaxt55iw"]
+
+[ext_resource type="Script" uid="uid://uhbphmr3jx2k" path="res://wirepuzzles/wire_puzzle_ui.gd" id="1_0jv7o"]
+[ext_resource type="Texture2D" uid="uid://bfshee0ce8fri" path="res://assets/UI_TravelBook_BookCover01a.png" id="1_w6r4q"]
+[ext_resource type="FontFile" uid="uid://bnyjg3csk3b8j" path="res://assets/NormalFont.ttf" id="2_0jv7o"]
+[ext_resource type="Script" uid="uid://dku3sk3xofurn" path="res://wirepuzzles/wire_manager.gd" id="3_vgqp5"]
+[ext_resource type="Script" uid="uid://cqlmtxinvp7qo" path="res://wirepuzzles/pins.gd" id="4_gq056"]
+[ext_resource type="Texture2D" uid="uid://g2lkptjqmtr6" path="res://assets/GoldCup.png" id="5_e8tw3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_togn3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfywd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikfys"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_femci"]
+
+[node name="WirePuzzleUI" type="Node2D" unique_id=676052484]
+script = ExtResource("1_0jv7o")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1866844205]
+position = Vector2(39, -17)
+scale = Vector2(0.6964286, 0.48749995)
+texture = ExtResource("1_w6r4q")
+
+[node name="CloseButton" type="Button" parent="." unique_id=1904555109]
+offset_left = 100.0
+offset_top = -51.0
+offset_right = 120.0
+offset_bottom = -21.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_0jv7o")
+text = "X"
+
+[node name="WirePuzzle" type="Node2D" parent="." unique_id=919920585]
+position = Vector2(-1, 0)
+
+[node name="WireManager" type="Node2D" parent="WirePuzzle" unique_id=445843015]
+script = ExtResource("3_vgqp5")
+
+[node name="Wires" type="Node2D" parent="WirePuzzle" unique_id=1003987778]
+
+[node name="LeftPins" type="Node2D" parent="WirePuzzle" unique_id=788805158]
+
+[node name="PinA" type="Area2D" parent="WirePuzzle/LeftPins" unique_id=698178944]
+position = Vector2(0, -32)
+script = ExtResource("4_gq056")
+wire_id = "A"
+
+[node name="Sprite2D" type="Sprite2D" parent="WirePuzzle/LeftPins/PinA" unique_id=301401923]
+texture = ExtResource("5_e8tw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WirePuzzle/LeftPins/PinA" unique_id=992475133]
+shape = SubResource("RectangleShape2D_togn3")
+
+[node name="PinB" type="Area2D" parent="WirePuzzle/LeftPins" unique_id=60062787]
+script = ExtResource("4_gq056")
+wire_id = "B"
+
+[node name="Sprite2D" type="Sprite2D" parent="WirePuzzle/LeftPins/PinB" unique_id=1776448472]
+texture = ExtResource("5_e8tw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WirePuzzle/LeftPins/PinB" unique_id=1587647848]
+shape = SubResource("RectangleShape2D_wfywd")
+
+[node name="RightPins" type="Node2D" parent="WirePuzzle" unique_id=622266701]
+
+[node name="Pin1" type="Area2D" parent="WirePuzzle/RightPins" unique_id=1243387952]
+position = Vector2(77, -33)
+script = ExtResource("4_gq056")
+wire_id = "A"
+
+[node name="Sprite2D" type="Sprite2D" parent="WirePuzzle/RightPins/Pin1" unique_id=1430263436]
+texture = ExtResource("5_e8tw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WirePuzzle/RightPins/Pin1" unique_id=1379917666]
+shape = SubResource("RectangleShape2D_ikfys")
+
+[node name="Pin2" type="Area2D" parent="WirePuzzle/RightPins" unique_id=1854486109]
+position = Vector2(76, 0)
+script = ExtResource("4_gq056")
+wire_id = "B"
+
+[node name="Sprite2D" type="Sprite2D" parent="WirePuzzle/RightPins/Pin2" unique_id=2064184191]
+texture = ExtResource("5_e8tw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WirePuzzle/RightPins/Pin2" unique_id=55156678]
+shape = SubResource("RectangleShape2D_femci")
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

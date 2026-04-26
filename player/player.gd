@@ -21,6 +21,7 @@ var muzzle_position
 
 func _ready():
 	add_to_group("player")
+	add_to_group("activator")
 	current_state = State.Idle
 	muzzle_position = muzzle.position
 	
