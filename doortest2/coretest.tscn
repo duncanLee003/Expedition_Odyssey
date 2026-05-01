@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://b8k23a1aof1vy"]
+
+[ext_resource type="Texture2D" uid="uid://dx504o6ywyev2" path="res://assets/coreFullAnimation.png" id="1_dattc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yihld"]
+atlas = ExtResource("1_dattc")
+region = Rect2(448, 0, 112, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swcob"]
+atlas = ExtResource("1_dattc")
+region = Rect2(560, 0, 112, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygb2a"]
+atlas = ExtResource("1_dattc")
+region = Rect2(0, 0, 112, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikek0"]
+atlas = ExtResource("1_dattc")
+region = Rect2(112, 0, 112, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_756c2"]
+atlas = ExtResource("1_dattc")
+region = Rect2(224, 0, 112, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npb32"]
+atlas = ExtResource("1_dattc")
+region = Rect2(336, 0, 112, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8jce"]
+atlas = ExtResource("1_dattc")
+region = Rect2(448, 0, 112, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xgjv"]
+atlas = ExtResource("1_dattc")
+region = Rect2(560, 0, 112, 162)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lamub"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yihld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swcob")
+}],
+"loop": true,
+"name": &"onloop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygb2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikek0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_756c2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npb32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8jce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xgjv")
+}],
+"loop": false,
+"name": &"turningon",
+"speed": 16.0
+}]
+
+[node name="core" type="Node2D" unique_id=236829866]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=949330786]
+position = Vector2(57, -83)
+sprite_frames = SubResource("SpriteFrames_lamub")
+animation = &"turningon"

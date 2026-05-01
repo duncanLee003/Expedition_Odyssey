@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://drt8b5n0ugujr"]
 
 [ext_resource type="Script" uid="uid://km64x4b47dcv" path="res://collectables/inventory_gui.gd" id="1_ev3or"]
-[ext_resource type="Texture2D" uid="uid://bfshee0ce8fri" path="res://assets/UI_TravelBook_BookCover01a.png" id="1_xoffq"]
 [ext_resource type="PackedScene" uid="uid://kx1b4tp770bu" path="res://collectables/slot_gui.tscn" id="2_6cuy2"]
+[ext_resource type="Texture2D" uid="uid://cj1e5525q2fkp" path="res://assets/journal.png" id="2_ev3or"]
+[ext_resource type="FontFile" uid="uid://bnyjg3csk3b8j" path="res://assets/NormalFont.ttf" id="4_ntdgo"]
+[ext_resource type="Texture2D" uid="uid://dcgsufpyn8hmo" path="res://assets/inventoryBK.png" id="5_3ss2s"]
+[ext_resource type="Texture2D" uid="uid://cupr5hs6y0s3b" path="res://assets/questsBK.png" id="6_e80lq"]
+[ext_resource type="Texture2D" uid="uid://be5841hoonrp4" path="res://assets/settingsBK.png" id="7_rvnjd"]
+[ext_resource type="Texture2D" uid="uid://da7brtym8037g" path="res://assets/pagesBK.png" id="8_3818x"]
 
 [node name="InventoryGui" type="Control" unique_id=1905662609]
 custom_minimum_size = Vector2(128, 80)
@@ -12,68 +17,143 @@ offset_right = 216.0
 offset_bottom = 135.0
 script = ExtResource("1_ev3or")
 
+[node name="inventory_button" type="Button" parent="." unique_id=1753100828]
+layout_mode = 0
+offset_left = 40.0
+offset_top = -22.0
+offset_right = 76.0
+offset_bottom = 6.0
+icon = ExtResource("5_3ss2s")
+flat = true
+
+[node name="quest_button" type="Button" parent="." unique_id=713671771]
+layout_mode = 0
+offset_left = 145.0
+offset_top = -22.0
+offset_right = 181.0
+offset_bottom = 6.0
+icon = ExtResource("6_e80lq")
+flat = true
+
+[node name="settings_button" type="Button" parent="." unique_id=847026963]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -22.0
+offset_right = 44.0
+offset_bottom = 6.0
+icon = ExtResource("7_rvnjd")
+flat = true
+
+[node name="info_button" type="Button" parent="." unique_id=339396796]
+layout_mode = 0
+offset_left = 175.0
+offset_top = -22.0
+offset_right = 211.0
+offset_bottom = 6.0
+icon = ExtResource("8_3818x")
+flat = true
+
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1689222511]
 layout_mode = 0
-offset_right = 216.0
-offset_bottom = 136.0
-texture = ExtResource("1_xoffq")
+offset_top = -2.0
+offset_right = 280.0
+offset_bottom = 166.0
+texture = ExtResource("2_ev3or")
 
-[node name="GridContainer" type="GridContainer" parent="NinePatchRect" unique_id=1472660962]
+[node name="inventory_page" type="Control" parent="NinePatchRect" unique_id=1642049161]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect/inventory_page" unique_id=1472660962]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -58.0
-offset_top = -34.0
-offset_right = 58.0
-offset_bottom = 34.0
+offset_left = 12.0
+offset_top = 20.0
+offset_right = 104.0
+offset_bottom = 112.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 5
+columns = 4
 
-[node name="Slot" parent="NinePatchRect/GridContainer" unique_id=1936529588 instance=ExtResource("2_6cuy2")]
+[node name="Slot" parent="NinePatchRect/inventory_page/GridContainer" unique_id=1936529588 instance=ExtResource("2_6cuy2")]
 layout_mode = 2
 
-[node name="Slot2" parent="NinePatchRect/GridContainer" unique_id=153786894 instance=ExtResource("2_6cuy2")]
+[node name="Slot2" parent="NinePatchRect/inventory_page/GridContainer" unique_id=153786894 instance=ExtResource("2_6cuy2")]
 layout_mode = 2
 
-[node name="Slot3" parent="NinePatchRect/GridContainer" unique_id=499678651 instance=ExtResource("2_6cuy2")]
+[node name="Slot3" parent="NinePatchRect/inventory_page/GridContainer" unique_id=499678651 instance=ExtResource("2_6cuy2")]
 layout_mode = 2
 
-[node name="Slot4" parent="NinePatchRect/GridContainer" unique_id=1698757863 instance=ExtResource("2_6cuy2")]
+[node name="Slot4" parent="NinePatchRect/inventory_page/GridContainer" unique_id=1698757863 instance=ExtResource("2_6cuy2")]
 layout_mode = 2
 
-[node name="Slot5" parent="NinePatchRect/GridContainer" unique_id=94349665 instance=ExtResource("2_6cuy2")]
+[node name="Slot5" parent="NinePatchRect/inventory_page/GridContainer" unique_id=94349665 instance=ExtResource("2_6cuy2")]
 layout_mode = 2
 
-[node name="Slot6" parent="NinePatchRect/GridContainer" unique_id=731960753 instance=ExtResource("2_6cuy2")]
+[node name="Slot6" parent="NinePatchRect/inventory_page/GridContainer" unique_id=731960753 instance=ExtResource("2_6cuy2")]
 layout_mode = 2
 
-[node name="Slot7" parent="NinePatchRect/GridContainer" unique_id=1068069221 instance=ExtResource("2_6cuy2")]
+[node name="Slot7" parent="NinePatchRect/inventory_page/GridContainer" unique_id=1068069221 instance=ExtResource("2_6cuy2")]
 layout_mode = 2
 
-[node name="Slot8" parent="NinePatchRect/GridContainer" unique_id=1307489965 instance=ExtResource("2_6cuy2")]
+[node name="Slot8" parent="NinePatchRect/inventory_page/GridContainer" unique_id=1307489965 instance=ExtResource("2_6cuy2")]
 layout_mode = 2
 
-[node name="Slot9" parent="NinePatchRect/GridContainer" unique_id=1123228519 instance=ExtResource("2_6cuy2")]
+[node name="Slot9" parent="NinePatchRect/inventory_page/GridContainer" unique_id=1123228519 instance=ExtResource("2_6cuy2")]
 layout_mode = 2
 
-[node name="Slot10" parent="NinePatchRect/GridContainer" unique_id=1095112582 instance=ExtResource("2_6cuy2")]
+[node name="Slot10" parent="NinePatchRect/inventory_page/GridContainer" unique_id=1095112582 instance=ExtResource("2_6cuy2")]
 layout_mode = 2
 
-[node name="Slot11" parent="NinePatchRect/GridContainer" unique_id=1182318262 instance=ExtResource("2_6cuy2")]
+[node name="Slot11" parent="NinePatchRect/inventory_page/GridContainer" unique_id=1182318262 instance=ExtResource("2_6cuy2")]
 layout_mode = 2
 
-[node name="Slot12" parent="NinePatchRect/GridContainer" unique_id=196493701 instance=ExtResource("2_6cuy2")]
+[node name="Slot12" parent="NinePatchRect/inventory_page/GridContainer" unique_id=196493701 instance=ExtResource("2_6cuy2")]
 layout_mode = 2
 
-[node name="Slot13" parent="NinePatchRect/GridContainer" unique_id=408234597 instance=ExtResource("2_6cuy2")]
+[node name="Slot13" parent="NinePatchRect/inventory_page/GridContainer" unique_id=408234597 instance=ExtResource("2_6cuy2")]
 layout_mode = 2
 
-[node name="Slot14" parent="NinePatchRect/GridContainer" unique_id=140300336 instance=ExtResource("2_6cuy2")]
+[node name="Slot14" parent="NinePatchRect/inventory_page/GridContainer" unique_id=140300336 instance=ExtResource("2_6cuy2")]
 layout_mode = 2
 
-[node name="Slot15" parent="NinePatchRect/GridContainer" unique_id=380177089 instance=ExtResource("2_6cuy2")]
+[node name="Slot15" parent="NinePatchRect/inventory_page/GridContainer" unique_id=380177089 instance=ExtResource("2_6cuy2")]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/inventory_page" unique_id=1038961926]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 1610.0
+offset_bottom = 313.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_color = Color(0.46023774, 0.40452, 0.4075154, 1)
+theme_override_fonts/font = ExtResource("4_ntdgo")
+theme_override_font_sizes/font_size = 222
+text = "INVENTORY"
+
+[node name="quest_page" type="Control" parent="NinePatchRect" unique_id=984155722]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="settings_page" type="Control" parent="NinePatchRect" unique_id=1072880037]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="info_page" type="Control" parent="NinePatchRect" unique_id=1616557367]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="inventory_button" to="." method="_on_inventory_button_pressed"]
+[connection signal="pressed" from="quest_button" to="." method="_on_quest_button_pressed"]
+[connection signal="pressed" from="settings_button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="info_button" to="." method="_on_info_button_pressed"]

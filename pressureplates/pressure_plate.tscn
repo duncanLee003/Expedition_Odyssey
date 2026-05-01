@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c78b4t0dtl74i"]
 
-[ext_resource type="Texture2D" uid="uid://bmfd4jh4eog3m" path="res://assets/all-rock-tiles_03.png" id="1_75bq7"]
 [ext_resource type="Script" uid="uid://cqu2l8kryyx1w" path="res://pressureplates/pressure_plate.gd" id="1_ytr62"]
+[ext_resource type="Texture2D" uid="uid://dkdujnukfsv77" path="res://assets/greypressureplate.png" id="2_ytr62"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ytr62"]
 size = Vector2(32, 8)
@@ -13,8 +13,7 @@ script = ExtResource("1_ytr62")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2059731535]
 position = Vector2(16, -4)
-scale = Vector2(1, 0.25)
-texture = ExtResource("1_75bq7")
+texture = ExtResource("2_ytr62")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=511695825]
 position = Vector2(16, -4)

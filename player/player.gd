@@ -6,7 +6,7 @@ var bullet = preload("res://player/bullet.tscn")
 @onready var muzzle : Marker2D = $Muzzle
 
 const GRAVITY = 20
-@export var speed : int = 300
+@export var speed : int = 230
 @export  var jump : int = -400
 @export  var jump_horizontal : int = 100
 

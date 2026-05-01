@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://okwmp5ejkyhq"]
 
 [ext_resource type="Script" uid="uid://dhfup8vfd7txu" path="res://interaction/box.gd" id="1_1vlxp"]
-[ext_resource type="Texture2D" uid="uid://bmfd4jh4eog3m" path="res://assets/all-rock-tiles_03.png" id="1_fsdg6"]
+[ext_resource type="Texture2D" uid="uid://c36rqje4ywhld" path="res://assets/steelbox.png" id="2_1vlxp"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1vlxp"]
 friction = 0.55
@@ -25,7 +25,7 @@ script = ExtResource("1_1vlxp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1511083834]
 position = Vector2(16, -16)
-texture = ExtResource("1_fsdg6")
+texture = ExtResource("2_1vlxp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1793012651]
 position = Vector2(16, -16)

@@ -859,4 +859,4 @@ script = ExtResource("9_5votm")
 
 [node name="Door" parent="." unique_id=721422417 instance=ExtResource("10_6d5ha")]
 position = Vector2(376, 51)
-next_scene = "Level1"
+next_scene = "TLevel1"
