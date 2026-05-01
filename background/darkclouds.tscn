@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cn5pcxk7724kb"]
+
+[ext_resource type="Texture2D" uid="uid://cwua38epbmufc" path="res://background/darkclouds.png" id="1_s37rn"]
+
+[node name="darkclouds" type="Parallax2D" unique_id=1436950942]
+texture_filter = 1
+scroll_scale = Vector2(0.9, 1)
+repeat_size = Vector2(720, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2132973821]
+position = Vector2(0, -163)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_s37rn")
+centered = false
+offset = Vector2(0, 6)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1588025897]
+position = Vector2(0, -163)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_s37rn")
+centered = false
+offset = Vector2(240, 6)

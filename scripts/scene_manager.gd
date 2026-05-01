@@ -2,7 +2,8 @@ extends Node
 
 var scenes := {
 	"Level1": "res://levels/level_1.tscn",
-	"Level1pc": "res://levels/level1pcroom.tscn"
+	"Level1pc": "res://levels/level1pcroom.tscn",
+	"TLevel1": "res://levels/truelevel_1.tscn"
 }
 
 var fade: CanvasLayer

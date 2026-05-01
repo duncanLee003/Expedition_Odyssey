@@ -6,7 +6,7 @@ var bullet = preload("res://player/bullet.tscn")
 @onready var muzzle : Marker2D = $Muzzle
 
 const GRAVITY = 20
-@export var speed : int = 300
+@export var speed : int = 230
 @export  var jump : int = -400
 @export  var jump_horizontal : int = 100
 
@@ -21,6 +21,7 @@ var muzzle_position
 
 func _ready():
 	add_to_group("player")
+	add_to_group("activator")
 	current_state = State.Idle
 	muzzle_position = muzzle.position
 	
