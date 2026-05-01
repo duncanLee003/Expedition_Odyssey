@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://do4xnxhteexpy"]
 
-[ext_resource type="Texture2D" uid="uid://0ou265vp4rn7" path="res://assets/inventorySlot.png" id="1_chpki"]
 [ext_resource type="Script" uid="uid://bvvvue0fntvd5" path="res://wirepuzzles/wirepanel.gd" id="1_xb3lp"]
+[ext_resource type="Texture2D" uid="uid://kkhm2gk2jigu" path="res://assets/wirepanelmini.png" id="2_xb3lp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xb3lp"]
-size = Vector2(20, 40)
+size = Vector2(28, 28)
 
 [node name="wirepanel" type="Area2D" unique_id=155487445]
 script = ExtResource("1_xb3lp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=347675352]
-texture = ExtResource("1_chpki")
+texture = ExtResource("2_xb3lp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1658300941]
 shape = SubResource("RectangleShape2D_xb3lp")

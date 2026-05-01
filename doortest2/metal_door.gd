@@ -24,23 +24,17 @@ func _ready():
 	else:
 		arrow.visible = false
 
-# -------------------------
-# CLICK INPUT
-# -------------------------
+
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		try_enter()
 
-# -------------------------
-# KEY INPUT (W)
-# -------------------------
+
 func _input(event):
 	if Input.is_action_just_pressed("enter_door"):
 		try_enter()
 
-# -------------------------
-# MAIN LOGIC
-# -------------------------
+
 func try_enter():
 	if !player:
 		return
@@ -56,9 +50,7 @@ func try_enter():
 	else:
 		enter_door()
 
-# -------------------------
-# UNLOCK LOGIC
-# -------------------------
+
 func try_unlock():
 	var hotbar = get_tree().get_first_node_in_group("hotbar")
 	if !hotbar:
@@ -82,9 +74,7 @@ func try_unlock():
 	else:
 		show_message("It's locked")
 
-# -------------------------
-# PLAY ANIMATION
-# -------------------------
+
 func play_open_animation():
 	# prevent replay if already open
 	if anim.animation == "open" and anim.frame == anim.sprite_frames.get_frame_count("open") - 1:
@@ -93,15 +83,11 @@ func play_open_animation():
 	anim.play("open")
 	await anim.animation_finished
 
-# -------------------------
-# ENTER DOOR
-# -------------------------
+
 func enter_door():
 	SceneManager.transition_to_scene(next_scene)
 
-# -------------------------
-# MESSAGE HELPER
-# -------------------------
+
 func show_message(text):
 	var im = get_tree().get_first_node_in_group("interaction_manager")
 	if im:
