@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://b8k23a1aof1vy"]
 
 [ext_resource type="Texture2D" uid="uid://dx504o6ywyev2" path="res://assets/coreFullAnimation.png" id="1_dattc"]
+[ext_resource type="Script" uid="uid://cj763owwsgwk8" path="res://doortest2/coretest.gd" id="1_yihld"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lamub"]
+atlas = ExtResource("1_dattc")
+region = Rect2(0, 0, 112, 162)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yihld"]
 atlas = ExtResource("1_dattc")
@@ -36,7 +41,10 @@ region = Rect2(560, 0, 112, 162)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lamub"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lamub")
+}],
 "loop": true,
 "name": &"default",
 "speed": 5.0
@@ -77,6 +85,7 @@ animations = [{
 }]
 
 [node name="core" type="Node2D" unique_id=236829866]
+script = ExtResource("1_yihld")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=949330786]
 position = Vector2(57, -83)

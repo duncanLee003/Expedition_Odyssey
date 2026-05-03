@@ -15,12 +15,11 @@ size = Vector2(32, 6)
 [node name="Pushbox" type="RigidBody2D" unique_id=1977105399]
 collision_layer = 2
 collision_mask = 3
-mass = 6.0
+mass = 0.085
 physics_material_override = SubResource("PhysicsMaterial_1vlxp")
 gravity_scale = 5.9
 can_sleep = false
 continuous_cd = 2
-linear_damp = 59.0
 script = ExtResource("1_1vlxp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1511083834]

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var bullet = preload("res://player/bullet.tscn")
 
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var muzzle : Marker2D = $Muzzle
 
@@ -36,6 +37,7 @@ func _physics_process(delta : float):
 	
 	
 	move_and_slide()
+
 	
 	player_animations()
 	
@@ -115,4 +117,3 @@ func _on_inventory_gui_closed() -> void:
 
 func _on_inventory_gui_opened() -> void:
 	get_tree().paused = true
-	

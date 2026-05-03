@@ -7,6 +7,5 @@ func _ready():
 	add_to_group("activator")
 
 func _physics_process(delta):
-	# limit speed so it doesn’t go crazy
 	if linear_velocity.length() > max_speed:
 		linear_velocity = linear_velocity.normalized() * max_speed
