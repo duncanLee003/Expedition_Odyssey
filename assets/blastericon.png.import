@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfbgujqc62nv2"
-path="res://.godot/imported/dungeon_props.png-714a11ba66ff73a84d6f767c55c17256.ctex"
+uid="uid://4s0btt1ips0l"
+path="res://.godot/imported/blastericon.png-6c725fd5873482b4af1f6d6881c0740e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dungeon_props.png"
-dest_files=["res://.godot/imported/dungeon_props.png-714a11ba66ff73a84d6f767c55c17256.ctex"]
+source_file="res://assets/blastericon.png"
+dest_files=["res://.godot/imported/blastericon.png-6c725fd5873482b4af1f6d6881c0740e.ctex"]
 
 [params]
 

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://xpc4j6flk223"]
+
+[ext_resource type="PackedScene" uid="uid://bifhteewgl776" path="res://collectables/collectable.tscn" id="1_dpm0d"]
+[ext_resource type="Script" uid="uid://bn34i3siaa1d8" path="res://inventory/inventoryItem.gd" id="2_37kfu"]
+[ext_resource type="Texture2D" uid="uid://g2lkptjqmtr6" path="res://assets/GoldCup.png" id="3_dpm0d"]
+
+[sub_resource type="Resource" id="Resource_wonb6"]
+script = ExtResource("2_37kfu")
+metadata/_custom_type_script = "uid://bn34i3siaa1d8"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dx136"]
+resource_local_to_scene = true
+size = Vector2(16, 16)
+
+[node name="mapPiece" unique_id=370219150 instance=ExtResource("1_dpm0d")]
+itemRes = SubResource("Resource_wonb6")
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1802944886]
+shape = SubResource("RectangleShape2D_dx136")
+
+[node name="Sprite2D" parent="." index="1" unique_id=1642645758]
+texture = ExtResource("3_dpm0d")

@@ -9,7 +9,7 @@ var is_active := false
 
 func _ready():
 	start_position = global_position
-	target_position = start_position + Vector2(move_distance, 0)
+	target_position = start_position - Vector2(move_distance, 0)
 
 func set_active(state: bool):
 	is_active = state

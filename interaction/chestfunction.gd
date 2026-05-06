@@ -8,7 +8,9 @@ extends Area2D
 @onready var cursor: Texture2D = preload("res://assets/normcursor.png")
 
 @export var chest_id: String = "chest_1"
-@export var interact_distance := 50.0   # 👈 NEW
+@export var interact_distance := 50.0  
+
+@onready var blaster = $"../../blaster"
 
 func is_opened() -> bool:
 	return GameState.chest_states.get(chest_id, false)
@@ -65,6 +67,8 @@ func _on_click():
 
 		if interaction_manager:
 			interaction_manager.show_message("It opened!")
+			
+			
 
 		var index = hotbar.get_selected_index()
 		hotbar.inventory.use_item_At_index(index)

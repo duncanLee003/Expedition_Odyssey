@@ -14,6 +14,7 @@ func check_complete():
 			return
 
 	_on_map_completed()
+	
 
 
 func _on_map_completed():
@@ -24,4 +25,9 @@ func _on_map_completed():
 	GameState.map_completed = true
 
 	emit_signal("map_completed")
-	print("MAP COMPLETED")
+
+	var im = get_tree().get_first_node_in_group("interaction_manager")
+
+	if im:
+		im.show_message("Map added to [Pages] in the journal")
+		return

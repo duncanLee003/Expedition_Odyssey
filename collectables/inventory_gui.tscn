@@ -140,11 +140,37 @@ theme_override_font_sizes/font_size = 222
 text = "INVENTORY"
 
 [node name="quest_page" type="Control" parent="NinePatchRect" unique_id=984155722]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Label" type="Label" parent="NinePatchRect/quest_page" unique_id=577019585]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 13.0
+offset_right = 1793.9998
+offset_bottom = 392.99994
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_color = Color(0.46023774, 0.40452, 0.4075154, 1)
+theme_override_fonts/font = ExtResource("4_ntdgo")
+theme_override_font_sizes/font_size = 222
+text = "QUESTS"
+
+[node name="Label2" type="Label" parent="NinePatchRect/quest_page" unique_id=664828236]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 100.0
+offset_right = 1791.9998
+offset_bottom = 479.99994
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_color = Color(0.46023774, 0.40452, 0.4075154, 1)
+theme_override_fonts/font = ExtResource("4_ntdgo")
+theme_override_font_sizes/font_size = 222
+text = "FIND THE KEY"
+
 [node name="settings_page" type="Control" parent="NinePatchRect" unique_id=1072880037]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -157,11 +183,24 @@ offset_bottom = 40.0
 [node name="MapImage" type="TextureRect" parent="NinePatchRect/info_page" unique_id=1632949169]
 visible = false
 layout_mode = 0
-offset_left = 30.0
-offset_top = 21.0
-offset_right = 70.0
-offset_bottom = 61.0
+offset_left = 29.0
+offset_top = 42.000004
+offset_right = 69.0
+offset_bottom = 82.0
+rotation = -0.17453292
 texture = ExtResource("9_rvnjd")
+
+[node name="Label" type="Label" parent="NinePatchRect/info_page" unique_id=1219669239]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 15.0
+offset_right = 2163.9998
+offset_bottom = 312.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_color = Color(0.46023774, 0.40452, 0.4075154, 1)
+theme_override_fonts/font = ExtResource("4_ntdgo")
+theme_override_font_sizes/font_size = 191
+text = "PAGES COLLECTED"
 
 [connection signal="pressed" from="inventory_button" to="." method="_on_inventory_button_pressed"]
 [connection signal="pressed" from="quest_button" to="." method="_on_quest_button_pressed"]
