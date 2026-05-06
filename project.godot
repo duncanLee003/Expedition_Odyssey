@@ -8,6 +8,10 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="ExpeditionOdysseyBase"
@@ -18,10 +22,14 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*uid://bakp3d72obny5"
+<<<<<<< Updated upstream
 InteractionManager="*uid://c36y5e2aaenpa"
 SceneManager="*uid://cvbd53n1lcl88"
 Fade="*uid://dokqkkny7vaqb"
 GameState="*uid://b77yp8rr0qm33"
+=======
+SaveStar="*res://scripts/SaveStar.gd"
+>>>>>>> Stashed changes
 
 [display]
 

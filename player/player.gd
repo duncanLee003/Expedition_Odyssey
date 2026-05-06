@@ -2,11 +2,13 @@ extends CharacterBody2D
 
 var bullet = preload("res://player/bullet.tscn")
 
+var save_path = "user://variable.save"
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var muzzle : Marker2D = $Muzzle
 
 const GRAVITY = 20
-@export var speed : int = 300
+@export  var speed : int = 300 
 @export  var jump : int = -400
 @export  var jump_horizontal : int = 100
 
@@ -50,7 +52,7 @@ func player_idle(delta : float):
 		current_state = State.Idle
 		
 
-func player_run(delta : float):
+func player_run(delta : float): 
 	var direction = input_movement()
 	
 	if direction:
@@ -108,6 +110,7 @@ func input_movement():
 	return direction
 
 
+<<<<<<< Updated upstream
 func _on_inventory_gui_closed() -> void:
 	get_tree().paused = false
 
@@ -115,3 +118,13 @@ func _on_inventory_gui_closed() -> void:
 func _on_inventory_gui_opened() -> void:
 	get_tree().paused = true
 	
+=======
+func save(): 
+	var _file = FileAccess.open(save_path, FileAccess.WRITE)
+
+func load_data():
+	if FileAccess.file_exists(save_path):
+		var file = FileAccess.open(save_path, FileAccess.READ)
+	else: 
+		print("no data saved!")
+>>>>>>> Stashed changes
