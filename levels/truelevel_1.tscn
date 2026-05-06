@@ -33,6 +33,8 @@
 [ext_resource type="PackedScene" uid="uid://b8k23a1aof1vy" path="res://doortest2/coretest.tscn" id="31_c5kou"]
 [ext_resource type="Texture2D" uid="uid://d0fypmxs6hla5" path="res://assets/greenFilter.png" id="32_c5kou"]
 [ext_resource type="PackedScene" uid="uid://cr53ucmoih3bx" path="res://doortest2/elevator_door.tscn" id="33_hunqi"]
+[ext_resource type="PackedScene" uid="uid://dpwbm3kr0trf6" path="res://tutorial_trigger.tscn" id="34_aqj6o"]
+[ext_resource type="PackedScene" uid="uid://tqawc37ha1re" path="res://mappuzzles/map_puzzle_ui.tscn" id="35_apmpi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_53r3j"]
 texture = ExtResource("7_k8aie")
@@ -684,7 +686,7 @@ z_index = 1
 scroll_offset = Vector2(36, 41)
 
 [node name="Player" parent="." index="7" unique_id=338436204]
-position = Vector2(5133, 16)
+position = Vector2(4081, 16)
 
 [node name="Camera2D" parent="Player" index="3" unique_id=1679476865]
 position = Vector2(0, 0)
@@ -790,13 +792,13 @@ puzzle_ui = NodePath("../CanvasLayer/WirePuzzleUI")
 position = Vector2(4212, -251)
 
 [node name="key2" parent="." index="21" unique_id=1808054208 instance=ExtResource("14_apmpi")]
-position = Vector2(4196, -214)
+position = Vector2(4190, -222)
 
 [node name="Barrier2" parent="." index="22" unique_id=368612046 instance=ExtResource("18_3j2fo")]
 position = Vector2(4253, -215)
 
 [node name="keycard" parent="." index="23" unique_id=2099837322 instance=ExtResource("24_53r3j")]
-position = Vector2(2537, -562)
+position = Vector2(3505, -104)
 itemRes = ExtResource("25_5wf4s")
 
 [node name="Pcbuilding" type="Sprite2D" parent="." index="24" unique_id=1140397853]
@@ -848,6 +850,42 @@ position = Vector2(5274, 51)
 collision_layer = 3
 collision_mask = 3
 next_scene = "Level1pc"
+
+[node name="scrap4" parent="." index="33" unique_id=2054571216 instance=ExtResource("13_aqj6o")]
+position = Vector2(4496, 30)
+item_id = "wire"
+
+[node name="scrap5" parent="." index="34" unique_id=1973430665 instance=ExtResource("13_aqj6o")]
+position = Vector2(4525, 25)
+item_id = "wire"
+
+[node name="scrap6" parent="." index="35" unique_id=1343404196 instance=ExtResource("13_aqj6o")]
+position = Vector2(4544, 32)
+item_id = "wire"
+
+[node name="scrap7" parent="." index="36" unique_id=1705404427 instance=ExtResource("13_aqj6o")]
+position = Vector2(4579, 29)
+item_id = "wire"
+
+[node name="scrap8" parent="." index="37" unique_id=1678060077 instance=ExtResource("13_aqj6o")]
+position = Vector2(4623, 28)
+item_id = "wire"
+
+[node name="scrap9" parent="." index="38" unique_id=1067890320 instance=ExtResource("13_aqj6o")]
+position = Vector2(4659, 25)
+item_id = "wire"
+
+[node name="scrap10" parent="." index="39" unique_id=1062203182 instance=ExtResource("13_aqj6o")]
+position = Vector2(4690, 28)
+item_id = "wire"
+
+[node name="TutorialTrigger" parent="." index="40" unique_id=216174702 instance=ExtResource("34_aqj6o")]
+position = Vector2(102, 66)
+message = "hellot"
+trigger_once = false
+
+[node name="MapPuzzleUI" parent="." index="41" unique_id=1469025354 instance=ExtResource("35_apmpi")]
+position = Vector2(4161, -113)
 
 [connection signal="closed" from="CanvasLayer/InventoryGui" to="Player" method="_on_inventory_gui_closed"]
 [connection signal="opened" from="CanvasLayer/InventoryGui" to="Player" method="_on_inventory_gui_opened"]

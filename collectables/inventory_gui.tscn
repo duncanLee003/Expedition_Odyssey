@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cupr5hs6y0s3b" path="res://assets/questsBK.png" id="6_e80lq"]
 [ext_resource type="Texture2D" uid="uid://be5841hoonrp4" path="res://assets/settingsBK.png" id="7_rvnjd"]
 [ext_resource type="Texture2D" uid="uid://da7brtym8037g" path="res://assets/pagesBK.png" id="8_3818x"]
+[ext_resource type="Texture2D" uid="uid://g2lkptjqmtr6" path="res://assets/GoldCup.png" id="9_rvnjd"]
 
 [node name="InventoryGui" type="Control" unique_id=1905662609]
 custom_minimum_size = Vector2(128, 80)
@@ -152,6 +153,15 @@ offset_bottom = 40.0
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="MapImage" type="TextureRect" parent="NinePatchRect/info_page" unique_id=1632949169]
+visible = false
+layout_mode = 0
+offset_left = 30.0
+offset_top = 21.0
+offset_right = 70.0
+offset_bottom = 61.0
+texture = ExtResource("9_rvnjd")
 
 [connection signal="pressed" from="inventory_button" to="." method="_on_inventory_button_pressed"]
 [connection signal="pressed" from="quest_button" to="." method="_on_quest_button_pressed"]

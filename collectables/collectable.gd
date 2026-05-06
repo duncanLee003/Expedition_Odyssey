@@ -30,5 +30,16 @@ func show_message(text):
 		im.show_message(text)
 
 func collect(inventory: Inventory):
+	# ALWAYS add item to inventory
 	inventory.insert(itemRes)
+
+	# ONLY count wires
+	if item_id == "wire":
+		GameState.wires_collected += 1
+
+		if GameState.wires_collected == GameState.wires_required:
+			show_message("You have enough wires now")
+
+		print("Wires:", GameState.wires_collected)
+
 	queue_free()

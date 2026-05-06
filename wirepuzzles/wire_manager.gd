@@ -10,7 +10,12 @@ var start_pin = null
 var wire_locked := false
 var completed_wires := {}
 
+func can_connect() -> bool:
+	return GameState.wires_collected >= GameState.wires_required
+
 signal puzzle_completed
+
+
 
 func _ready():
 	add_to_group("wire_manager")
@@ -24,8 +29,13 @@ func _ready():
 
 
 func start_wire(pin):
+	if !can_connect():
+		show_message("You need more wires")
+		return
+
 	if completed_wires.has(pin.wire_id):
 		return
+
 
 	start_pin = pin
 	wire_locked = false
@@ -104,7 +114,21 @@ func check_win():
 	puzzle_solved = true
 	print("PUZZLE COMPLETE!")
 	puzzle_completed.emit()
+	
+	var hotbar = get_tree().get_first_node_in_group("hotbar")
+
+	if hotbar:
+		var inventory = hotbar.inventory
+		inventory.remove_item_by_name("scrap", GameState.wires_required)
+		
+
+
 
 func _on_close_button_pressed() -> void:
 	hide()
 	get_tree().paused = false
+
+func show_message(text):
+	var im = get_tree().get_first_node_in_group("interaction_manager")
+	if im:
+		im.show_message(text)

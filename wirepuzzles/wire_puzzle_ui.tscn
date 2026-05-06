@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dku3sk3xofurn" path="res://wirepuzzles/wire_manager.gd" id="3_vgqp5"]
 [ext_resource type="Script" uid="uid://cqlmtxinvp7qo" path="res://wirepuzzles/pins.gd" id="4_gq056"]
 [ext_resource type="Texture2D" uid="uid://bp5uucht87g0" path="res://assets/WireHole.png" id="6_gq056"]
+[ext_resource type="Texture2D" uid="uid://g2lkptjqmtr6" path="res://assets/GoldCup.png" id="7_vgqp5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_togn3"]
 
@@ -227,5 +228,13 @@ texture = ExtResource("6_gq056")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WirePuzzle/RightPins/Pin7" unique_id=143812315]
 shape = SubResource("RectangleShape2D_femci")
+
+[node name="MapImage" type="TextureRect" parent="." unique_id=957798786]
+visible = false
+offset_left = -36.0
+offset_top = -177.0
+offset_right = 4.0
+offset_bottom = -137.0
+texture = ExtResource("7_vgqp5")
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

@@ -9,6 +9,8 @@ var isOpen: bool = false
 @onready var ItemStackGuiClass = preload("res://collectables/itemsStackGui.tscn")
 @onready var slots: Array = $NinePatchRect/inventory_page/GridContainer.get_children()
 @onready var hotbar = null
+@onready var map_image = $NinePatchRect/info_page/MapImage
+@onready var map_puzzle = get_tree().get_first_node_in_group("map_puzzle")
 
 var itemInHand: ItemStackGui
 
@@ -33,7 +35,15 @@ var selected_button = null
 var button_base_positions = {}
 
 func _ready():
+	if map_puzzle:
+		map_puzzle.map_completed.connect(_on_map_completed)
+
+	# restore state
+	if GameState.map_completed:
+		show_map()
+	
 	await get_tree().process_frame
+
 
 	hotbar = get_tree().get_first_node_in_group("hotbar")
 
@@ -52,7 +62,7 @@ func _ready():
 	for b in buttons:
 		button_base_positions[b] = b.position
 	# default page
-	select_page("inventory")
+	select_page(GameState.journal_page)
 
 
 # ----------------------------
@@ -88,6 +98,8 @@ func open():
 	visible = true
 	isOpen = true
 	opened.emit()
+	await get_tree().process_frame
+	select_page(GameState.journal_page)
 
 func close():
 	visible = false
@@ -182,19 +194,28 @@ func _process(_delta):
 # ----------------------------
 # PAGE SYSTEM
 # ----------------------------
-
 func select_page(page: String):
-	# show pages
-	inventory_page.visible = page == "inventory"
-	settings_page.visible = page == "settings"
-	quest_page.visible = page == "quest"
-	info_page.visible = page == "info"
+	GameState.journal_page = page
 
-	# reset buttons
+	inventory_page.visible = false
+	settings_page.visible = false
+	quest_page.visible = false
+	info_page.visible = false
+
+	match page:
+		"inventory":
+			inventory_page.visible = true
+		"settings":
+			settings_page.visible = true
+		"quest":
+			quest_page.visible = true
+		"info":
+			info_page.visible = true
+
+	# buttons
 	for b in buttons:
 		reset_button(b)
 
-	# activate correct button
 	match page:
 		"inventory":
 			activate_button(inventory_button)
@@ -204,7 +225,6 @@ func select_page(page: String):
 			activate_button(quest_button)
 		"info":
 			activate_button(info_button)
-
 
 func activate_button(btn: Button):
 	var base_pos = button_base_positions[btn]
@@ -235,3 +255,12 @@ func _on_quest_button_pressed():
 
 func _on_info_button_pressed():
 	select_page("info")
+
+
+
+func _on_map_completed():
+	show_map()
+
+
+func show_map():
+	map_image.visible = true
