@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://d25260sqnyak2"]
 
-[ext_resource type="Texture2D" uid="uid://d4kptmpxocccc" path="res://Main Menu Background.jpg" id="1_y26ei"]
 [ext_resource type="Script" uid="uid://ba3wmqorcrtjq" path="res://game_over.gd" id="1_yxx3c"]
+[ext_resource type="Texture2D" uid="uid://dq7ije8phvuk8" path="res://background/night1.png" id="2_yxx3c"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yxx3c"]
-texture = ExtResource("1_y26ei")
+texture = ExtResource("2_yxx3c")
 modulate_color = Color(0.5686275, 0.56078434, 0.5529412, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y26ei"]
