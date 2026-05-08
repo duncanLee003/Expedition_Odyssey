@@ -2,11 +2,12 @@ extends CharacterBody2D
 
 var bullet = preload("res://player/bullet.tscn")
 
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var muzzle : Marker2D = $Muzzle
 
 const GRAVITY = 20
-@export var speed : int = 300
+@export var speed : int = 230
 @export  var jump : int = -400
 @export  var jump_horizontal : int = 100
 
@@ -21,6 +22,7 @@ var muzzle_position
 
 func _ready():
 	add_to_group("player")
+	add_to_group("activator")
 	current_state = State.Idle
 	muzzle_position = muzzle.position
 	
@@ -35,6 +37,7 @@ func _physics_process(delta : float):
 	
 	
 	move_and_slide()
+
 	
 	player_animations()
 	
@@ -62,14 +65,14 @@ func player_run(delta : float):
 		current_state = State.Run
 		animated_sprite_2d.flip_h = false if direction > 0 else true
 
-func player_jump(delta : float):
+func player_jump(float):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump
 		current_state = State.Jump
 		
 	if !is_on_floor() and current_state == State.Jump:
 		var direction = input_movement()
-		velocity.x += direction * jump_horizontal * delta
+		velocity.x += direction * jump_horizontal
 
 func player_shooting(delta: float):
 	var direction = input_movement()
@@ -114,4 +117,3 @@ func _on_inventory_gui_closed() -> void:
 
 func _on_inventory_gui_opened() -> void:
 	get_tree().paused = true
-	

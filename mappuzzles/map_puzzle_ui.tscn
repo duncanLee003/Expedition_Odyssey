@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://tqawc37ha1re"]
+
+[ext_resource type="Script" uid="uid://cffb02s8on7tl" path="res://mappuzzles/map_puzzle_ui.gd" id="1_y8wk1"]
+[ext_resource type="Texture2D" uid="uid://bwnbtgpjrnvtk" path="res://assets/panelEmpty.png" id="2_j0uuk"]
+[ext_resource type="Texture2D" uid="uid://bmfd4jh4eog3m" path="res://assets/all-rock-tiles_03.png" id="2_nxe4b"]
+[ext_resource type="Script" uid="uid://b44ck1uk3hwgk" path="res://mappuzzles/piece.gd" id="3_j0uuk"]
+[ext_resource type="Script" uid="uid://bottfxngs6qmb" path="res://mappuzzles/snap_zone_1.gd" id="4_44ol8"]
+
+[node name="MapPuzzleUI" type="Node2D" unique_id=1469025354 groups=["map_puzzle"]]
+script = ExtResource("1_y8wk1")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=165048455]
+offset_top = -1.0
+offset_right = 224.0
+offset_bottom = 224.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_j0uuk")
+
+[node name="Piece1" type="TextureRect" parent="." unique_id=573892046]
+offset_left = -55.0
+offset_right = -15.0
+offset_bottom = 40.0
+texture = ExtResource("2_nxe4b")
+script = ExtResource("3_j0uuk")
+
+[node name="Piece2" type="TextureRect" parent="." unique_id=624657675]
+offset_left = 102.0
+offset_right = 142.0
+offset_bottom = 40.0
+texture = ExtResource("2_nxe4b")
+script = ExtResource("3_j0uuk")
+
+[node name="Piece3" type="TextureRect" parent="." unique_id=491904991]
+offset_left = -53.0
+offset_top = 49.0
+offset_right = -13.0
+offset_bottom = 89.0
+texture = ExtResource("2_nxe4b")
+script = ExtResource("3_j0uuk")
+
+[node name="Piece4" type="TextureRect" parent="." unique_id=492728539]
+offset_left = 101.0
+offset_top = 46.0
+offset_right = 141.0
+offset_bottom = 86.0
+texture = ExtResource("2_nxe4b")
+script = ExtResource("3_j0uuk")
+
+[node name="SnapZone1" type="Control" parent="." unique_id=765903131 groups=["snap_zones"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_44ol8")
+correct_piece_name = "Piece1"
+
+[node name="SnapPoint" type="Control" parent="SnapZone1" unique_id=308261667]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SnapZone2" type="Control" parent="." unique_id=354531399 groups=["snap_zones"]]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 40.0
+offset_right = 80.0
+offset_bottom = 40.0
+script = ExtResource("4_44ol8")
+correct_piece_name = "Piece2"
+
+[node name="SnapPoint" type="Control" parent="SnapZone2" unique_id=962852696]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SnapZone3" type="Control" parent="." unique_id=1260514784 groups=["snap_zones"]]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 40.0
+offset_right = 40.0
+offset_bottom = 80.0
+script = ExtResource("4_44ol8")
+correct_piece_name = "Piece3"
+
+[node name="SnapPoint" type="Control" parent="SnapZone3" unique_id=1710908697]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SnapZone4" type="Control" parent="." unique_id=753129422 groups=["snap_zones"]]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 80.0
+offset_bottom = 80.0
+script = ExtResource("4_44ol8")
+correct_piece_name = "Piece4"
+
+[node name="SnapPoint" type="Control" parent="SnapZone4" unique_id=2141769204]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

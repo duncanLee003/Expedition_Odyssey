@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://cgqqfe84lbn1f"]
+
+[ext_resource type="Script" uid="uid://dku3sk3xofurn" path="res://wirepuzzles/wire_manager.gd" id="1_ymcvp"]
+[ext_resource type="Texture2D" uid="uid://g2lkptjqmtr6" path="res://assets/GoldCup.png" id="2_3tw3g"]
+[ext_resource type="Script" uid="uid://cqlmtxinvp7qo" path="res://wirepuzzles/pins.gd" id="2_togn3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_togn3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfywd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikfys"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_femci"]
+
+[node name="WirePuzzle" type="Node2D" unique_id=919920585]
+
+[node name="WireManager" type="Node2D" parent="." unique_id=445843015]
+script = ExtResource("1_ymcvp")
+
+[node name="Wires" type="Node2D" parent="." unique_id=1003987778]
+
+[node name="LeftPins" type="Node2D" parent="." unique_id=788805158]
+
+[node name="PinA" type="Area2D" parent="LeftPins" unique_id=698178944]
+position = Vector2(0, -32)
+script = ExtResource("2_togn3")
+wire_id = "A"
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftPins/PinA" unique_id=301401923]
+texture = ExtResource("2_3tw3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPins/PinA" unique_id=992475133]
+shape = SubResource("RectangleShape2D_togn3")
+
+[node name="PinB" type="Area2D" parent="LeftPins" unique_id=60062787]
+script = ExtResource("2_togn3")
+wire_id = "B"
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftPins/PinB" unique_id=1776448472]
+texture = ExtResource("2_3tw3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPins/PinB" unique_id=1587647848]
+shape = SubResource("RectangleShape2D_wfywd")
+
+[node name="RightPins" type="Node2D" parent="." unique_id=622266701]
+
+[node name="Pin1" type="Area2D" parent="RightPins" unique_id=1243387952]
+position = Vector2(77, -33)
+script = ExtResource("2_togn3")
+wire_id = "A"
+
+[node name="Sprite2D" type="Sprite2D" parent="RightPins/Pin1" unique_id=1430263436]
+texture = ExtResource("2_3tw3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightPins/Pin1" unique_id=1379917666]
+shape = SubResource("RectangleShape2D_ikfys")
+
+[node name="Pin2" type="Area2D" parent="RightPins" unique_id=1854486109]
+position = Vector2(76, 0)
+script = ExtResource("2_togn3")
+wire_id = "B"
+
+[node name="Sprite2D" type="Sprite2D" parent="RightPins/Pin2" unique_id=2064184191]
+texture = ExtResource("2_3tw3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightPins/Pin2" unique_id=55156678]
+shape = SubResource("RectangleShape2D_femci")

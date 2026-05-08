@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b0317qlda7qey"]
+
+[ext_resource type="Texture2D" uid="uid://g2lkptjqmtr6" path="res://assets/GoldCup.png" id="1_ke2fc"]
+[ext_resource type="Script" uid="uid://cxrl3yu5yjdg3" path="res://interaction/pctem.gd" id="1_ngqlf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngqlf"]
+size = Vector2(24, 11)
+
+[node name="pctem" type="Area2D" unique_id=1885888906]
+script = ExtResource("1_ngqlf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=29579176]
+position = Vector2(12.25, -5.75)
+scale = Vector2(2.6111112, 0.95454544)
+texture = ExtResource("1_ke2fc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1869944531]
+position = Vector2(12, -5.5)
+shape = SubResource("RectangleShape2D_ngqlf")

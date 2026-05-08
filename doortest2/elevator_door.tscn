@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://cr53ucmoih3bx"]
+
+[ext_resource type="Script" uid="uid://dsh38a0xeeycs" path="res://doortest2/elevator_door.gd" id="1_ih7hu"]
+[ext_resource type="Texture2D" uid="uid://l75n65w7xylr" path="res://assets/elevatoranimation.png" id="2_vl2w3"]
+[ext_resource type="Texture2D" uid="uid://did8wbe3xrpox" path="res://assets/arrowtest.png" id="3_j542i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih7hu"]
+atlas = ExtResource("2_vl2w3")
+region = Rect2(0, 0, 38, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_niv4y"]
+atlas = ExtResource("2_vl2w3")
+region = Rect2(152, 0, 38, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qf2kv"]
+atlas = ExtResource("2_vl2w3")
+region = Rect2(114, 0, 38, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysfkq"]
+atlas = ExtResource("2_vl2w3")
+region = Rect2(76, 0, 38, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84ee1"]
+atlas = ExtResource("2_vl2w3")
+region = Rect2(38, 0, 38, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhgy4"]
+atlas = ExtResource("2_vl2w3")
+region = Rect2(190, 0, 38, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pdrk"]
+atlas = ExtResource("2_vl2w3")
+region = Rect2(0, 0, 38, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlfxc"]
+atlas = ExtResource("2_vl2w3")
+region = Rect2(38, 0, 38, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqf3b"]
+atlas = ExtResource("2_vl2w3")
+region = Rect2(76, 0, 38, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq71x"]
+atlas = ExtResource("2_vl2w3")
+region = Rect2(114, 0, 38, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mywdo"]
+atlas = ExtResource("2_vl2w3")
+region = Rect2(152, 0, 38, 71)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_72f33"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ih7hu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_niv4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qf2kv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysfkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84ee1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhgy4")
+}],
+"loop": false,
+"name": &"elevatorClose",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pdrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlfxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqf3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq71x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mywdo")
+}],
+"loop": false,
+"name": &"elevatorOpen",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umc5o"]
+size = Vector2(56, 85)
+
+[node name="ElevatorDoor" type="Area2D" unique_id=251852105]
+script = ExtResource("1_ih7hu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1221192019]
+position = Vector2(19, -36)
+sprite_frames = SubResource("SpriteFrames_72f33")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1979656651]
+position = Vector2(17, -43)
+shape = SubResource("RectangleShape2D_umc5o")
+
+[node name="Arrow" type="Sprite2D" parent="." unique_id=1434933712]
+visible = false
+position = Vector2(18, -77)
+scale = Vector2(0.5588235, 0.5)
+texture = ExtResource("3_j542i")

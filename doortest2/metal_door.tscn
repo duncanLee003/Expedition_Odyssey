@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bxuy1kjl20vrp"]
+
+[ext_resource type="Script" uid="uid://dg73sxtqakvh8" path="res://doortest2/metal_door.gd" id="1_2pydh"]
+[ext_resource type="Texture2D" uid="uid://btgiqxlotfhm2" path="res://assets/lightdooranimation.png" id="2_2pydh"]
+[ext_resource type="Texture2D" uid="uid://did8wbe3xrpox" path="res://assets/arrowtest.png" id="3_ti7jq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkvkh"]
+atlas = ExtResource("2_2pydh")
+region = Rect2(0, 0, 37, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti7jq"]
+atlas = ExtResource("2_2pydh")
+region = Rect2(37, 0, 37, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56555"]
+atlas = ExtResource("2_2pydh")
+region = Rect2(74, 0, 37, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqma3"]
+atlas = ExtResource("2_2pydh")
+region = Rect2(111, 0, 37, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kn7vn"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkvkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti7jq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56555")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqma3")
+}],
+"loop": false,
+"name": &"open",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56555"]
+size = Vector2(61.5, 60)
+
+[node name="MetalDoor" type="Area2D" unique_id=1675815860]
+script = ExtResource("1_2pydh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1373459579]
+position = Vector2(14, -21)
+sprite_frames = SubResource("SpriteFrames_kn7vn")
+animation = &"open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1012982135]
+position = Vector2(10.25, -30)
+shape = SubResource("RectangleShape2D_56555")
+
+[node name="Arrow" type="Sprite2D" parent="." unique_id=349363511]
+position = Vector2(8.999999, -47)
+scale = Vector2(0.5588235, 0.5)
+texture = ExtResource("3_ti7jq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

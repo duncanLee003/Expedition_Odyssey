@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://csrymeolf8inw"]
+
+[ext_resource type="Texture2D" uid="uid://bb2oc7asjx88v" path="res://background/night4.png" id="1_0331s"]
+
+[node name="buildingsback" type="Parallax2D" unique_id=1436950942]
+texture_filter = 1
+scroll_scale = Vector2(0.9, 1)
+repeat_size = Vector2(720, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2132973821]
+position = Vector2(0, -163)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_0331s")
+centered = false
+offset = Vector2(0, 6)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1588025897]
+position = Vector2(0, -163)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_0331s")
+centered = false
+offset = Vector2(240, 6)

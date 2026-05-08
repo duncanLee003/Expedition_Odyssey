@@ -46,3 +46,19 @@ func use_item_At_index(index: int) -> void:
 		return
 	
 	removeItemAtIndex(index)
+
+func remove_item_by_name(name: String, amount: int):
+	for slot in slots:
+		if slot.item and slot.item.name == name:
+			var remove_amount = min(amount, slot.amount)
+			slot.amount -= remove_amount
+			amount -= remove_amount
+
+			if slot.amount <= 0:
+				slot.item = null
+				slot.amount = 0
+
+			if amount <= 0:
+				break
+
+	updated.emit()

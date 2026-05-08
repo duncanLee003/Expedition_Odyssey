@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://cg8oay53sc42n"]
+
+[ext_resource type="Script" uid="uid://bn34i3siaa1d8" path="res://inventory/inventoryItem.gd" id="1_vc32l"]
+[ext_resource type="Texture2D" uid="uid://deacam6mvff08" path="res://assets/Keycard.png" id="2_rofax"]
+
+[resource]
+script = ExtResource("1_vc32l")
+name = "keycard"
+texture = ExtResource("2_rofax")
+metadata/_custom_type_script = "uid://bn34i3siaa1d8"
