@@ -73,3 +73,5 @@ position = Vector2(609, -13)
 
 [node name="Moving_Platform2" parent="Moving_Platform2" index="1" unique_id=23807469 instance=ExtResource("7_gwceb")]
 position = Vector2(4399, 36)
+
+[node name="TESTESTEST" type="Sprite2D" parent="." index="11" unique_id=803570439]

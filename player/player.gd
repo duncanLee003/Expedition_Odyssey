@@ -7,7 +7,7 @@ var bullet = preload("res://player/bullet.tscn")
 @onready var sfx_jump = $sfx_jump
 @onready var sfx_shoot = $sfx_shoot
 const GRAVITY = 20
-@export var speed : int = 200
+@export var speed : int = 300
 @export  var jump : int = -400
 @export  var jump_horizontal : int = 100
 
