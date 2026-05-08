@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c72un0xc8uwfp"]
+
+[ext_resource type="AudioStream" uid="uid://0wporec2vmj2" path="res://2020-06-18_-_8_Bit_Retro_Funk_-_www.FesliyanStudios.com_David_Renda.mp3" id="1_s7f3h"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" unique_id=1333379528]
+stream = ExtResource("1_s7f3h")
+autoplay = true

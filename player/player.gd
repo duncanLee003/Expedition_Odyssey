@@ -4,11 +4,14 @@ var bullet = preload("res://player/bullet.tscn")
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var muzzle : Marker2D = $Muzzle
-
+@onready var sfx_jump = $sfx_jump
+@onready var sfx_shoot = $sfx_shoot
 const GRAVITY = 20
-@export var speed : int = 300
+@export var speed : int = 200
 @export  var jump : int = -400
 @export  var jump_horizontal : int = 100
+
+
 
 enum State {Idle, Run, Jump, Shoot}
 
@@ -63,6 +66,7 @@ func player_jump(delta : float):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump
 		current_state = State.Jump
+		sfx_jump.play()
 		
 	if !is_on_floor() and current_state == State.Jump:
 		var direction = input_movement()
@@ -77,6 +81,8 @@ func player_shooting(delta: float):
 		bullet_instance.global_position = muzzle.global_position
 		get_parent().add_child(bullet_instance)
 		current_state = State.Shoot
+		sfx_shoot.play()
+		
 		
 
 
@@ -88,6 +94,7 @@ func player_muzzle_position():
 		muzzle.position.x = muzzle_position.x
 	elif direction < 0:
 		muzzle.position.x = -muzzle_position.x
+
 
 func player_animations():
 	if current_state == State.Idle:
