@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bdpb0bmjewba5" path="res://enemies/crab-idle.png" id="1_0krxu"]
 [ext_resource type="Script" uid="uid://bqfs13fx3cb2b" path="res://enemies/enemy_crab.gd" id="1_pm84v"]
 [ext_resource type="Texture2D" uid="uid://bhck7y82rrbwe" path="res://enemies/crab-walk.png" id="2_pm84v"]
+[ext_resource type="PackedScene" uid="uid://c7gmva8vndgl3" path="res://health_bar.tscn" id="4_mnp8h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mnp8h"]
 atlas = ExtResource("1_0krxu")
@@ -38,11 +39,6 @@ region = Rect2(144, 0, 48, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lko3b"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mnp8h")
@@ -87,9 +83,8 @@ script = ExtResource("1_pm84v")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1656041297]
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_lko3b")
-animation = &"idle"
+animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.7388173
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1366974218]
 position = Vector2(0, -13)
@@ -99,5 +94,12 @@ debug_color = Color(0.7803306, 0.38520774, 0.5500277, 0.41960785)
 [node name="Timer" type="Timer" parent="." unique_id=1502456976]
 wait_time = 3.0
 autostart = true
+
+[node name="HealthBar" parent="." unique_id=292484281 instance=ExtResource("4_mnp8h")]
+offset_left = -14.000001
+offset_top = -27.0
+offset_right = 58.0
+offset_bottom = -3.0
+scale = Vector2(0.40153962, -0.165389)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

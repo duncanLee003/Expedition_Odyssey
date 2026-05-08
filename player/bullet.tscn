@@ -33,8 +33,6 @@ animations = [{
 [node name="Bullet" type="AnimatedSprite2D" unique_id=697000331]
 sprite_frames = SubResource("SpriteFrames_42du2")
 animation = &"shot"
-frame = 1
-frame_progress = 0.56956965
 script = ExtResource("2_j40gx")
 
 [node name="Timer" type="Timer" parent="." unique_id=1137612779]

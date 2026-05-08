@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://ch3lng5obyyr4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ttbb3"]
+size = Vector2(28, 103.305695)
+
+[sub_resource type="Animation" id="Animation_ttbb3"]
+resource_name = "Moving_Platform2"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -150), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1f3ys"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tsy86"]
+_data = {
+&"Moving_Platform2": SubResource("Animation_ttbb3"),
+&"RESET": SubResource("Animation_1f3ys")
+}
+
+[node name="Moving_Platform2" type="Node2D" unique_id=1485203765]
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=631593510]
+
+[node name="ColorRect" type="ColorRect" parent="AnimatableBody2D" unique_id=949855714]
+offset_right = 27.0
+offset_bottom = 102.305695
+color = Color(0.18009764, 0.123621814, 0.26829484, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=670910125]
+position = Vector2(14, 51.652847)
+shape = SubResource("RectangleShape2D_ttbb3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody2D" unique_id=830088466]
+libraries/ = SubResource("AnimationLibrary_tsy86")
+autoplay = &"Moving_Platform2"
