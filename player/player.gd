@@ -65,14 +65,14 @@ func player_run(delta : float):
 		current_state = State.Run
 		animated_sprite_2d.flip_h = false if direction > 0 else true
 
-func player_jump(delta : float):
+func player_jump(float):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump
 		current_state = State.Jump
 		
 	if !is_on_floor() and current_state == State.Jump:
 		var direction = input_movement()
-		velocity.x += direction * jump_horizontal * delta
+		velocity.x += direction * jump_horizontal
 
 func player_shooting(delta: float):
 	var direction = input_movement()
