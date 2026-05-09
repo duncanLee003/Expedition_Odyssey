@@ -6,18 +6,21 @@
 
 [sub_resource type="Resource" id="Resource_wonb6"]
 script = ExtResource("2_0alhj")
+id = "blaster"
+name = "blaser"
 texture = ExtResource("3_45n2l")
 metadata/_custom_type_script = "uid://bn34i3siaa1d8"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dx136"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_45n2l"]
 resource_local_to_scene = true
 size = Vector2(16, 16)
 
 [node name="blaster" unique_id=370219150 instance=ExtResource("1_45n2l")]
 itemRes = SubResource("Resource_wonb6")
+item_id = "blaster"
 
 [node name="CollisionShape2D" parent="." index="0" unique_id=1802944886]
-shape = SubResource("RectangleShape2D_dx136")
+shape = SubResource("RectangleShape2D_45n2l")
 
 [node name="Sprite2D" parent="." index="1" unique_id=1642645758]
 texture = ExtResource("3_45n2l")

@@ -5,6 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://ydfnk0vlcr2u" path="res://enemies/enemy_crab.tscn" id="2_x25rp"]
 [ext_resource type="PackedScene" uid="uid://cpv172y3it1f6" path="res://background/middleground_parallax_2d.tscn" id="3_o6mel"]
 [ext_resource type="Texture2D" uid="uid://bb2oc7asjx88v" path="res://background/night4.png" id="4_o6mel"]
+[ext_resource type="Script" uid="uid://6f8owh75ybkd" path="res://levels/canvas_layer.gd" id="6_axl34"]
+[ext_resource type="PackedScene" uid="uid://drt8b5n0ugujr" path="res://collectables/inventory_gui.tscn" id="7_8hjdj"]
+[ext_resource type="PackedScene" uid="uid://bt0jp0emlo206" path="res://collectables/hotbar.tscn" id="8_0vv12"]
+[ext_resource type="FontFile" uid="uid://bnyjg3csk3b8j" path="res://assets/NormalFont.ttf" id="9_o5yuq"]
+[ext_resource type="PackedScene" uid="uid://dp7jeiaxt55iw" path="res://wirepuzzles/wire_puzzle_ui.tscn" id="10_wjuib"]
+[ext_resource type="PackedScene" uid="uid://tqawc37ha1re" path="res://mappuzzles/map_puzzle_ui.tscn" id="11_xag4j"]
+[ext_resource type="Texture2D" uid="uid://d30dsbu421js5" path="res://assets/basehealth.png" id="12_pgbyh"]
+[ext_resource type="Texture2D" uid="uid://datj1qhmkedu" path="res://assets/greenhealth.png" id="13_68kkm"]
 
 [node name="TestLevel" unique_id=127639740 instance=ExtResource("1_46lwt")]
 
@@ -30,9 +38,8 @@ position = Vector2(-2, -20)
 [node name="Camera2D" parent="Player" index="3" unique_id=1679476865]
 position = Vector2(0, 0)
 
-[node name="EnemyCrab" parent="." index="5" unique_id=935002529 node_paths=PackedStringArray("patrol_points") instance=ExtResource("2_x25rp")]
+[node name="EnemyCrab" parent="." index="5" unique_id=935002529 instance=ExtResource("2_x25rp")]
 position = Vector2(209, -28)
-patrol_points = NodePath("PatrolPoints")
 
 [node name="PatrolPoints" type="Node2D" parent="EnemyCrab" index="2" unique_id=584338850]
 
@@ -42,9 +49,8 @@ position = Vector2(-158, 19)
 [node name="Point2" type="Marker2D" parent="EnemyCrab/PatrolPoints" index="1" unique_id=542095778]
 position = Vector2(95, 19)
 
-[node name="EnemyCrab2" parent="." index="6" unique_id=931751652 node_paths=PackedStringArray("patrol_points") instance=ExtResource("2_x25rp")]
+[node name="EnemyCrab2" parent="." index="6" unique_id=931751652 instance=ExtResource("2_x25rp")]
 position = Vector2(489, -24)
-patrol_points = NodePath("PatrolPoints")
 
 [node name="PatrolPoints" type="Node2D" parent="EnemyCrab2" index="2" unique_id=999634232]
 
@@ -53,3 +59,65 @@ position = Vector2(-75, 20)
 
 [node name="Point2" type="Marker2D" parent="EnemyCrab2/PatrolPoints" index="1" unique_id=946381646]
 position = Vector2(249, 13)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="7" unique_id=559239891]
+process_mode = 3
+script = ExtResource("6_axl34")
+
+[node name="InventoryGui" parent="CanvasLayer" index="0" unique_id=1905662609 instance=ExtResource("7_8hjdj")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -83.0
+offset_right = 74.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Hotbar" parent="CanvasLayer" index="1" unique_id=671549169 instance=ExtResource("8_0vv12")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -26.0
+offset_right = 122.0
+offset_bottom = -6.0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="MessageLabel" type="Label" parent="CanvasLayer" index="2" unique_id=1225948310 groups=["ui_message"]]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -38.0
+offset_right = -24.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("9_o5yuq")
+horizontal_alignment = 2
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="WirePuzzleUI" parent="CanvasLayer" index="3" unique_id=676052484 instance=ExtResource("10_wjuib")]
+visible = false
+position = Vector2(145, 203)
+
+[node name="MapPuzzleUI" parent="CanvasLayer" index="4" unique_id=1469025354 instance=ExtResource("11_xag4j")]
+visible = false
+position = Vector2(179, 76)
+
+[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer" index="5" unique_id=1635994365]
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 55.0
+offset_bottom = 16.0
+texture_under = ExtResource("12_pgbyh")
+texture_progress = ExtResource("13_68kkm")

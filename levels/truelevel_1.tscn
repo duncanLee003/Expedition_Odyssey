@@ -16,7 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://c3jswnbm50tkw" path="res://collectables/scrap.tscn" id="13_aqj6o"]
 [ext_resource type="PackedScene" uid="uid://kytuoe5pi0c" path="res://collectables/key.tscn" id="14_apmpi"]
 [ext_resource type="PackedScene" uid="uid://b0pv7kntumxq" path="res://interaction/chest.tscn" id="15_fk3ig"]
+[ext_resource type="Texture2D" uid="uid://d30dsbu421js5" path="res://assets/basehealth.png" id="15_jle3n"]
+[ext_resource type="Texture2D" uid="uid://datj1qhmkedu" path="res://assets/greenhealth.png" id="16_3j2fo"]
 [ext_resource type="Script" uid="uid://bakp3d72obny5" path="res://scripts/game_manager.gd" id="16_3nioe"]
+[ext_resource type="PackedScene" uid="uid://w176833hgumc" path="res://enemies/robot_enemy.tscn" id="17_3j2fo"]
 [ext_resource type="PackedScene" uid="uid://do3t7sw14y26g" path="res://levels/Door/door.tscn" id="17_jle3n"]
 [ext_resource type="PackedScene" uid="uid://csdfcenmsk1fs" path="res://levels/Door/barrier.tscn" id="18_3j2fo"]
 [ext_resource type="PackedScene" uid="uid://okwmp5ejkyhq" path="res://interaction/box.tscn" id="19_cxsp0"]
@@ -36,8 +39,9 @@
 [ext_resource type="PackedScene" uid="uid://dpwbm3kr0trf6" path="res://tutorial_trigger.tscn" id="34_aqj6o"]
 [ext_resource type="PackedScene" uid="uid://tqawc37ha1re" path="res://mappuzzles/map_puzzle_ui.tscn" id="35_apmpi"]
 [ext_resource type="PackedScene" uid="uid://cw83ielahgc00" path="res://collectables/blaster.tscn" id="36_fk3ig"]
+[ext_resource type="PackedScene" uid="uid://dhannkdcyijkf" path="res://enemies/robot_enemy2.tscn" id="40_cxsp0"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_apmpi"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fk3ig"]
 texture = ExtResource("7_k8aie")
 2:2/0 = 0
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.35971832, -2.6978807, 8, -2.877739, 8, 8, 0.17985916, 8)
@@ -642,7 +646,7 @@ texture = ExtResource("7_k8aie")
 
 [sub_resource type="TileSet" id="TileSet_5wf4s"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_apmpi")
+sources/0 = SubResource("TileSetAtlasSource_fk3ig")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wd1ub"]
 friction = 0.25
@@ -687,7 +691,7 @@ z_index = 1
 scroll_offset = Vector2(36, 41)
 
 [node name="Player" parent="." index="7" unique_id=338436204]
-position = Vector2(18, 34)
+position = Vector2(702, 12)
 
 [node name="Camera2D" parent="Player" index="3" unique_id=1679476865]
 position = Vector2(0, 0)
@@ -750,120 +754,131 @@ position = Vector2(145, 203)
 visible = false
 position = Vector2(179, 76)
 
-[node name="scrap" parent="." index="9" unique_id=110094568 instance=ExtResource("13_aqj6o")]
-position = Vector2(2981, -557)
+[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer" index="5" unique_id=512840416]
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 55.0
+offset_bottom = 16.0
+texture_under = ExtResource("15_jle3n")
+texture_progress = ExtResource("16_3j2fo")
 
-[node name="key" parent="." index="10" unique_id=5038752 instance=ExtResource("14_apmpi")]
-position = Vector2(676, 44)
+[node name="key" parent="." index="9" unique_id=5038752 instance=ExtResource("14_apmpi")]
+position = Vector2(683, 35)
 
-[node name="scrap2" parent="." index="11" unique_id=184320576 instance=ExtResource("13_aqj6o")]
-position = Vector2(2993, -335)
-
-[node name="chest" parent="." index="12" unique_id=1935135033 instance=ExtResource("15_fk3ig")]
+[node name="chest" parent="." index="10" unique_id=1935135033 instance=ExtResource("15_fk3ig")]
 position = Vector2(1267, -106)
 
-[node name="GameManager" type="Node" parent="." index="13" unique_id=90570691]
+[node name="GameManager" type="Node" parent="." index="11" unique_id=90570691]
 script = ExtResource("16_3nioe")
 
-[node name="Door" parent="." index="14" unique_id=1962645642 instance=ExtResource("17_jle3n")]
+[node name="Door" parent="." index="12" unique_id=1962645642 instance=ExtResource("17_jle3n")]
 position = Vector2(5459, 156)
 scale = Vector2(-1, -1)
 next_scene = "Level1pc"
 
-[node name="Barrier" parent="." index="15" unique_id=1891418906 instance=ExtResource("18_3j2fo")]
+[node name="Barrier" parent="." index="13" unique_id=1891418906 instance=ExtResource("18_3j2fo")]
 position = Vector2(5377, 200)
 
-[node name="Pushbox" parent="." index="16" unique_id=860581304 instance=ExtResource("19_cxsp0")]
+[node name="Pushbox" parent="." index="14" unique_id=860581304 instance=ExtResource("19_cxsp0")]
 position = Vector2(4067, -211)
 mass = 1.0
 physics_material_override = SubResource("PhysicsMaterial_wd1ub")
 
-[node name="PressurePlate" parent="." index="17" unique_id=1208885146 instance=ExtResource("20_n7idx")]
+[node name="PressurePlate" parent="." index="15" unique_id=1208885146 instance=ExtResource("20_n7idx")]
 z_index = -1
 position = Vector2(3954, 56)
 platform_path = NodePath("../moveabledoor")
 
-[node name="moveabledoor" parent="." index="18" unique_id=806851206 instance=ExtResource("21_gmkek")]
+[node name="moveabledoor" parent="." index="16" unique_id=806851206 instance=ExtResource("21_gmkek")]
 z_index = -1
 position = Vector2(4079, -112)
 rotation = -1.5707964
 
-[node name="wirepanel" parent="." index="19" unique_id=1813490697 node_paths=PackedStringArray("puzzle_ui") instance=ExtResource("22_h72m1")]
+[node name="wirepanel" parent="." index="17" unique_id=1813490697 node_paths=PackedStringArray("puzzle_ui") instance=ExtResource("22_h72m1")]
 z_index = -1
 position = Vector2(4970, 4.5)
 puzzle_ui = NodePath("../CanvasLayer/WirePuzzleUI")
 
-[node name="Barrier2" parent="." index="20" unique_id=368612046 instance=ExtResource("18_3j2fo")]
+[node name="Barrier2" parent="." index="18" unique_id=368612046 instance=ExtResource("18_3j2fo")]
 position = Vector2(4508, 445)
 
-[node name="keycard" parent="." index="21" unique_id=2099837322 instance=ExtResource("24_53r3j")]
+[node name="keycard" parent="." index="19" unique_id=2099837322 instance=ExtResource("24_53r3j")]
 position = Vector2(2565, -564)
 itemRes = ExtResource("25_5wf4s")
 
-[node name="Pcbuilding" type="Sprite2D" parent="." index="22" unique_id=1140397853]
+[node name="Pcbuilding" type="Sprite2D" parent="." index="20" unique_id=1140397853]
 z_index = -1
 position = Vector2(3647, -142)
 texture = ExtResource("26_gbaff")
 
-[node name="MetalDoor" parent="." index="23" unique_id=1231556833 instance=ExtResource("27_gbaff")]
+[node name="MetalDoor" parent="." index="21" unique_id=1231556833 instance=ExtResource("27_gbaff")]
 z_index = -1
 position = Vector2(3553, -80)
 collision_layer = 3
 collision_mask = 3
 next_scene = "Level1pc"
 
-[node name="Pipes" type="Sprite2D" parent="." index="24" unique_id=1627562361]
+[node name="Pipes" type="Sprite2D" parent="." index="22" unique_id=1627562361]
 z_index = -2
 position = Vector2(5072, -284.5)
 texture = ExtResource("30_wd1ub")
 
-[node name="CoreBackground" type="Sprite2D" parent="." index="25" unique_id=439384539]
+[node name="CoreBackground" type="Sprite2D" parent="." index="23" unique_id=439384539]
 z_index = -3
 position = Vector2(5507.5, -246.75)
 scale = Vector2(5.7399993, 3.463889)
 texture = ExtResource("28_h4ced")
 
-[node name="Darkness" type="Sprite2D" parent="." index="26" unique_id=669791978]
+[node name="Darkness" type="Sprite2D" parent="." index="24" unique_id=669791978]
 z_index = 1
 position = Vector2(5531.0005, -338.5)
 scale = Vector2(5.604, 5.1944447)
 texture = ExtResource("29_2qtvr")
 
-[node name="core" parent="." index="27" unique_id=236829866 instance=ExtResource("31_c5kou")]
+[node name="core" parent="." index="25" unique_id=236829866 instance=ExtResource("31_c5kou")]
 z_index = -1
 position = Vector2(4992, 53.5)
 
-[node name="scrap3" parent="." index="28" unique_id=370219150 instance=ExtResource("13_aqj6o")]
-position = Vector2(3577, -538)
-
-[node name="GreenFilter" type="Sprite2D" parent="." index="29" unique_id=1041165136]
+[node name="GreenFilter" type="Sprite2D" parent="." index="26" unique_id=1041165136]
 visible = false
 self_modulate = Color(1, 1, 1, 0.5529412)
 position = Vector2(5182, -287)
 scale = Vector2(2.8039997, 3.8333333)
 texture = ExtResource("32_c5kou")
 
-[node name="ElevatorDoor" parent="." index="30" unique_id=1247038156 instance=ExtResource("33_hunqi")]
+[node name="ElevatorDoor" parent="." index="27" unique_id=1247038156 instance=ExtResource("33_hunqi")]
 z_index = -2
 position = Vector2(5274, 51)
 collision_layer = 3
 collision_mask = 3
-next_scene = "Level1pc"
+next_scene = "artifactLevel1"
 
-[node name="scrap4" parent="." index="31" unique_id=2054571216 instance=ExtResource("13_aqj6o")]
-position = Vector2(3648, -334)
+[node name="scrap7" parent="." index="28" unique_id=1705404427 instance=ExtResource("13_aqj6o")]
+position = Vector2(4425, 25)
 item_id = "wire"
 
-[node name="scrap5" parent="." index="32" unique_id=1973430665 instance=ExtResource("13_aqj6o")]
-position = Vector2(2853, -429)
+[node name="scrap8" parent="." index="29" unique_id=2075313300 instance=ExtResource("13_aqj6o")]
+position = Vector2(4449, 25)
 item_id = "wire"
 
-[node name="scrap6" parent="." index="33" unique_id=1343404196 instance=ExtResource("13_aqj6o")]
-position = Vector2(3316, -494)
+[node name="scrap9" parent="." index="30" unique_id=398740898 instance=ExtResource("13_aqj6o")]
+position = Vector2(4479, 25)
 item_id = "wire"
 
-[node name="scrap7" parent="." index="34" unique_id=1705404427 instance=ExtResource("13_aqj6o")]
-position = Vector2(2708, -565)
+[node name="scrap10" parent="." index="31" unique_id=1329468834 instance=ExtResource("13_aqj6o")]
+position = Vector2(4509, 24)
+item_id = "wire"
+
+[node name="scrap11" parent="." index="32" unique_id=516093186 instance=ExtResource("13_aqj6o")]
+position = Vector2(4536, 24)
+item_id = "wire"
+
+[node name="scrap12" parent="." index="33" unique_id=1485965429 instance=ExtResource("13_aqj6o")]
+position = Vector2(4557, 21)
+item_id = "wire"
+
+[node name="scrap13" parent="." index="34" unique_id=311975637 instance=ExtResource("13_aqj6o")]
+position = Vector2(4582, 21)
 item_id = "wire"
 
 [node name="TutorialTrigger" parent="." index="35" unique_id=216174702 instance=ExtResource("34_aqj6o")]
@@ -896,11 +911,25 @@ position = Vector2(1144, 65)
 message = "You must be close to interact with objects."
 trigger_once = false
 
-[node name="ElevatorDoor2" parent="." index="41" unique_id=251852105 instance=ExtResource("33_hunqi")]
-position = Vector2(5141, -1119)
-
-[node name="blaster" parent="." index="42" unique_id=219974552 instance=ExtResource("36_fk3ig")]
+[node name="Blaster" parent="." index="41" unique_id=219974552 instance=ExtResource("36_fk3ig")]
+visible = false
 position = Vector2(1271, -120)
+
+[node name="robotEnemy" parent="." index="42" unique_id=177875292 instance=ExtResource("17_3j2fo")]
+position = Vector2(861, 28)
+
+[node name="robotEnemy2" parent="." index="43" unique_id=673686851 node_paths=PackedStringArray("patrol_points") instance=ExtResource("40_cxsp0")]
+position = Vector2(628, 23)
+patrol_points = NodePath("PatrolPoints")
+
+[node name="PatrolPoints" type="Node2D" parent="robotEnemy2" index="3" unique_id=1496382813]
+position = Vector2(211.66669, 14.166665)
+
+[node name="Point1" type="Marker2D" parent="robotEnemy2/PatrolPoints" index="0" unique_id=1262113340]
+position = Vector2(-261.66666, 10)
+
+[node name="Point2" type="Marker2D" parent="robotEnemy2/PatrolPoints" index="1" unique_id=1194100314]
+position = Vector2(-134.99998, 10)
 
 [connection signal="closed" from="CanvasLayer/InventoryGui" to="Player" method="_on_inventory_gui_closed"]
 [connection signal="opened" from="CanvasLayer/InventoryGui" to="Player" method="_on_inventory_gui_opened"]

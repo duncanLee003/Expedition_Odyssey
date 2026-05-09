@@ -61,7 +61,7 @@ func try_unlock():
 	if selected_item and selected_item.name == "keycard":
 		is_unlocked = true
 		
-		GameState.door_states[door_id] = true   # 👈 RIGHT HERE
+		GameState.door_states[door_id] = true  
 		
 
 		

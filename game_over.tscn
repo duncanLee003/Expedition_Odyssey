@@ -1,7 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://d25260sqnyak2"]
+[gd_scene format=3 uid="uid://d25260sqnyak2"]
 
-[ext_resource type="Script" uid="uid://ba3wmqorcrtjq" path="res://game_over.gd" id="1_yxx3c"]
 [ext_resource type="Texture2D" uid="uid://dq7ije8phvuk8" path="res://background/night1.png" id="2_yxx3c"]
+
+[sub_resource type="GDScript" id="GDScript_y26ei"]
+script/source = "extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_restart_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://levels/level_1.tscn\")
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yxx3c"]
 texture = ExtResource("2_yxx3c")
@@ -16,22 +37,22 @@ corner_radius_bottom_left = 16
 shadow_size = 5
 shadow_offset = Vector2(0, 3.41)
 
-[node name="Game Over" type="Control"]
+[node name="Game Over" type="Control" unique_id=1045142229]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_yxx3c")
+script = SubResource("GDScript_y26ei")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=509687775]
 layout_mode = 0
 offset_right = 479.0
 offset_bottom = 273.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_yxx3c")
 
-[node name="Panel2" type="Panel" parent="."]
+[node name="Panel2" type="Panel" parent="." unique_id=191254062]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -45,7 +66,7 @@ offset_bottom = 95.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Panel2"]
+[node name="Label" type="Label" parent="Panel2" unique_id=1916759805]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -54,7 +75,7 @@ grow_horizontal = 2
 text = "GAME OVER"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2108762280]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -69,13 +90,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Restart" type="Button" parent="VBoxContainer"]
+[node name="Restart" type="Button" parent="VBoxContainer" unique_id=711901902]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_y26ei")
 text = "Restart"
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=1349693053]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_y26ei")

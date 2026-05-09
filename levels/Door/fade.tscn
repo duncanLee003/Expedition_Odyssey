@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dh7ihd8qhlj3y" path="res://levels/Door/fade.gd" id="1_fggcn"]
 
-[node name="Fade" type="CanvasLayer" unique_id=1500417815]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1500417815]
 layer = 100
 script = ExtResource("1_fggcn")
 

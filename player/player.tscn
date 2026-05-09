@@ -15,6 +15,10 @@ region = Rect2(0, 0, 80, 80)
 atlas = ExtResource("2_qjkh3")
 region = Rect2(80, 0, 80, 80)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjkh3"]
+atlas = ExtResource("5_qjkh3")
+region = Rect2(320, 0, 80, 80)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_g6k8r"]
 atlas = ExtResource("3_qjkh3")
 region = Rect2(0, 0, 80, 80)
@@ -91,6 +95,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_qjkh3")
+}],
+"loop": true,
+"name": &"idle_shoot",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_g6k8r")
 }, {
 "duration": 1.0,
@@ -162,10 +174,9 @@ inventory = ExtResource("2_g6k8r")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=14432728]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_e7oew")
-animation = &"jump"
+animation = &"idle_shoot"
 autoplay = "idle"
-frame = 2
-frame_progress = 1.0
+frame_progress = 0.730917
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1860805499]
 position = Vector2(1, -15)

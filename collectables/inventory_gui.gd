@@ -264,3 +264,23 @@ func _on_map_completed():
 
 func show_map():
 	map_image.visible = true
+
+func load_level(path: String):
+
+
+	# close journal first
+	visible = false
+	isOpen = false
+
+	# unpause game
+	get_tree().paused = false
+
+
+	get_tree().change_scene_to_file(path)
+
+func _on_level_1_button_pressed() -> void:
+	load_level("res://levels/truelevel_1.tscn")
+
+
+func _on_level_2_button_pressed() -> void:
+	load_level("res://levels/truelevel_2.tscn")

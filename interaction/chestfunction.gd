@@ -10,7 +10,7 @@ extends Area2D
 @export var chest_id: String = "chest_1"
 @export var interact_distance := 50.0  
 
-@onready var blaster = $"../../blaster"
+@onready var blaster = $"../../Blaster"
 
 func is_opened() -> bool:
 	return GameState.chest_states.get(chest_id, false)
@@ -67,6 +67,7 @@ func _on_click():
 
 		if interaction_manager:
 			interaction_manager.show_message("It opened!")
+			blaster.visible = true
 			
 			
 

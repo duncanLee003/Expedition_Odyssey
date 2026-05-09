@@ -1,10 +1,7 @@
-extends AnimatedSprite2D
+extends Node2D
 
-var speed : int = 600
-var direction : int
+var speed: float = 600
+var direction: Vector2 = Vector2.RIGHT
 
 func _physics_process(delta):
-	move_local_x(direction * speed * delta)
-
-func _on_timer_timeout() -> void:
-	queue_free()
+	global_position += direction * speed * delta
