@@ -2,17 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://bifhteewgl776" path="res://collectables/collectable.tscn" id="1_1qc1g"]
 [ext_resource type="Resource" uid="uid://cnkit6om8ww7t" path="res://inventory/items/usbdrive.tres" id="2_1qc1g"]
-[ext_resource type="Texture2D" uid="uid://ex0aw4tpn4nn" path="res://assets/BarIron.png" id="3_1qc1g"]
+[ext_resource type="Texture2D" uid="uid://bjmktabxstnoq" path="res://assets/USB.png" id="3_1qc1g"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k27ul"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vutae"]
 resource_local_to_scene = true
 size = Vector2(16, 16)
 
 [node name="USB" unique_id=370219150 instance=ExtResource("1_1qc1g")]
 itemRes = ExtResource("2_1qc1g")
+item_id = "USB"
 
 [node name="CollisionShape2D" parent="." index="0" unique_id=1802944886]
-shape = SubResource("RectangleShape2D_k27ul")
+shape = SubResource("RectangleShape2D_vutae")
 
 [node name="Sprite2D" parent="." index="1" unique_id=1642645758]
 texture = ExtResource("3_1qc1g")

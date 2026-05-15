@@ -57,3 +57,21 @@ func select_slot(index: int) -> void:
 		return
 
 	selector.global_position = slot.global_position
+
+func use_item_on_computer():
+
+	var selected = get_selected_item()
+
+	if !selected:
+		return
+
+	if selected.name == "usb":
+
+		var ui = get_tree().get_first_node_in_group("computer_ui")
+
+		if ui:
+			ui.insert_usb()
+
+		# OPTIONAL: consume USB
+		var index = get_selected_index()
+		inventory.use_item_At_index(index)

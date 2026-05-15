@@ -30,14 +30,24 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Bullet" type="AnimatedSprite2D" unique_id=697000331]
-sprite_frames = SubResource("SpriteFrames_42du2")
-animation = &"shot"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j40gx"]
+size = Vector2(6, 4.5)
+
+[node name="Bullet" type="Area2D" unique_id=895269651]
 script = ExtResource("2_j40gx")
 
-[node name="Timer" type="Timer" parent="." unique_id=1137612779]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=697000331]
+sprite_frames = SubResource("SpriteFrames_42du2")
+animation = &"shot"
+
+[node name="Timer" type="Timer" parent="AnimatedSprite2D" unique_id=1137612779]
 wait_time = 5.0
 one_shot = true
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=727368602]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_j40gx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="AnimatedSprite2D/Timer" to="AnimatedSprite2D" method="_on_timer_timeout"]

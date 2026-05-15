@@ -1,22 +1,18 @@
 [gd_scene format=3 uid="uid://dno78xfkc2pso"]
 
 [ext_resource type="PackedScene" uid="uid://bifhteewgl776" path="res://collectables/collectable.tscn" id="1_1xnsm"]
-[ext_resource type="Script" uid="uid://bn34i3siaa1d8" path="res://inventory/inventoryItem.gd" id="2_yum5c"]
-[ext_resource type="Texture2D" uid="uid://g2lkptjqmtr6" path="res://assets/GoldCup.png" id="3_6yio1"]
+[ext_resource type="Script" uid="uid://c2k277uov5tke" path="res://collectables/artifact.gd" id="2_1xnsm"]
+[ext_resource type="Texture2D" uid="uid://dv6aq1cdq46ve" path="res://assets/artifact.png" id="3_1xnsm"]
 
-[sub_resource type="Resource" id="Resource_wonb6"]
-script = ExtResource("2_yum5c")
-metadata/_custom_type_script = "uid://bn34i3siaa1d8"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dx136"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yum5c"]
 resource_local_to_scene = true
 size = Vector2(16, 16)
 
 [node name="artifact" unique_id=370219150 instance=ExtResource("1_1xnsm")]
-itemRes = SubResource("Resource_wonb6")
+script = ExtResource("2_1xnsm")
 
 [node name="CollisionShape2D" parent="." index="0" unique_id=1802944886]
-shape = SubResource("RectangleShape2D_dx136")
+shape = SubResource("RectangleShape2D_yum5c")
 
 [node name="Sprite2D" parent="." index="1" unique_id=1642645758]
-texture = ExtResource("3_6yio1")
+texture = ExtResource("3_1xnsm")

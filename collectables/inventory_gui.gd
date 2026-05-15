@@ -11,6 +11,11 @@ var isOpen: bool = false
 @onready var hotbar = null
 @onready var map_image = $NinePatchRect/info_page/MapImage
 @onready var map_puzzle = get_tree().get_first_node_in_group("map_puzzle")
+@onready var notification_icon = $"../JournalButton/NotificationJournal"
+@onready var usb_image = $NinePatchRect/info_page/USBImage
+@onready var password_image = $NinePatchRect/info_page/PasswordImage
+@onready var description_box = $NinePatchRect/inventory_page/DescriptionBox
+@onready var description_label = $NinePatchRect/inventory_page/DescriptionBox/Label
 
 var itemInHand: ItemStackGui
 
@@ -34,7 +39,22 @@ var buttons = []
 var selected_button = null
 var button_base_positions = {}
 
+var tutorial_lines = [
+	"Inventory [pink] stores your items.           Click on the [red label]",
+	"Settings [red] shows the menu.          Click on the [green label]",
+	"Quests [green] tracks your objectives.           Click on the [blue label]",
+	"Info [blue] stores clues and your discoveries."
+]
+
+var tutorial_index := 0
+var tutorial_active := false
+
+@onready var tutorial_panel = $TutorialPanel
+@onready var tutorial_label = $TutorialPanel/Label
+
 func _ready():
+	Journal.updated.connect(update_journal)
+	update_journal()
 	if map_puzzle:
 		map_puzzle.map_completed.connect(_on_map_completed)
 
@@ -77,6 +97,24 @@ func connectSlots():
 		var callable = Callable(onSlotClicked)
 		callable = callable.bind(slot)
 		slot.pressed.connect(callable)
+		slot.mouse_entered.connect(func(): on_slot_hovered(slot))
+		slot.mouse_exited.connect(func(): hide_description())
+
+func on_slot_hovered(slot):
+
+	if slot.isEmpty():
+		return
+
+	var item = slot.itemStackGui.inventorySlot.item
+
+	print(item.description)
+
+	description_box.visible = true
+	description_label.text = item.description
+
+func hide_description():
+
+	description_box.visible = false
 
 func update():
 	for i in range(min(inventory.slots.size(), slots.size())):
@@ -97,9 +135,28 @@ func update():
 func open():
 	visible = true
 	isOpen = true
+	notification_icon.visible = false
 	opened.emit()
 	await get_tree().process_frame
 	select_page(GameState.journal_page)
+	if !GameState.journal_tutorial_seen:
+
+		GameState.journal_tutorial_seen = true
+
+		show_journal_tutorial()
+
+func show_journal_tutorial():
+
+	tutorial_active = true
+	tutorial_index = 0
+
+	tutorial_panel.visible = true
+
+	show_tutorial_line()
+
+func show_tutorial_line():
+
+	tutorial_label.text = tutorial_lines[tutorial_index]
 
 func close():
 	visible = false
@@ -173,6 +230,24 @@ func updateItemInHand():
 
 func _input(event):
 	updateItemInHand()
+	if tutorial_active:
+
+		if event is InputEventMouseButton \
+			and event.pressed \
+			and event.button_index == MOUSE_BUTTON_LEFT:
+
+				tutorial_index += 1
+
+				if tutorial_index >= tutorial_lines.size():
+
+					end_tutorial()
+
+				else:
+					show_tutorial_line()
+func end_tutorial():
+
+	tutorial_active = false
+	tutorial_panel.visible = false
 
 func _process(_delta):
 	if Input.is_action_just_pressed("toggle_inventory"):
@@ -284,3 +359,28 @@ func _on_level_1_button_pressed() -> void:
 
 func _on_level_2_button_pressed() -> void:
 	load_level("res://levels/truelevel_2.tscn")
+
+func update_journal():
+	print("USB STATE:", GameState.usb_inserted)
+	$NinePatchRect/inventory_page/Label2.text = str(Journal.artifacts.size())
+
+	if GameState.usb_inserted:
+		
+		usb_image.visible = true
+		
+	else:
+		usb_image.visible = false
+	if GameState.robot_password_learned:
+		password_image.visible = true
+	else:
+		password_image.visible = false
+
+
+func _on_journal_button_pressed() -> void:
+	if !isOpen:
+		open()
+	else:
+		close()
+
+	$"../JournalButton".release_focus()
+	get_viewport().set_input_as_handled()

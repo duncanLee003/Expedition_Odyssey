@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cp18opaqgo15f"]
+
+[ext_resource type="Texture2D" uid="uid://bmfd4jh4eog3m" path="res://assets/all-rock-tiles_03.png" id="1_cq4ai"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqhsa"]
+size = Vector2(32, 33)
+
+[node name="Ladder" type="Area2D" unique_id=644439388 groups=["ladder"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1377288176]
+texture = ExtResource("1_cq4ai")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1015140501]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_lqhsa")

@@ -9,6 +9,7 @@ script = ExtResource("2_0alhj")
 id = "blaster"
 name = "blaser"
 texture = ExtResource("3_45n2l")
+description = "A space blaster. You can eliminate dangerous enemies with this."
 metadata/_custom_type_script = "uid://bn34i3siaa1d8"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_45n2l"]

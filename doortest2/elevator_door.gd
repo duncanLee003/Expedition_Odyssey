@@ -14,7 +14,7 @@ var core = null
 
 
 func _ready():
-	player = get_tree().get_first_node_in_group("player")
+	player = get_tree().get_first_node_in_group("Player")
 
 	# load saved state
 	is_unlocked = GameState.door_states.get(door_id, false)
@@ -56,11 +56,14 @@ func _on_core_powered():
 
 # ----------------------------
 # INPUT
-# ----------------------------
 func _input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.pressed:
-		try_enter()
 
+	if event is InputEventMouseButton:
+
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+
+			print("CLICK DETECTED")
+			try_enter()
 
 func _input(event):
 	if Input.is_action_just_pressed("enter_door"):
@@ -71,7 +74,11 @@ func _input(event):
 # INTERACTION
 # ----------------------------
 func try_enter():
+
+	print("TRY ENTER START")
+
 	if !player:
+		print("NO PLAYER FOUND")
 		return
 
 	var dist = player.global_position.distance_to(global_position)
@@ -101,9 +108,10 @@ func play_open_animation():
 # ENTER
 # ----------------------------
 func enter_door():
+
+
+
 	SceneManager.transition_to_scene(next_scene)
-
-
 # ----------------------------
 # UI
 # ----------------------------

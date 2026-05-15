@@ -1,8 +1,9 @@
 extends Node2D
 
 @onready var map_image = $MapImage  
+@onready var notification_icon = $"../JournalButton/NotificationJournal"
 
-func _enter_tree():
+func _ready():
 	print("WIRE UI ENTERED TREE")
 	print("STATE:", GameState.map_completed)
 
@@ -20,7 +21,14 @@ func open():
 	if GameState.wires_collected < GameState.wires_required:
 		if im:
 			im.show_message("You need more wires")
+			GameState.current_quest = "fix_wire"
+			notification_icon.visible = true
+			var journal = get_tree().get_first_node_in_group("journal_update")
+
+			if journal:
+				journal.show_update()
 			return
+		
 	
 func refresh_state():
 	if GameState.map_completed:

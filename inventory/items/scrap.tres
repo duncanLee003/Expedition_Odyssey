@@ -7,4 +7,5 @@
 script = ExtResource("1_u67hw")
 name = "scrap"
 texture = ExtResource("2_u67hw")
+description = "A loose wire. Useful to fix the power."
 metadata/_custom_type_script = "uid://bn34i3siaa1d8"

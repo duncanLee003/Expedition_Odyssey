@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dhpbyngxmwdd0"]
+
+[ext_resource type="Texture2D" uid="uid://dlvphdgf8hj26" path="res://assets/thickBarrier.png" id="1_trnof"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7igp"]
+size = Vector2(21, 90)
+
+[node name="WallBarrier" type="Node2D" unique_id=1463638715 groups=["barrier"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1402570213]
+texture = ExtResource("1_trnof")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=276385388]
+position = Vector2(0.5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1539933169]
+shape = SubResource("RectangleShape2D_q7igp")

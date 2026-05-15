@@ -2,6 +2,7 @@ extends Area2D
 
 @export var itemRes: InventoryItem
 @export var item_id: String
+@export_multiline var description := ""
 
 @export var pickup_distance := 50.0
 
@@ -11,6 +12,13 @@ var is_collected := false
 func _ready():
 	input_pickable = true  
 
+func _on_body_entered(body):
+
+	if is_collected:
+		return
+
+	if body.is_in_group("player"):
+		collect(body)
 
 func _input_event(viewport, event, shape_idx):
 	if is_collected:

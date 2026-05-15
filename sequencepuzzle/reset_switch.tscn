@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c4y035x10qi0b"]
+
+[ext_resource type="Script" uid="uid://cj0jjaarmnihl" path="res://sequencepuzzle/reset_switch.gd" id="1_6vkx0"]
+[ext_resource type="Texture2D" uid="uid://did8wbe3xrpox" path="res://assets/arrowtest.png" id="1_m3osm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vkx0"]
+size = Vector2(20, 18)
+
+[node name="ResetSwitch" type="Area2D" unique_id=969901024]
+script = ExtResource("1_6vkx0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2060741105]
+texture = ExtResource("1_m3osm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1411542627]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_6vkx0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

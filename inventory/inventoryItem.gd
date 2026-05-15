@@ -5,3 +5,5 @@ class_name InventoryItem
 @export var name: String = ""
 @export var texture: Texture2D
 @export var max_amount_per_stack: int = 99
+@export_multiline var description := ""
+@export var item_type := ""

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cb74e8v4d1lpg"]
 
 [ext_resource type="Script" uid="uid://d0eudi382j847" path="res://pressureplates/moveabledoor.gd" id="1_r6xp0"]
-[ext_resource type="Texture2D" uid="uid://dlvphdgf8hj26" path="res://assets/thickBarrier.png" id="2_r6xp0"]
+[ext_resource type="Texture2D" uid="uid://rpcrjii6o4km" path="res://assets/thickBarrier2.png" id="2_r6xp0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_348wh"]
 size = Vector2(21, 90)

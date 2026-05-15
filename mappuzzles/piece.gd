@@ -5,6 +5,7 @@ var dragging := false
 var offset := Vector2.ZERO
 
 func _ready():
+	add_to_group("map_pieces")
 	if GameState.map_completed:
 		queue_free()
 

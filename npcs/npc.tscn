@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c14uved1ysb1n"]
+
+[ext_resource type="Script" uid="uid://ddcqsnxofax21" path="res://npcs/npc.gd" id="1_cqejd"]
+[ext_resource type="Texture2D" uid="uid://drqr24is5bo4" path="res://assets/Static BluePurple.png" id="1_h83up"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqejd"]
+size = Vector2(39, 54)
+
+[node name="NPC" type="Area2D" unique_id=1122350291]
+script = ExtResource("1_cqejd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=898854120]
+position = Vector2(8.5, -10.5)
+scale = Vector2(1.53125, 1.65625)
+texture = ExtResource("1_h83up")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=827042263]
+position = Vector2(9.5, -11)
+shape = SubResource("RectangleShape2D_cqejd")
+
+[node name="Label" type="Label" parent="." unique_id=1691308001]
+offset_left = 15.0
+offset_top = -10.0
+offset_right = 55.0
+offset_bottom = 13.0

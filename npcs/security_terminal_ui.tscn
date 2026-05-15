@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cda2tdulf7h63"]
+
+[ext_resource type="Script" uid="uid://dbebnisrlnu7l" path="res://npcs/security_terminal_ui.gd" id="1_4um37"]
+[ext_resource type="Texture2D" uid="uid://bnylvh4i4au0m" path="res://assets/securityterminalBase.png" id="2_vnwvu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oyekp"]
+texture = ExtResource("2_vnwvu")
+
+[node name="SecurityTerminalUI" type="Control" unique_id=1594816573 groups=["security_terminal_ui"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4um37")
+
+[node name="Panel" type="Panel" parent="." unique_id=86849047]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 30.0
+offset_right = 387.0
+offset_bottom = 236.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_oyekp")
+
+[node name="LineEdit" type="LineEdit" parent="Panel" unique_id=621448198]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 123.0
+offset_right = 197.0
+offset_bottom = 154.0
+
+[node name="Button" type="Button" parent="Panel" unique_id=143944570]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 123.0
+offset_right = 272.0
+offset_bottom = 154.0
+text = "sUBMIT"
+
+[node name="Label" type="Label" parent="Panel" unique_id=1290631422]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 42.0
+offset_right = 243.0
+offset_bottom = 100.0
+
+[node name="ExitButton" type="Button" parent="Panel" unique_id=1947997744]
+layout_mode = 0
+offset_left = 321.0
+offset_top = -5.0
+offset_right = 346.0
+offset_bottom = 26.0
+text = "X"
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dpwbm3kr0trf6"]
 
 [ext_resource type="Script" uid="uid://cpkbxdoj7a7cn" path="res://tutorial_trigger.gd" id="1_2dm2t"]
-[ext_resource type="FontFile" uid="uid://bnyjg3csk3b8j" path="res://assets/NormalFont.ttf" id="2_qwqjh"]
+[ext_resource type="FontFile" uid="uid://dioxmkl4sub8t" path="res://assets/at01.ttf" id="2_qwqjh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwqjh"]
 size = Vector2(48, 236)

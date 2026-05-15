@@ -7,4 +7,5 @@
 script = ExtResource("1_vc32l")
 name = "keycard"
 texture = ExtResource("2_rofax")
+description = "A keycard  to open many doors of this strange world."
 metadata/_custom_type_script = "uid://bn34i3siaa1d8"

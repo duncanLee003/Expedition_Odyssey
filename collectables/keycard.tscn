@@ -4,15 +4,16 @@
 [ext_resource type="Resource" uid="uid://shawa5o4u3q2" path="res://inventory/items/key.tres" id="2_yqxli"]
 [ext_resource type="Texture2D" uid="uid://deacam6mvff08" path="res://assets/Keycard.png" id="3_w0130"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqxli"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0130"]
 resource_local_to_scene = true
 size = Vector2(16, 16)
 
 [node name="keycard" unique_id=370219150 instance=ExtResource("1_w0130")]
 itemRes = ExtResource("2_yqxli")
+description = "This is a keycard"
 
 [node name="CollisionShape2D" parent="." index="0" unique_id=1802944886]
-shape = SubResource("RectangleShape2D_yqxli")
+shape = SubResource("RectangleShape2D_w0130")
 
 [node name="Sprite2D" parent="." index="1" unique_id=1642645758]
 texture = ExtResource("3_w0130")

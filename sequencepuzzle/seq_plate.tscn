@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cvam17t32jhnn"]
+
+[ext_resource type="Script" uid="uid://c6e6kslbq37ec" path="res://sequencepuzzle/seq_plate.gd" id="1_5yiax"]
+[ext_resource type="Texture2D" uid="uid://dkdujnukfsv77" path="res://assets/greypressureplate.png" id="1_vw8ra"]
+[ext_resource type="Texture2D" uid="uid://did8wbe3xrpox" path="res://assets/arrowtest.png" id="3_q4vcw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8byla"]
+size = Vector2(32, 17)
+
+[node name="SeqPlate" type="Area2D" unique_id=1285825968]
+script = ExtResource("1_5yiax")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1119691221]
+texture = ExtResource("1_vw8ra")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1926158341]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_8byla")
+
+[node name="Light" type="Sprite2D" parent="." unique_id=629302910]
+position = Vector2(0, -23)
+texture = ExtResource("3_q4vcw")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1653801430]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

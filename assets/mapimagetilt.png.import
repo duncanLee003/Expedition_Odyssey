@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://id4ug668nd1h"
-path="res://.godot/imported/04.png-8991e900abde091b2303bfdcdd63611f.ctex"
+uid="uid://dqy6cbbypbbxa"
+path="res://.godot/imported/mapimagetilt.png-7c2fc6db2ac5a8e254b57170f5712650.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/04.png"
-dest_files=["res://.godot/imported/04.png-8991e900abde091b2303bfdcdd63611f.ctex"]
+source_file="res://assets/mapimagetilt.png"
+dest_files=["res://.godot/imported/mapimagetilt.png-7c2fc6db2ac5a8e254b57170f5712650.ctex"]
 
 [params]
 

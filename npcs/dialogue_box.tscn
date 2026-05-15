@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://2s2ctqnjyvtt"]
+
+[ext_resource type="Script" uid="uid://drlgpaafncl2x" path="res://npcs/dialogue_box.gd" id="1_5obbh"]
+
+[node name="DialogueBox" type="Control" unique_id=1803584478]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5obbh")
+
+[node name="Panel" type="Panel" parent="." unique_id=453195230]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -213.0
+offset_top = -90.0
+offset_right = 207.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Panel" unique_id=864641323]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 9.0
+offset_right = 407.0
+offset_bottom = 70.0
+autowrap_mode = 2
+
+[node name="ChoiceContainer" type="VBoxContainer" parent="Panel" unique_id=896111734]
+layout_mode = 0
+offset_left = 293.0
+offset_top = -5.0
+offset_right = 303.0
+offset_bottom = 5.0

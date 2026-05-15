@@ -1,10 +1,11 @@
 [gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://cnkit6om8ww7t"]
 
 [ext_resource type="Script" uid="uid://bn34i3siaa1d8" path="res://inventory/inventoryItem.gd" id="1_jp6hu"]
-[ext_resource type="Texture2D" uid="uid://deacam6mvff08" path="res://assets/Keycard.png" id="2_bwn1s"]
+[ext_resource type="Texture2D" uid="uid://bjmktabxstnoq" path="res://assets/USB.png" id="2_jp6hu"]
 
 [resource]
 script = ExtResource("1_jp6hu")
-name = "USBdrive"
-texture = ExtResource("2_bwn1s")
+name = "usb"
+texture = ExtResource("2_jp6hu")
+description = "Used to activate, restore and backup computer systems."
 metadata/_custom_type_script = "uid://bn34i3siaa1d8"

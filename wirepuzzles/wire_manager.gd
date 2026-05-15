@@ -104,23 +104,40 @@ func cancel_wire():
 
 
 func check_win():
+
 	if puzzle_solved:
-		return  
+		return
 
 	for id in required_wires:
 		if not completed_wires.has(id):
 			return
 
 	puzzle_solved = true
+
 	print("PUZZLE COMPLETE!")
+
 	puzzle_completed.emit()
-	
+
 	var hotbar = get_tree().get_first_node_in_group("hotbar")
 
 	if hotbar:
 		var inventory = hotbar.inventory
-		inventory.remove_item_by_name("scrap", GameState.wires_required)
-		
+		inventory.remove_item_by_name(
+			"scrap",
+			GameState.wires_required
+		)
+
+	# success message
+	show_message("Power restored")
+
+	# wait briefly
+	await get_tree().create_timer(1.0, true).timeout
+
+	# close UI
+	var ui = get_tree().get_first_node_in_group("wire_puzzle_ui")
+
+	if ui:
+		ui.close()
 
 
 

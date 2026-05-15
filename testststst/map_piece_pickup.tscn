@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c720oe7bmdssk"]
+
+[ext_resource type="Script" uid="uid://croy2lhbnu3i" path="res://testststst/map_piece_pickup.gd" id="1_udbc7"]
+[ext_resource type="Script" uid="uid://bn34i3siaa1d8" path="res://inventory/inventoryItem.gd" id="2_rbmj2"]
+[ext_resource type="Texture2D" uid="uid://inobcndqg3ho" path="res://assets/piecemap.png" id="4_afj7b"]
+
+[sub_resource type="Resource" id="Resource_rbmj2"]
+script = ExtResource("2_rbmj2")
+id = "map_piece"
+name = "MapPiece"
+texture = ExtResource("4_afj7b")
+max_amount_per_stack = 1
+description = "Torn map piece"
+item_type = "map_piece"
+metadata/_custom_type_script = "uid://bn34i3siaa1d8"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udbc7"]
+size = Vector2(18, 18)
+
+[node name="MapPiecePickup" type="Area2D" unique_id=1050809837]
+script = ExtResource("1_udbc7")
+itemRes = SubResource("Resource_rbmj2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=753178283]
+texture = ExtResource("4_afj7b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=485458111]
+shape = SubResource("RectangleShape2D_udbc7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -17,7 +17,10 @@ const GRAVITY = 20
 @export var inventory: Inventory
 @export var max_health: int = 100
 var current_health: int
-@onready var health_bar = $"../CanvasLayer/HealthBar"
+var health_bar
+var is_on_ladder := false
+var climb_speed := 150.0
+
 
 enum State {Idle, Run, Jump, Shoot}
 
@@ -31,12 +34,20 @@ func _process(_delta):
 func _ready():
 	await get_tree().process_frame
 	hotbar = get_tree().get_first_node_in_group("hotbar")
+	health_bar = get_tree().get_first_node_in_group("health_bar")
 	add_to_group("player")
 	add_to_group("activator")
 	current_state = State.Idle
 	muzzle_position = muzzle.position
 	current_health = max_health	
 	update_health_ui()
+
+
+	var scene_path = get_tree().current_scene.scene_file_path
+
+	if GameState.scene_player_positions.has(scene_path):
+		global_position = GameState.scene_player_positions[scene_path]
+	
 
 
 
@@ -48,7 +59,15 @@ func _physics_process(delta : float):
 	
 	player_muzzle_position()
 	player_shooting(delta)
-	
+	if is_on_ladder:
+
+		velocity.y = 0
+
+		if Input.is_action_pressed("climb_up"):
+			velocity.y = -climb_speed
+
+		elif Input.is_action_pressed("climb_down"):
+			velocity.y = climb_speed
 	
 	move_and_slide()
 
@@ -57,7 +76,12 @@ func _physics_process(delta : float):
 	
 	print("State: ", State.keys()[current_state])
 	
+	
 func player_falling(delta : float):
+
+	if is_on_ladder:
+		return
+
 	if !is_on_floor():
 		velocity.y += GRAVITY + delta
 		
@@ -94,11 +118,7 @@ func get_aim_direction() -> Vector2:
 	var mouse_pos = get_global_mouse_position()
 	return (mouse_pos - muzzle.global_position).normalized()
 func player_shooting(delta: float):
-	print("---- SHOOT DEBUG ----")
-	print("hotbar:", hotbar)
-	print("selected:", hotbar.get_selected_item() if hotbar else null)
-	print("mouse:", Input.is_action_pressed("shoot"))
-	print("timer:", shoot_timer)
+
 	if hotbar == null:
 		return
 
@@ -152,20 +172,32 @@ func take_damage(amount: int):
 
 	print("Player Health: ", current_health)
 
-
 	update_health_ui()
+
+	# flash red
+	animated_sprite_2d.modulate = Color(1, 0, 0, 0.7)
+	
+	await get_tree().create_timer(0.15).timeout
+	
+	animated_sprite_2d.modulate = Color.WHITE
 
 	if current_health <= 0:
 		die()
 
 func die():
-	queue_free() # or reload scene, play animation, etc.
+	var death_screen = get_tree().get_first_node_in_group("death_screen")
+	
+	if death_screen:
+		death_screen.show_death_screen()
+	
+	queue_free()
 
 func update_health_ui():
-
+	if health_bar == null:
+		return
+	
 	health_bar.max_value = max_health
 	health_bar.value = current_health
-	
 	
 
 

@@ -10,27 +10,49 @@ func _ready():
 	add_to_group("interaction_manager")
 
 func show_message(text: String, duration: float = 2.0):
+
 	var message_label = get_tree().get_first_node_in_group("ui_message")
 
-	if message_label == null or !is_instance_valid(message_label):
+	if !message_label:
 		return
 
 	message_label.text = text
-	message_label.modulate.a = 0
-	message_label.show()
+	message_label.visible = true
 
-	var tween = create_tween()
-	tween.tween_property(message_label, "modulate:a", 1, 0.3)
-	await tween.finished
+	# start invisible
+	message_label.modulate.a = 0.0
 
-	await get_tree().create_timer(duration).timeout
+	# FADE IN
+	var fade_in = create_tween()
 
-	if message_label == null or !is_instance_valid(message_label):
-		return
+	fade_in.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 
-	var tween2 = create_tween()
-	tween2.tween_property(message_label, "modulate:a", 0, 0.3)
-	await tween2.finished
+	fade_in.tween_property(
+		message_label,
+		"modulate:a",
+		1.0,
+		0.25
+	)
 
-	if message_label:
-		message_label.hide()
+	await fade_in.finished
+
+	# wait while visible
+	await get_tree().create_timer(duration, true).timeout
+
+	# FADE OUT
+	var fade_out = create_tween()
+
+	fade_out.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+
+	fade_out.tween_property(
+		message_label,
+		"modulate:a",
+		0.0,
+		0.25
+	)
+
+	await fade_out.finished
+
+	if is_instance_valid(message_label):
+		message_label.visible = false
+		message_label.modulate.a = 1.0

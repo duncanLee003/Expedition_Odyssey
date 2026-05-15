@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bjj2y4jb7ua1k"]
+
+[ext_resource type="Script" uid="uid://cjupsg0u7ch1i" path="res://testststst/ladder.gd" id="1_3ky1b"]
+[ext_resource type="Texture2D" uid="uid://bmfd4jh4eog3m" path="res://assets/all-rock-tiles_03.png" id="2_xy3ne"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r874g"]
+size = Vector2(16, 68)
+
+[node name="Ladder" type="Area2D" unique_id=533836110]
+script = ExtResource("1_3ky1b")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=681788064]
+visible = false
+position = Vector2(0, -58.5)
+scale = Vector2(1, 4.65625)
+texture = ExtResource("2_xy3ne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=291758127]
+position = Vector2(1, -35)
+shape = SubResource("RectangleShape2D_r874g")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

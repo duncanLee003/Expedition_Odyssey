@@ -7,6 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://dothnuf7cw5ux" path="res://player/runcycle.png" id="4_g6k8r"]
 [ext_resource type="Texture2D" uid="uid://c1m8jdm7oohov" path="res://player/runningshoot.png" id="5_qjkh3"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_32hag"]
+atlas = ExtResource("3_qjkh3")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7qer"]
+atlas = ExtResource("3_qjkh3")
+region = Rect2(80, 0, 80, 80)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_boad6"]
 atlas = ExtResource("2_qjkh3")
 region = Rect2(0, 0, 80, 80)
@@ -77,6 +85,17 @@ region = Rect2(400, 0, 80, 80)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e7oew"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32hag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7qer")
+}],
+"loop": true,
+"name": &"climb",
+"speed": 10.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"default",
@@ -174,9 +193,10 @@ inventory = ExtResource("2_g6k8r")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=14432728]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_e7oew")
-animation = &"idle_shoot"
+animation = &"climb"
 autoplay = "idle"
-frame_progress = 0.730917
+frame = 1
+frame_progress = 0.5451366
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1860805499]
 position = Vector2(1, -15)

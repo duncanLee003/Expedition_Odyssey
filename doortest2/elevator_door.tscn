@@ -103,6 +103,8 @@ animations = [{
 size = Vector2(56, 85)
 
 [node name="ElevatorDoor" type="Area2D" unique_id=251852105]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_ih7hu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1221192019]

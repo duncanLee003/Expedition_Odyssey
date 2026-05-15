@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dagyhdex8naw7"]
+
+[ext_resource type="Script" uid="uid://b2bva4nfhhr8c" path="res://testststst/rubble.gd" id="1_nyhix"]
+[ext_resource type="Texture2D" uid="uid://d2lqt7tyy3nxk" path="res://assets/rubble.png" id="2_nyhix"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nyhix"]
+size = Vector2(52, 44)
+
+[node name="rubble" type="StaticBody2D" unique_id=892970860]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_nyhix")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=502623259]
+position = Vector2(-0.99999905, -5)
+scale = Vector2(0.6325301, 0.64084506)
+texture = ExtResource("2_nyhix")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=780009633]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_nyhix")
