@@ -54,6 +54,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_wugcc")
 
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 37
+text = "EXPEDITION ODYSSEY"
+horizontal_alignment = 1
+
 [node name="Main Buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
