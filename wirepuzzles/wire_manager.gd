@@ -14,8 +14,9 @@ func can_connect() -> bool:
 	return GameState.wires_collected >= GameState.wires_required
 
 signal puzzle_completed
+var damage_cooldown := false
 
-
+var locked_lines: Array = []
 
 func _ready():
 	add_to_group("wire_manager")
@@ -29,6 +30,10 @@ func _ready():
 
 
 func start_wire(pin):
+
+	if active_line != null:
+		cancel_wire()
+
 	if !can_connect():
 		show_message("You need more wires")
 		return
@@ -64,13 +69,17 @@ func _process(delta):
 
 
 func end_wire(pin):
+
+	
+	
+
 	if active_line == null or start_pin == null:
+		cancel_wire()
 		return
 
 	if pin == start_pin:
 		cancel_wire()
 		return
-
 
 	if pin.wire_id == start_pin.wire_id:
 
@@ -83,23 +92,44 @@ func end_wire(pin):
 
 		completed_wires[start_pin.wire_id] = true
 
-		print("CONNECTED:", start_pin.wire_id)
+		# ✅ IMPORTANT: LOCK THE LINE
+		locked_lines.append(active_line)
+
+		active_line = null
+		start_pin = null
 
 		check_win()
+		return
 
 	else:
-		cancel_wire()
 
-	active_line = null
-	start_pin = null
+		if not damage_cooldown:
+
+			damage_cooldown = true
+
+			var player = get_tree().get_first_node_in_group("player")
+
+			if player and player.has_method("take_damage"):
+				player.take_damage(10, player.DamageSource.WIRE)
+				var fx = get_tree().get_first_node_in_group("electric_fx")
+				if fx:
+					fx.play()
+
+			await get_tree().create_timer(0.5).timeout
+			damage_cooldown = false
+
+		cancel_wire()
 
 
 func cancel_wire():
+
 	if active_line:
+
 		active_line.queue_free()
 
 	active_line = null
 	start_pin = null
+	wire_locked = false
 
 
 

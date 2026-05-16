@@ -3,10 +3,18 @@ extends Area2D
 @export var piece_id := 0
 @export var itemRes: InventoryItem
 @export var pickup_distance := 80.0
+@export var item_id := "item_1"
 
 var collected := false
 
 func _ready():
+
+	# prevent respawn after collection
+	if GameState.collected_items.get(item_id, false):
+
+		queue_free()
+		return
+
 	input_pickable = true
 	
 func _input_event(viewport, event, shape_idx):
@@ -41,7 +49,7 @@ func collect(player):
 		return
 
 	collected = true
-
+	GameState.collected_items[item_id] = true
 	var player_inventory = player.inventory
 
 	if player_inventory:

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://csy46nmwpb2kc"]
+
+[ext_resource type="Script" uid="uid://b1gwwyni6raeo" path="res://electric_effect.gd" id="1_5rir3"]
+[ext_resource type="Texture2D" uid="uid://c3xqrduk1da05" path="res://assets/Idle BluePurple.png" id="2_1tg40"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5h381"]
+atlas = ExtResource("2_1tg40")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvh42"]
+atlas = ExtResource("2_1tg40")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s6q8"]
+atlas = ExtResource("2_1tg40")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4ef5"]
+atlas = ExtResource("2_1tg40")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yvees"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5h381")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvh42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6s6q8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4ef5")
+}],
+"loop": false,
+"name": &"shock",
+"speed": 11.0
+}]
+
+[node name="ElectricEffect" type="CanvasLayer" unique_id=1149706390]
+script = ExtResource("1_5rir3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=982978362]
+position = Vector2(99.5, 80.5)
+scale = Vector2(7.21875, 6.03125)
+sprite_frames = SubResource("SpriteFrames_yvees")
+animation = &"shock"

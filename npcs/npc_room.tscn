@@ -28,9 +28,9 @@
 [ext_resource type="PackedScene" uid="uid://cda2tdulf7h63" path="res://npcs/security_terminal_ui.tscn" id="25_ralq1"]
 [ext_resource type="Script" uid="uid://bakp3d72obny5" path="res://scripts/game_manager.gd" id="26_8mr3r"]
 [ext_resource type="PackedScene" uid="uid://c14uved1ysb1n" path="res://npcs/npc.tscn" id="27_fx8xj"]
-[ext_resource type="PackedScene" uid="uid://do3t7sw14y26g" path="res://levels/Door/door.tscn" id="28_8jf8g"]
 [ext_resource type="Texture2D" uid="uid://bmfd4jh4eog3m" path="res://assets/all-rock-tiles_03.png" id="28_wqahk"]
 [ext_resource type="Texture2D" uid="uid://drqr24is5bo4" path="res://assets/Static BluePurple.png" id="29_xwxak"]
+[ext_resource type="PackedScene" uid="uid://bxuy1kjl20vrp" path="res://doortest2/metal_door.tscn" id="31_xwxak"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g8m3s"]
 texture = ExtResource("6_wa22g")
@@ -1474,7 +1474,6 @@ editor_draw_limits = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=242680270]
 process_mode = 3
-visible = false
 script = ExtResource("11_l4gjo")
 
 [node name="InventoryGui" parent="CanvasLayer" unique_id=1905662609 instance=ExtResource("12_gmun5")]
@@ -1660,10 +1659,11 @@ position = Vector2(342, 14)
 inactive_texture = ExtResource("28_wqahk")
 active_texture = ExtResource("29_xwxak")
 
-[node name="Door" parent="." unique_id=721422417 instance=ExtResource("28_8jf8g")]
+[node name="MetalDoor" parent="." unique_id=1675815860 instance=ExtResource("31_xwxak")]
 z_index = -1
-position = Vector2(242, 35)
+position = Vector2(249, 33)
 next_scene = "TLevel2"
+door_id = "door_3"
 
 [connection signal="pressed" from="CanvasLayer/DeathScreen/RestartButton" to="CanvasLayer/DeathScreen" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/DeathScreen/QuitButton" to="CanvasLayer/DeathScreen" method="_on_quit_button_pressed"]

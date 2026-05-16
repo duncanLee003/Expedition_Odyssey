@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://kkhm2gk2jigu" path="res://assets/wirepanelmini.png" id="2_xb3lp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xb3lp"]
-size = Vector2(28, 28)
+size = Vector2(48, 43)
 
 [node name="wirepanel" type="Area2D" unique_id=155487445]
 script = ExtResource("1_xb3lp")
@@ -13,4 +13,5 @@ script = ExtResource("1_xb3lp")
 texture = ExtResource("2_xb3lp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1658300941]
+position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_xb3lp")

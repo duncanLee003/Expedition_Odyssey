@@ -12,24 +12,33 @@ var scenes := {
 var fade: CanvasLayer
 
 func transition_to_scene(level: String):
+
+	get_tree().paused = false
+
 	var scene_path: String = scenes.get(level, "")
+
 	if scene_path == "":
 		push_error("Scene not found: " + level)
 		return
 
 	var player = get_tree().get_first_node_in_group("player")
-	
-	# 💾 SAVE PLAYER POSITION BEFORE LEAVING
+
 	if player:
 		var current_scene = get_tree().current_scene.scene_file_path
 		GameState.scene_player_positions[current_scene] = player.global_position
+
 		player.set_physics_process(false)
 		player.velocity = Vector2.ZERO
 
 	await Fade.fade_out(0.5)
+
 	await get_tree().process_frame
 
 	get_tree().change_scene_to_file(scene_path)
 
+	get_tree().paused = false
+
 	await get_tree().process_frame
+	await get_tree().process_frame
+
 	await Fade.fade_in(0.5)

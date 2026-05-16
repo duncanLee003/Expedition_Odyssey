@@ -11,7 +11,6 @@
 [ext_resource type="FontFile" uid="uid://bnyjg3csk3b8j" path="res://assets/NormalFont.ttf" id="8_r4bwq"]
 [ext_resource type="Script" uid="uid://bakp3d72obny5" path="res://scripts/game_manager.gd" id="9_5votm"]
 [ext_resource type="Texture2D" uid="uid://datj1qhmkedu" path="res://assets/greenhealth.png" id="9_xruum"]
-[ext_resource type="PackedScene" uid="uid://do3t7sw14y26g" path="res://levels/Door/door.tscn" id="10_6d5ha"]
 [ext_resource type="Script" uid="uid://ififhpbmxre1" path="res://levels/death_screen.gd" id="10_rmn8q"]
 [ext_resource type="Script" uid="uid://8xf86pwp2jsk" path="res://levels/journal_updated_label.gd" id="12_5votm"]
 [ext_resource type="Texture2D" uid="uid://dha0fwk668r5a" path="res://assets/journalicon.png" id="13_qpj7g"]
@@ -21,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bwib3320ivxl7" path="res://assets/computer1ON.png" id="17_4ia5g"]
 [ext_resource type="AudioStream" uid="uid://bt56dnst07w0h" path="res://assets/sound/brokenmelody.mp3" id="18_egxt0"]
 [ext_resource type="PackedScene" uid="uid://cydqsp11qk5jt" path="res://computers/computer.tscn" id="18_tmy8r"]
+[ext_resource type="PackedScene" uid="uid://bxuy1kjl20vrp" path="res://doortest2/metal_door.tscn" id="21_egxt0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u001q"]
 texture = ExtResource("3_pgxt0")
@@ -987,14 +987,14 @@ stream = ExtResource("18_egxt0")
 [node name="GameManager" type="Node" parent="." unique_id=2109569889]
 script = ExtResource("9_5votm")
 
-[node name="Door" parent="." unique_id=721422417 instance=ExtResource("10_6d5ha")]
-z_index = -1
-position = Vector2(47, 51)
-next_scene = "TLevel1"
-
 [node name="Computer" parent="." unique_id=1544098000 instance=ExtResource("18_tmy8r")]
 z_index = -1
 position = Vector2(210, 23)
+
+[node name="MetalDoor" parent="." unique_id=1675815860 instance=ExtResource("21_egxt0")]
+z_index = -1
+position = Vector2(55, 48)
+next_scene = "TLevel1"
 
 [connection signal="pressed" from="CanvasLayer/DeathScreen/RestartButton" to="CanvasLayer/DeathScreen" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/DeathScreen/QuitButton" to="CanvasLayer/DeathScreen" method="_on_quit_button_pressed"]

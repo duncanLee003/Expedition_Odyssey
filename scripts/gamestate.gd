@@ -26,3 +26,5 @@ var journal_tutorial_seen := false
 
 var collected_map_pieces := 0
 var map_puzzle_unlocked := false
+var box_positions := {}
+var collected_items := {}

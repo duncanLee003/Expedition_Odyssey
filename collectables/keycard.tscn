@@ -10,6 +10,7 @@ size = Vector2(16, 16)
 
 [node name="keycard" unique_id=370219150 instance=ExtResource("1_w0130")]
 itemRes = ExtResource("2_yqxli")
+item_id = "keycard1"
 description = "This is a keycard"
 
 [node name="CollisionShape2D" parent="." index="0" unique_id=1802944886]

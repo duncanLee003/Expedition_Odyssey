@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_u67hw")
+id = "wire_2"
 name = "scrap"
 texture = ExtResource("2_u67hw")
 description = "A loose wire. Useful to fix the power."

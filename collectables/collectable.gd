@@ -12,6 +12,11 @@ var is_collected := false
 func _ready():
 	input_pickable = true  
 
+	# 🚫 already collected in a previous scene
+	if GameState.collected_items.get(item_id, false):
+		queue_free()
+		return
+
 func _on_body_entered(body):
 
 	if is_collected:
@@ -41,21 +46,26 @@ func _input_event(viewport, event, shape_idx):
 
 
 func collect(player):
-	# safety check
+	print("COLLECTED ITEM:", item_id)
+	print("CURRENT WIRES:", GameState.wires_collected)
+
 	if !player or !player.inventory:
 		return
 
 	# add item
 	player.inventory.insert(itemRes)
 
-	# wire logic
-	if item_id == "wire":
-		GameState.wires_collected += 1
+	# wire logic FIRST
+	if item_id.begins_with("wire_") and not GameState.collected_items.get(item_id, false):
 
-		if GameState.wires_collected == GameState.wires_required:
+		GameState.wires_collected += 1
+		print("WIRE ADDED:", GameState.wires_collected)
+		
+		if GameState.wires_collected >= GameState.wires_required:
 			show_message("You have enough wires now")
 
-		print("Wires:", GameState.wires_collected)
+	# NOW save state AFTER
+	GameState.collected_items[item_id] = true
 
 	# blaster unlock
 	if item_id == "blaster":

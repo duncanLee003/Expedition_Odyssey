@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://do4xnxhteexpy" path="res://wirepuzzles/wirepanel.tscn" id="22_h72m1"]
 [ext_resource type="Texture2D" uid="uid://bhqy7exi5o24d" path="res://assets/notifIcon.png" id="23_fgui7"]
 [ext_resource type="PackedScene" uid="uid://cb8aepe6mvbqr" path="res://collectables/keycard.tscn" id="24_53r3j"]
+[ext_resource type="Script" uid="uid://e4e5grjdpwpe" path="res://levels/damage_flash.gd" id="24_fgui7"]
 [ext_resource type="Resource" uid="uid://cg8oay53sc42n" path="res://inventory/items/keycard.tres" id="25_5wf4s"]
 [ext_resource type="PackedScene" uid="uid://bxuy1kjl20vrp" path="res://doortest2/metal_door.tscn" id="27_gbaff"]
 [ext_resource type="Texture2D" uid="uid://vvfcfeiuwg3f" path="res://assets/coreBackground.png" id="28_h4ced"]
@@ -51,6 +52,7 @@
 [ext_resource type="PackedScene" uid="uid://c720oe7bmdssk" path="res://testststst/map_piece_pickup.tscn" id="50_dwq1a"]
 [ext_resource type="PackedScene" uid="uid://dagyhdex8naw7" path="res://testststst/rubble.tscn" id="51_d72ay"]
 [ext_resource type="Texture2D" uid="uid://cilfft86jychu" path="res://assets/newpcbuilding.png" id="51_fgui7"]
+[ext_resource type="PackedScene" uid="uid://csy46nmwpb2kc" path="res://electric_effect.tscn" id="53_ldamu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fk3ig"]
 texture = ExtResource("7_k8aie")
@@ -708,7 +710,7 @@ z_index = 1
 scroll_offset = Vector2(36, 41)
 
 [node name="Player" parent="." index="7" unique_id=338436204]
-position = Vector2(115, 18)
+position = Vector2(410, 1)
 
 [node name="Camera2D" parent="Player" index="3" unique_id=1679476865]
 position = Vector2(0, 0)
@@ -894,6 +896,16 @@ offset_right = 16.0
 offset_bottom = 3.0
 texture = ExtResource("23_fgui7")
 
+[node name="DamageFlash" type="ColorRect" parent="CanvasLayer" index="10" unique_id=1018220980 groups=["damage_flash"]]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("24_fgui7")
+
 [node name="key" parent="." index="9" unique_id=5038752 instance=ExtResource("14_apmpi")]
 position = Vector2(683, 35)
 collision_layer = 3
@@ -928,16 +940,15 @@ z_index = -1
 position = Vector2(4079, -112)
 rotation = -1.5707964
 
-[node name="wirepanel" parent="." index="17" unique_id=1813490697 node_paths=PackedStringArray("puzzle_ui") instance=ExtResource("22_h72m1")]
+[node name="wirepanel" parent="." index="17" unique_id=1813490697 instance=ExtResource("22_h72m1")]
 z_index = -1
 position = Vector2(4970, 4.5)
-puzzle_ui = NodePath("../CanvasLayer/WirePuzzleUI")
 
 [node name="Barrier2" parent="." index="18" unique_id=368612046 instance=ExtResource("18_3j2fo")]
 position = Vector2(4508, 445)
 
 [node name="keycard" parent="." index="19" unique_id=2099837322 instance=ExtResource("24_53r3j")]
-position = Vector2(2527, -560)
+position = Vector2(2576, -570)
 collision_layer = 3
 collision_mask = 3
 itemRes = ExtResource("25_5wf4s")
@@ -984,46 +995,46 @@ position = Vector2(5274, 51)
 next_scene = "artifactLevel1"
 
 [node name="scrap7" parent="." index="27" unique_id=1705404427 instance=ExtResource("13_aqj6o")]
-position = Vector2(2924, -226)
+position = Vector2(3432, -322)
 collision_layer = 3
 collision_mask = 3
-item_id = "wire"
+item_id = "wire_1"
 
-[node name="scrap8" parent="." index="28" unique_id=2075313300 instance=ExtResource("13_aqj6o")]
-position = Vector2(2884, -426)
+[node name="scrap8" parent="." index="28" unique_id=370219150 instance=ExtResource("13_aqj6o")]
+position = Vector2(3901, -275)
 collision_layer = 3
 collision_mask = 3
-item_id = "wire"
+item_id = "wire_2"
 
 [node name="scrap9" parent="." index="29" unique_id=398740898 instance=ExtResource("13_aqj6o")]
-position = Vector2(2701, -561)
+position = Vector2(3763, -319)
 collision_layer = 3
 collision_mask = 3
-item_id = "wire"
+item_id = "wire_3"
 
 [node name="scrap10" parent="." index="30" unique_id=1329468834 instance=ExtResource("13_aqj6o")]
-position = Vector2(3085, -392)
+position = Vector2(2931, -216)
 collision_layer = 3
 collision_mask = 3
-item_id = "wire"
+item_id = "wire_4"
 
 [node name="scrap11" parent="." index="31" unique_id=516093186 instance=ExtResource("13_aqj6o")]
-position = Vector2(2806, -250)
+position = Vector2(2917, -427)
 collision_layer = 3
 collision_mask = 3
-item_id = "wire"
+item_id = "wire_5"
 
 [node name="scrap12" parent="." index="32" unique_id=1485965429 instance=ExtResource("13_aqj6o")]
-position = Vector2(3515, -544)
+position = Vector2(2873, -621)
 collision_layer = 3
 collision_mask = 3
-item_id = "wire"
+item_id = "wire_7"
 
-[node name="scrap13" parent="." index="33" unique_id=311975637 instance=ExtResource("13_aqj6o")]
-position = Vector2(3113, -178)
+[node name="scrap13" parent="." index="33" unique_id=364124979 instance=ExtResource("13_aqj6o")]
+position = Vector2(2696, -565)
 collision_layer = 3
 collision_mask = 3
-item_id = "wire"
+item_id = "wire_6"
 
 [node name="TutorialTrigger" parent="." index="34" unique_id=216174702 instance=ExtResource("34_aqj6o")]
 position = Vector2(36, 27)
@@ -1124,24 +1135,28 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="MapPiecePickup" parent="." index="49" unique_id=1050809837 instance=ExtResource("50_dwq1a")]
-position = Vector2(3555, -317)
+position = Vector2(3007, -561)
 collision_layer = 3
 collision_mask = 3
+item_id = "mappiece1"
 
 [node name="MapPiecePickup2" parent="." index="50" unique_id=591162525 instance=ExtResource("50_dwq1a")]
-position = Vector2(3839, -318)
+position = Vector2(3054, -179)
 collision_layer = 3
 collision_mask = 3
+item_id = "mappiece2"
 
 [node name="MapPiecePickup3" parent="." index="51" unique_id=751881145 instance=ExtResource("50_dwq1a")]
-position = Vector2(2854, -622)
+position = Vector2(3572, -538)
 collision_layer = 3
 collision_mask = 3
+item_id = "mappiece3"
 
 [node name="MapPiecePickup4" parent="." index="52" unique_id=993183960 instance=ExtResource("50_dwq1a")]
-position = Vector2(2988, -554)
+position = Vector2(3556, -319)
 collision_layer = 3
 collision_mask = 3
+item_id = "mappiece4"
 
 [node name="StaticBody2D" parent="." index="53" unique_id=1440706207 instance=ExtResource("51_d72ay")]
 position = Vector2(1704, 38)
@@ -1160,6 +1175,9 @@ trigger_once = false
 z_index = -2
 position = Vector2(3647, -142)
 texture = ExtResource("51_fgui7")
+
+[node name="ElectricEffect" parent="." index="57" unique_id=1149706390 groups=["electric_fx"] instance=ExtResource("53_ldamu")]
+visible = false
 
 [connection signal="closed" from="CanvasLayer/InventoryGui" to="Player" method="_on_inventory_gui_closed"]
 [connection signal="opened" from="CanvasLayer/InventoryGui" to="Player" method="_on_inventory_gui_opened"]

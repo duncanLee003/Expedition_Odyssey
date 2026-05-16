@@ -230,10 +230,12 @@ texture = ExtResource("6_gq056")
 shape = SubResource("RectangleShape2D_femci")
 
 [node name="MapImage" type="TextureRect" parent="." unique_id=957798786]
+visible = false
 offset_left = -99.0
 offset_top = -179.0
 offset_right = 1.0
 offset_bottom = -79.0
+mouse_filter = 2
 texture = ExtResource("7_vgqp5")
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

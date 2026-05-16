@@ -158,7 +158,8 @@ func enemy_chase(delta):
 
 			await get_tree().create_timer(0.3).timeout
 
-			player.take_damage(10)
+			player.take_damage(10, player.DamageSource.ENEMY)
+
 			
 			print("PLAYER HIT")
 			

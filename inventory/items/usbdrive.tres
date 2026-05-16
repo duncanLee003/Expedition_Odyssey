@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_jp6hu")
+id = "usb1"
 name = "usb"
 texture = ExtResource("2_jp6hu")
 description = "Used to activate, restore and backup computer systems."

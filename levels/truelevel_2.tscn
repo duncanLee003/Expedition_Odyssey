@@ -61,7 +61,8 @@
 [ext_resource type="Texture2D" uid="uid://dnogbnslnf3d7" path="res://assets/observatory.png" id="58_c3xxi"]
 [ext_resource type="PackedScene" uid="uid://d3h0rutidghl6" path="res://testststst/ladder.tscn" id="60_c3xxi"]
 [ext_resource type="PackedScene" uid="uid://bjj2y4jb7ua1k" path="res://testststst/laddershort.tscn" id="61_muxqx"]
-[ext_resource type="PackedScene" uid="uid://dhannkdcyijkf" path="res://enemies/robot_enemy2.tscn" id="62_565ba"]
+[ext_resource type="PackedScene" uid="uid://cb8aepe6mvbqr" path="res://collectables/keycard.tscn" id="63_4ruj2"]
+[ext_resource type="Resource" uid="uid://cg8oay53sc42n" path="res://inventory/items/keycard.tres" id="64_1u0xa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_td03h"]
 texture = ExtResource("7_cwsno")
@@ -1549,7 +1550,7 @@ z_index = 1
 scroll_offset = Vector2(-1213, -394)
 
 [node name="Player" parent="." unique_id=338436204 instance=ExtResource("10_g8eh7")]
-position = Vector2(336, 7)
+position = Vector2(1235, -351)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=2077631236]
 position = Vector2(0, -67)
@@ -1946,48 +1947,6 @@ position = Vector2(1303, -317)
 collision_layer = 3
 collision_mask = 3
 
-[node name="robotEnemy2" parent="." unique_id=177875292 instance=ExtResource("62_565ba")]
-position = Vector2(2499, -139)
-
-[node name="PatrolPoints" type="Node2D" parent="robotEnemy2" unique_id=1291971369]
-position = Vector2(211.66669, 14.166665)
-
-[node name="Point1" type="Marker2D" parent="robotEnemy2/PatrolPoints" unique_id=761485732]
-position = Vector2(-261.66666, 10)
-
-[node name="Point2" type="Marker2D" parent="robotEnemy2/PatrolPoints" unique_id=1723668418]
-position = Vector2(-134.99998, 10)
-
-[node name="robotEnemy3" parent="." unique_id=184248012 instance=ExtResource("62_565ba")]
-position = Vector2(4080, 273)
-
-[node name="PatrolPoints2" type="Node2D" parent="robotEnemy3" unique_id=504397267]
-position = Vector2(216.66669, 14.166672)
-
-[node name="Point1" type="Marker2D" parent="robotEnemy3/PatrolPoints2" unique_id=2107840871]
-position = Vector2(-261.66666, 10)
-
-[node name="Point2" type="Marker2D" parent="robotEnemy3/PatrolPoints2" unique_id=1127960794]
-position = Vector2(-134.99998, 10)
-
-[node name="KillZone" parent="robotEnemy3" unique_id=802423875 instance=ExtResource("20_1w1mk")]
-position = Vector2(-2977.5, -136.66666)
-
-[node name="KillZone2" parent="robotEnemy3" unique_id=759781624 instance=ExtResource("20_1w1mk")]
-position = Vector2(-2812.4998, -137.49998)
-
-[node name="KillZone3" parent="robotEnemy3" unique_id=139895166 instance=ExtResource("20_1w1mk")]
-position = Vector2(-1814.9999, -72.5)
-
-[node name="KillZone4" parent="robotEnemy3" unique_id=252593056 instance=ExtResource("20_1w1mk")]
-position = Vector2(-1589.1665, -72.49999)
-
-[node name="KillZone5" parent="robotEnemy3" unique_id=880077170 instance=ExtResource("20_1w1mk")]
-position = Vector2(-1365, -66.66667)
-
-[node name="KillZone6" parent="robotEnemy3" unique_id=1955746178 instance=ExtResource("20_1w1mk")]
-position = Vector2(-1145, -61.66667)
-
 [node name="KillZone2" parent="." unique_id=1858971484 instance=ExtResource("20_1w1mk")]
 position = Vector2(5965, 278)
 
@@ -2000,6 +1959,13 @@ position = Vector2(6825, 134)
 [node name="KillZone5" parent="." unique_id=275070352 instance=ExtResource("20_1w1mk")]
 position = Vector2(7041, 128)
 
+[node name="keycard" parent="." unique_id=370219150 instance=ExtResource("63_4ruj2")]
+position = Vector2(1261, -407)
+collision_layer = 3
+collision_mask = 3
+itemRes = ExtResource("64_1u0xa")
+description = "this is a keycard"
+
 [connection signal="pressed" from="CanvasLayer/DeathScreen/RestartButton" to="CanvasLayer/DeathScreen" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/DeathScreen/QuitButton" to="CanvasLayer/DeathScreen" method="_on_quit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/JournalButton" to="CanvasLayer/InventoryGui" method="_on_journal_button_pressed"]
@@ -2011,3 +1977,4 @@ position = Vector2(7041, 128)
 [connection signal="body_entered" from="TeleportZone" to="TeleportZone" method="_on_body_entered"]
 [connection signal="body_entered" from="TeleportZone2" to="TeleportZone2" method="_on_body_entered"]
 [connection signal="body_entered" from="LevelExit" to="LevelExit" method="_on_body_entered"]
+[connection signal="body_entered" from="keycard" to="keycard" method="_on_body_entered"]
