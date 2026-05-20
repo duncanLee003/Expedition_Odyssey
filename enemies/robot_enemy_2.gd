@@ -42,7 +42,7 @@ func _ready():
 	current_health = max_health
 	spawn_position = global_position
 	if patrol_points == null:
-		print("No patrol points")
+	
 		return
 	
 	for point in patrol_points.get_children():
@@ -51,7 +51,7 @@ func _ready():
 	number_of_points = point_positions.size()
 	
 	if number_of_points == 0:
-		print("No patrol point children")
+	
 		return
 	
 	current_point = point_positions[0]
@@ -161,7 +161,7 @@ func enemy_chase(delta):
 			player.take_damage(10, player.DamageSource.ENEMY)
 
 			
-			print("PLAYER HIT")
+		
 			
 			await get_tree().create_timer(attack_cooldown).timeout
 			
@@ -183,7 +183,7 @@ func take_damage(amount: int):
 
 	current_health -= amount
 
-	print("Enemy Health: ", current_health)
+
 
 	# flash red
 	animated_sprite_2d.modulate = Color(1, 0, 0, 0.7)

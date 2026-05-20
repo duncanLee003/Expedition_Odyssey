@@ -36,7 +36,7 @@ func _input(event):
 		if !_is_mouse_over():
 			return
 
-		print("WIRE PANEL CLICKED")
+	
 
 		var puzzle_ui = get_tree().get_first_node_in_group("wire_puzzle_ui")
 

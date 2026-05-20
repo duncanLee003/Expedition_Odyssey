@@ -48,7 +48,7 @@ var is_activated := false
 
 @export var inactive_message := "The robot is inactive."
 
-
+var current_node := "start"
 
 func _ready():
 
@@ -76,18 +76,11 @@ func interact():
 	talk()
 
 func talk():
-
-	var db = get_tree().get_first_node_in_group("dialogue_box")
-
+	var db = get_tree().get_first_node_in_group("dialogue_ui")
 	if db:
-		db.start_dialogue(dialogue_data)
+		db.start_dialogue(dialogue_data, "start")
 
-func show_dialogue():
 
-	var db = get_tree().get_first_node_in_group("dialogue_box")
-
-	if db:
-		db.start_dialogue(dialogue_data)
 
 func show_message(text):
 

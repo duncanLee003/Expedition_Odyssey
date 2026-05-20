@@ -22,6 +22,10 @@ func _on_body_entered(body):
 	if is_collected:
 		return
 
+	# 🚫 NEW RULE: must be visible to be picked up
+	if not visible:
+		return
+
 	if body.is_in_group("player"):
 		collect(body)
 
@@ -46,8 +50,7 @@ func _input_event(viewport, event, shape_idx):
 
 
 func collect(player):
-	print("COLLECTED ITEM:", item_id)
-	print("CURRENT WIRES:", GameState.wires_collected)
+
 
 	if !player or !player.inventory:
 		return
@@ -59,7 +62,7 @@ func collect(player):
 	if item_id.begins_with("wire_") and not GameState.collected_items.get(item_id, false):
 
 		GameState.wires_collected += 1
-		print("WIRE ADDED:", GameState.wires_collected)
+
 		
 		if GameState.wires_collected >= GameState.wires_required:
 			show_message("You have enough wires now")

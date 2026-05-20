@@ -1,38 +1,67 @@
-extends Node2D
+extends Control
 
 signal map_completed
+
 @onready var exit_button = $ExitButton
+
 var completed := false
+var ui_initialized := false
+
 
 func _ready():
-	print("MAP PIECES FOUND:", get_tree().get_nodes_in_group("map_pieces").size())
+
+	add_to_group("map_puzzle_ui")
+
 	visible = false
 	exit_button.visible = false
 
+	completed = GameState.map_completed
+
+	if completed:
+		return
+
+	# only show when condition met
 	if GameState.collected_map_pieces >= 4:
-		visible = true
+		open()
 
+
+# -------------------------
+# OPEN UI
+# -------------------------
+func open():
+
+	visible = true
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+
+	exit_button.visible = true
+
+	# IMPORTANT: DO NOT hide children manually anymore
+	ui_initialized = true
+
+	print("MAP PUZZLE OPENED")
+
+
+# -------------------------
+# CHECK COMPLETION
+# -------------------------
 func check_complete():
-
-	print("CHECK COMPLETE")
 
 	if completed:
 		return
 
 	for piece in get_tree().get_nodes_in_group("map_pieces"):
 
-		print(piece.name, "LOCKED =", piece.locked)
-
 		if not piece.locked:
-			print("NOT LOCKED:", piece.name)
 			return
 
-	print("ALL LOCKED")
-
-	_on_map_completed()
+	complete_puzzle()
 
 
-func _on_map_completed():
+# -------------------------
+# COMPLETE PUZZLE
+# -------------------------
+func complete_puzzle():
+
 	if completed:
 		return
 
@@ -40,19 +69,25 @@ func _on_map_completed():
 	GameState.map_completed = true
 
 	remove_map_pieces()
+
 	exit_button.visible = true
-	emit_signal("map_completed")
 
-	var im = get_tree().get_first_node_in_group("interaction_manager")
+	print("MAP COMPLETED")
 
-	if im:
-		print("MESSAGE CALLED")
-		im.show_message("Map added to [Pages] in the journal")
+	map_completed.emit()
 
+	var ui = get_tree().get_first_node_in_group("dialogue_ui")
+	if ui:
+		ui.show_message("Map added to [Pages] in the journal")
+
+
+# -------------------------
+# REMOVE INVENTORY PIECES
+# -------------------------
 func remove_map_pieces():
 
 	var player = get_tree().get_first_node_in_group("player")
-	if !player:
+	if not player:
 		return
 
 	var inventory = player.inventory
@@ -62,15 +97,32 @@ func remove_map_pieces():
 		var slot = inventory.slots[i]
 
 		if slot.item and slot.item.item_type == "map_piece":
-
-			print("REMOVING:", slot.item.name)
-
 			slot.item = null
 			slot.amount = 0
 
 	inventory.updated.emit()
 
 
+# -------------------------
+# EXIT UI
+# -------------------------
 func _on_exit_button_pressed():
-	get_tree().paused = false
+
 	visible = false
+	exit_button.visible = false
+
+	process_mode = Node.PROCESS_MODE_DISABLED
+
+	get_tree().paused = false
+	get_viewport().gui_release_focus()
+
+	print("MAP PUZZLE CLOSED")
+
+
+# -------------------------
+# SAFE RESET (ONLY GAME STATE, NOT VISUALS)
+# -------------------------
+func reset_state():
+
+	# DO NOT touch visibility of children
+	completed = false

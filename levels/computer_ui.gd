@@ -33,6 +33,7 @@ func open_blank():
 
 
 func close():
+	get_viewport().gui_release_focus()
 	visible = false
 	is_open = false
 	get_tree().paused = false
@@ -64,22 +65,21 @@ func try_insert_usb():
 		GameState.usb_inserted = true
 		screen.texture = active_texture
 		play_sound()
-		var im = get_tree().get_first_node_in_group("interaction_manager")
+		var dialogue = get_tree().get_first_node_in_group("dialogue_ui")
 
-		if im:
-			im.show_message("Journal Updated")
-		notification_icon.visible = true
+		if dialogue:
+			dialogue.show_message("Journal Updated")
 	
 
 
-		print("USB inserted")
+	
 		Journal.updated.emit()
 	else:
 
-		var im = get_tree().get_first_node_in_group("interaction_manager")
+		var dialogue = get_tree().get_first_node_in_group("dialogue_ui")
 
-		if im:
-			im.show_message("You're missing something. Come back later.")
+		if dialogue:
+			dialogue.show_message("You're missing something.\nCome back later.")
 
 
 

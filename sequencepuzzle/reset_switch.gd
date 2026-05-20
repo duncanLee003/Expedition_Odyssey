@@ -6,12 +6,12 @@ func _input_event(viewport, event, shape_idx):
 
 	if event is InputEventMouseButton and event.pressed:
 
-		print("RESET CLICKED")
+
 
 		PressurePlatePuzzle.reset_puzzle()
 func reset_puzzle():
 
-	print("Reset switch activated")
+
 
 	PressurePlatePuzzle.reset_puzzle()
 

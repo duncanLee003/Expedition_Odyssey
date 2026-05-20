@@ -41,7 +41,7 @@ func _on_click():
 
 	var selected_item = hotbar.get_selected_item()
 	if selected_item and selected_item.name == "keycard":
-		print("unlock")
+	
 		barrier.queue_free()
 		GameState.chest_states[barrier_id] = true
 	

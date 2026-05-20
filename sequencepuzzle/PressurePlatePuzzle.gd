@@ -45,11 +45,9 @@ func press_plate(plate_id: String):
 
 	# LOCK puzzle after wrong input
 	if puzzle_failed_state:
-		print("Puzzle failed. Reset required.")
+
 		return
 
-	print("PRESS:", plate_id)
-	print("LIGHT:", lights.get(plate_id))
 
 	if current_index >= correct_order.size():
 		return
@@ -64,12 +62,12 @@ func press_plate(plate_id: String):
 
 		current_index += 1
 
-		print("Step correct (hidden):", current_index)
+
 
 		if current_index == correct_order.size():
-			print("PUZZLE COMPLETE")
+	
 			puzzle_completed.emit()
-			print("OPEN BARRIER CALLED")
+
 			open_barrier()
 			var interaction_manager = get_tree().get_first_node_in_group("interaction_manager")
 
@@ -80,7 +78,6 @@ func press_plate(plate_id: String):
 	# wrong step (still hidden from player)
 	else:
 
-		print("WRONG PLATE")
 
 		puzzle_failed_state = true
 
@@ -99,7 +96,7 @@ func release_plate(plate_id: String):
 # ----------------------------
 func reset_puzzle():
 
-	print("Puzzle reset")
+
 
 	current_index = 0
 	puzzle_failed_state = false
@@ -122,8 +119,7 @@ func reset_puzzle():
 # FAILURE (HIDDEN FROM PLAYER)
 # ----------------------------
 func puzzle_failed():
-	
-	print("Wrong input (hidden)")
+
 
 	current_index = 0
 

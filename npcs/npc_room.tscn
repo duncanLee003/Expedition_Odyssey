@@ -24,13 +24,13 @@
 [ext_resource type="Script" uid="uid://8xf86pwp2jsk" path="res://levels/journal_updated_label.gd" id="21_symht"]
 [ext_resource type="Texture2D" uid="uid://dha0fwk668r5a" path="res://assets/journalicon.png" id="22_wqahk"]
 [ext_resource type="Texture2D" uid="uid://bhqy7exi5o24d" path="res://assets/notifIcon.png" id="23_xwxak"]
-[ext_resource type="PackedScene" uid="uid://2s2ctqnjyvtt" path="res://npcs/dialogue_box.tscn" id="24_d1rs2"]
 [ext_resource type="PackedScene" uid="uid://cda2tdulf7h63" path="res://npcs/security_terminal_ui.tscn" id="25_ralq1"]
 [ext_resource type="Script" uid="uid://bakp3d72obny5" path="res://scripts/game_manager.gd" id="26_8mr3r"]
+[ext_resource type="Script" uid="uid://pp214c86xj5j" path="res://testststst/dialogue_ui.gd" id="26_xwxak"]
 [ext_resource type="PackedScene" uid="uid://c14uved1ysb1n" path="res://npcs/npc.tscn" id="27_fx8xj"]
-[ext_resource type="Texture2D" uid="uid://bmfd4jh4eog3m" path="res://assets/all-rock-tiles_03.png" id="28_wqahk"]
 [ext_resource type="Texture2D" uid="uid://drqr24is5bo4" path="res://assets/Static BluePurple.png" id="29_xwxak"]
 [ext_resource type="PackedScene" uid="uid://bxuy1kjl20vrp" path="res://doortest2/metal_door.tscn" id="31_xwxak"]
+[ext_resource type="PackedScene" uid="uid://5scuextb64bd" path="res://collectables/usb.tscn" id="32_wa22g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g8m3s"]
 texture = ExtResource("6_wa22g")
@@ -1477,6 +1477,7 @@ process_mode = 3
 script = ExtResource("11_l4gjo")
 
 [node name="InventoryGui" parent="CanvasLayer" unique_id=1905662609 instance=ExtResource("12_gmun5")]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1524,7 +1525,10 @@ position = Vector2(145, 203)
 
 [node name="MapPuzzleUI" parent="CanvasLayer" unique_id=1469025354 instance=ExtResource("16_8nwyp")]
 visible = false
-position = Vector2(179, 76)
+offset_left = 179.0
+offset_top = 76.0
+offset_right = 179.0
+offset_bottom = 76.0
 
 [node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1948781420 groups=["health_bar"]]
 offset_left = 6.0
@@ -1646,17 +1650,48 @@ offset_bottom = 3.0
 texture = ExtResource("23_xwxak")
 metadata/_edit_use_anchors_ = true
 
-[node name="DialogueBox" parent="CanvasLayer" unique_id=1803584478 instance=ExtResource("24_d1rs2")]
-
 [node name="SecurityTerminalUI" parent="CanvasLayer" unique_id=1594816573 instance=ExtResource("25_ralq1")]
 visible = false
+
+[node name="DialogueUI" type="Control" parent="CanvasLayer" unique_id=1498970163]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("26_xwxak")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/DialogueUI" unique_id=819100928]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 180.0
+offset_right = 448.0
+offset_bottom = 235.0
+
+[node name="Label" type="Label" parent="CanvasLayer/DialogueUI/Panel" unique_id=1508205036]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 409.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 9
+
+[node name="ChoicesContainer" type="VBoxContainer" parent="CanvasLayer/DialogueUI/Panel" unique_id=710852101]
+layout_mode = 0
+offset_left = 298.0
+offset_top = -2.0
+offset_right = 341.0
+offset_bottom = 22.0
+mouse_filter = 0
 
 [node name="GameManager" type="Node" parent="." unique_id=566504949]
 script = ExtResource("26_8mr3r")
 
 [node name="NPC" parent="." unique_id=1122350291 instance=ExtResource("27_fx8xj")]
+z_index = -1
 position = Vector2(342, 14)
-inactive_texture = ExtResource("28_wqahk")
+inactive_texture = ExtResource("29_xwxak")
 active_texture = ExtResource("29_xwxak")
 
 [node name="MetalDoor" parent="." unique_id=1675815860 instance=ExtResource("31_xwxak")]
@@ -1664,6 +1699,9 @@ z_index = -1
 position = Vector2(249, 33)
 next_scene = "TLevel2"
 door_id = "door_3"
+
+[node name="USB" parent="." unique_id=370219150 instance=ExtResource("32_wa22g")]
+position = Vector2(313, 10)
 
 [connection signal="pressed" from="CanvasLayer/DeathScreen/RestartButton" to="CanvasLayer/DeathScreen" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/DeathScreen/QuitButton" to="CanvasLayer/DeathScreen" method="_on_quit_button_pressed"]

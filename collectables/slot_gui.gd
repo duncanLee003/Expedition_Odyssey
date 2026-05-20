@@ -8,6 +8,9 @@ extends Button
 var itemStackGui: ItemStackGui
 var index: int
 
+func _ready():
+	mouse_filter = Control.MOUSE_FILTER_PASS
+
 func insert(isg: ItemStackGui):
 	itemStackGui = isg
 	backgroundSprite.frame = 1

@@ -1,16 +1,22 @@
 extends Area2D
 
-@export var wire_id := ""  # e.g. "A", "B"
-
-signal clicked(pin)
-signal released(pin)
+@export var wire_id := "A"
 
 func _ready():
-	add_to_group("pins")
+	input_pickable = true
+
 
 func _input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.pressed:
+		print("CLICK REGISTERED:", name)
+
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+
+		var manager = get_tree().get_first_node_in_group("wire_manager")
+		if manager == null:
+			return
+
 		if event.pressed:
-			clicked.emit(self)
+			manager.start_wire(self)
 		else:
-			released.emit(self)
+			manager.end_wire(self)

@@ -52,11 +52,10 @@ func select_slot(index: int) -> void:
 	index = clamp(index, 0, slots.size() - 1)
 	currently_selected = index
 
-	var slot = slots[index]
-	if !slot:
-		return
+	selector.global_position = slots[index].global_position
 
-	selector.global_position = slot.global_position
+	# 🔥 FORCE UPDATE STATE (important)
+	get_tree().call_group("player", "on_hotbar_changed")
 
 func use_item_on_computer():
 

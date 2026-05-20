@@ -49,7 +49,7 @@ func _on_core_powered():
 	is_unlocked = true
 	GameState.door_states[door_id] = true
 
-	show_message("Power restored")
+	show_message("The elevator opened!")
 
 	await play_open_animation()
 
@@ -62,7 +62,6 @@ func _input_event(viewport, event, shape_idx):
 
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 
-			print("CLICK DETECTED")
 			try_enter()
 
 func _input(event):
@@ -75,16 +74,16 @@ func _input(event):
 # ----------------------------
 func try_enter():
 
-	print("TRY ENTER START")
+
 
 	if !player:
-		print("NO PLAYER FOUND")
+
 		return
 
 	var dist = player.global_position.distance_to(global_position)
 
 	if dist > interact_distance:
-		show_message("Too far away")
+
 		return
 
 	if !is_unlocked:
@@ -116,9 +115,11 @@ func enter_door():
 # UI
 # ----------------------------
 func show_message(text):
-	var im = get_tree().get_first_node_in_group("interaction_manager")
-	if im:
-		im.show_message(text)
+
+	var ui = get_tree().get_first_node_in_group("dialogue_ui")
+
+	if ui:
+		ui.show_message(text)
 
 
 func _process(delta):

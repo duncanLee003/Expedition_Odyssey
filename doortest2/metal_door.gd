@@ -44,7 +44,6 @@ func try_enter():
 	var dist = player.global_position.distance_to(global_position)
 	
 	if dist > interact_distance:
-		show_message("Too far away")
 		return
 	
 	if !is_unlocked:
@@ -103,10 +102,11 @@ func enter_door():
 
 
 func show_message(text):
-	var im = get_tree().get_first_node_in_group("interaction_manager")
-	if im:
-		im.show_message(text)
-		
+
+	var dialogue = get_tree().get_first_node_in_group("dialogue_ui")
+
+	if dialogue:
+		dialogue.show_message(text) 
 		
 func _process(delta):
 	if !player:

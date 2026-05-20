@@ -33,7 +33,7 @@ func _input_event(viewport, event, shape_idx):
 		var dist = player.global_position.distance_to(global_position)
 
 		if dist > pickup_distance:
-			print("Too far to click")
+	
 			return
 
 		collect(player)
@@ -57,7 +57,7 @@ func collect(player):
 
 	GameState.collected_map_pieces += 1
 
-	print("MAP PIECES:", GameState.collected_map_pieces)
+
 
 	# unlock after 4 pieces
 	if GameState.collected_map_pieces >= 4:

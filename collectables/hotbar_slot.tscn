@@ -21,6 +21,8 @@ custom_minimum_size = Vector2(20, 20)
 layout_mode = 0
 offset_right = 20.0
 offset_bottom = 20.0
+mouse_filter = 2
 
 [node name="Panel" parent="CenterContainer" unique_id=1500035920 instance=ExtResource("3_6rff3")]
 layout_mode = 2
+mouse_filter = 2

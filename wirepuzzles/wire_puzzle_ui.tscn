@@ -16,8 +16,13 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_femci"]
 
-[node name="WirePuzzleUI" type="Node2D" unique_id=676052484]
-position = Vector2(-39, 57)
+[node name="WirePuzzleUI" type="Control" unique_id=774067453]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -39.0
+offset_top = 57.0
+offset_right = -39.0
+offset_bottom = 57.0
 script = ExtResource("1_0jv7o")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1866844205]
@@ -26,6 +31,7 @@ scale = Vector2(0.73214287, 0.67427087)
 texture = ExtResource("2_vgqp5")
 
 [node name="CloseButton" type="Button" parent="." unique_id=1904555109]
+layout_mode = 0
 offset_left = 171.0
 offset_top = -158.0
 offset_right = 205.0
@@ -231,6 +237,7 @@ shape = SubResource("RectangleShape2D_femci")
 
 [node name="MapImage" type="TextureRect" parent="." unique_id=957798786]
 visible = false
+layout_mode = 0
 offset_left = -99.0
 offset_top = -179.0
 offset_right = 1.0

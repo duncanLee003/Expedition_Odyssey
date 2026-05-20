@@ -7,6 +7,7 @@ var shoot_timer: float = 0.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var muzzle : Marker2D = $Muzzle
 @export var blaster_item: InventoryItem
+var movement_locked := false
 var hotbar: Node = null
 
 const GRAVITY = 20
@@ -21,6 +22,9 @@ var health_bar
 var is_on_ladder := false
 var climb_speed := 150.0
 @onready var damage_flash = get_tree().get_first_node_in_group("damage_flash")
+@export var acceleration := 4200.0
+@export var friction := 5000.0
+@export var air_control := 0.6
 
 enum State {Idle, Run, Jump, Shoot}
 
@@ -29,16 +33,37 @@ var character_sprite : Sprite2D
 
 var muzzle_position := Vector2.ZERO
 
+var coyote_time := 0.1
+var coyote_timer := 0.0
 
+var jump_buffer_time := 0.1
+var jump_buffer_timer := 0.0
 enum DamageSource {
 	ENEMY,
 	WIRE
 }
 
+func lock_movement():
 
+	movement_locked = true
+
+	velocity = Vector2.ZERO
+
+	current_state = State.Idle
+
+	player_animations()
+
+func unlock_movement():
+
+	movement_locked = false
 func _process(_delta):
+
+
+
 	if hotbar == null:
 		hotbar = get_tree().get_first_node_in_group("hotbar")
+		
+	
 func _ready():
 	await get_tree().process_frame
 	hotbar = get_tree().get_first_node_in_group("hotbar")
@@ -50,7 +75,7 @@ func _ready():
 		muzzle_position = muzzle.position
 	current_health = max_health	
 	update_health_ui()
-	process_mode = Node.PROCESS_MODE_ALWAYS
+
 
 
 	var scene_path = get_tree().current_scene.scene_file_path
@@ -61,35 +86,82 @@ func _ready():
 
 
 
-func _physics_process(delta : float):
+func _physics_process(delta: float):
+	if movement_locked:
+
+		velocity = Vector2.ZERO
+
+		move_and_slide()
+
+		return
+	var dialogue = get_tree().get_first_node_in_group("dialogue_ui")
+
+	if dialogue and dialogue.is_open:
+		return
+		# coyote time
+	if is_on_floor():
+		coyote_timer = coyote_time
+	else:
+		coyote_timer -= delta
+
+	# jump buffer (stores early input)
+	jump_buffer_timer -= delta
+
+	if Input.is_action_just_pressed("jump"):
+		jump_buffer_timer = jump_buffer_time
+
 	if !is_inside_tree():
 		return
 
 	if !muzzle:
 		return
-	player_falling(delta)
-	player_idle(delta)
-	player_run(delta)
-	player_jump(delta)
-	
-	player_muzzle_position()
-	player_shooting(delta)
-	if is_on_ladder:
+	var direction: float = Input.get_axis("move_left", "move_right")
 
+	# flip sprite (THIS FIXES YOUR ISSUE)
+	if direction != 0:
+		animated_sprite_2d.flip_h = direction < 0
+
+
+	# -------------------
+	# GRAVITY
+	# -------------------
+	if not is_on_floor():
+		velocity.y += GRAVITY * 60 * delta
+	else:
+		velocity.y = 0
+
+	# -------------------
+	# JUMP (snappy input)
+	# -------------------
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = jump
+
+	# -------------------
+	# HORIZONTAL MOVEMENT
+	# -------------------
+	var target_speed = direction * speed
+
+	if direction != 0:
+		velocity.x = move_toward(velocity.x, target_speed, acceleration * delta)
+	else:
+		velocity.x = move_toward(velocity.x, 0, friction * delta)
+
+	# -------------------
+	# LADDER OVERRIDE
+	# -------------------
+	if is_on_ladder:
 		velocity.y = 0
 
 		if Input.is_action_pressed("climb_up"):
 			velocity.y = -climb_speed
-
 		elif Input.is_action_pressed("climb_down"):
 			velocity.y = climb_speed
-	
-	move_and_slide()
 
-	
+	move_and_slide()
+	update_state(direction)
 	player_animations()
-	
-	print("State: ", State.keys()[current_state])
+	player_muzzle_position()
+	player_shooting(delta)
 	
 	
 func player_falling(delta : float):
@@ -121,13 +193,26 @@ func player_run(delta : float):
 		animated_sprite_2d.flip_h = false if direction > 0 else true
 
 func player_jump(float):
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if jump_buffer_timer > 0 and coyote_timer > 0:
 		velocity.y = jump
+		jump_buffer_timer = 0
+		coyote_timer = 0
 		current_state = State.Jump
 		
 	if !is_on_floor() and current_state == State.Jump:
 		var direction = input_movement()
 		velocity.x += direction * jump_horizontal
+
+func update_state(direction: float):
+
+	if not is_on_floor():
+		current_state = State.Jump
+	elif Input.is_action_pressed("shoot") and hotbar and hotbar.get_selected_item() and hotbar.get_selected_item().name == "blaster":
+		current_state = State.Shoot
+	elif direction != 0:
+		current_state = State.Run
+	else:
+		current_state = State.Idle
 
 func get_aim_direction() -> Vector2:
 
@@ -138,28 +223,38 @@ func get_aim_direction() -> Vector2:
 
 	return (mouse_pos - muzzle.global_position).normalized()
 
+func on_hotbar_changed():
+	# ensures no stale weapon state
+	shoot_timer = 0
+	
 func player_shooting(delta: float):
+
+	if get_tree().paused:
+		return
 
 	if hotbar == null:
 		return
 
-	var selected_item = hotbar.get_selected_item()
-	if !selected_item:
+	var item = hotbar.get_selected_item()
+	if item == null:
 		return
 
-	if selected_item.id != "blaster":
+	if item.name != "blaster":
 		return
 
 	shoot_timer -= delta
 
 	if Input.is_action_pressed("shoot") and shoot_timer <= 0:
 		shoot_timer = fire_rate
+
 		current_state = State.Shoot
+
 		var aim_dir = get_aim_direction()
 
 		var bullet_instance = bullet.instantiate() as Node2D
 		bullet_instance.direction = aim_dir
 		bullet_instance.global_position = muzzle.global_position
+
 		get_parent().add_child(bullet_instance)
 	
 func player_muzzle_position():
@@ -176,14 +271,24 @@ func player_muzzle_position():
 		muzzle.position.x = -muzzle_position.x
 
 func player_animations():
-	if current_state == State.Idle:
-		animated_sprite_2d.play("idle")
-	elif current_state == State.Run and is_on_floor() and animated_sprite_2d.animation != "run_shoot":
-		animated_sprite_2d.play("run")
-	elif current_state == State.Jump:
-		animated_sprite_2d.play("jump")
-	elif current_state == State.Shoot:
-		animated_sprite_2d.play("run_shoot")
+
+	match current_state:
+
+		State.Idle:
+			if animated_sprite_2d.animation != "idle":
+				animated_sprite_2d.play("idle")
+
+		State.Run:
+			if animated_sprite_2d.animation != "run":
+				animated_sprite_2d.play("run")
+
+		State.Jump:
+			if animated_sprite_2d.animation != "jump":
+				animated_sprite_2d.play("jump")
+
+		State.Shoot:
+			if animated_sprite_2d.animation != "run_shoot":
+				animated_sprite_2d.play("run_shoot")
 
 func input_movement():
 	var direction : float = Input.get_axis("move_left", "move_right")
@@ -220,6 +325,7 @@ func screen_shake(intensity := 5.0):
 	var original_pos = camera.position
 
 	var tween = create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)  # ⭐ IMPORTANT
 
 	for i in range(6):
 		var offset = Vector2(
@@ -285,10 +391,3 @@ func play_damage_flash(color: Color):
 		Color(0, 0, 0, 0),
 		0.18
 	)
-
-func _on_inventory_gui_closed() -> void:
-	get_tree().paused = false
-
-
-func _on_inventory_gui_opened() -> void:
-	get_tree().paused = true

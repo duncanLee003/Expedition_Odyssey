@@ -32,7 +32,7 @@ func open():
 
 
 func close():
-
+	get_viewport().gui_release_focus()
 	visible = false
 	is_open = false
 	get_tree().paused = false
@@ -58,7 +58,7 @@ func _on_button_pressed():
 
 func _disable_system():
 
-	print ("SECURITY DISABLED")
+
 	GameState.lasers_disabled = true
 	var terminal = get_tree().get_first_node_in_group("security_terminal")
 

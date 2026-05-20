@@ -12,7 +12,7 @@ func take_damage(amount: int):
 	modulate = Color.RED
 	await get_tree().create_timer(0.1).timeout
 	modulate = Color.WHITE
-	print("Object HP:", current_health)
+
 
 	if current_health <= 0:
 		break_object()

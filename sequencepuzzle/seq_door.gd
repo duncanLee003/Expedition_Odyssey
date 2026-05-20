@@ -10,12 +10,12 @@ func _ready():
 
 
 func open_door():
-	print("Door opened")
+
 	anim.play("open")
 	$CollisionShape2D.set_deferred("disabled", true)
 
 
 func close_door():
-	print("Door reset")
+
 	anim.play("closed")
 	$CollisionShape2D.set_deferred("disabled", true)

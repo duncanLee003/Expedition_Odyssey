@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @onready var map_image = $MapImage  
 @onready var notification_icon = $"../JournalButton/NotificationJournal"
@@ -8,17 +8,16 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	add_to_group("wire_puzzle_ui")
 
-	print("WIRE UI ENTERED TREE")
-	print("STATE:", GameState.map_completed)
 
 	if GameState.map_completed:
 		show_map()
 
 func show_map():
 	map_image.visible = true
-	print("CHECK")
+
 
 func open():
+	mouse_filter = Control.MOUSE_FILTER_PASS
 
 	show()
 
@@ -26,12 +25,14 @@ func open():
 
 	call_deferred("refresh_state")
 
-	var im = get_tree().get_first_node_in_group("interaction_manager")
+	var dialogue = get_tree().get_first_node_in_group("dialogue_ui")
 
 	if GameState.wires_collected < GameState.wires_required:
+		await get_tree().create_timer(1.0).timeout
 
-		if im:
-			im.show_message("You need more wires")
+		if dialogue:
+			await get_tree().create_timer(1.0).timeout
+			dialogue.show_message("You need more wires.")
 
 			GameState.current_quest = "fix_wire"
 
@@ -48,6 +49,8 @@ func refresh_state():
 		show_map()
 
 func close():
+	get_viewport().gui_release_focus()
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	hide()
 	get_tree().paused = false
 

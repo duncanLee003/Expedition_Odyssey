@@ -1,46 +1,21 @@
 [gd_scene format=3 uid="uid://bnwboda65bv5n"]
 
 [ext_resource type="Script" uid="uid://dilsdg6lletu8" path="res://npcs/laser.gd" id="1_47iyv"]
-[ext_resource type="Texture2D" uid="uid://qfnqljsidv3v" path="res://assets/laser.png" id="2_47iyv"]
+[ext_resource type="Texture2D" uid="uid://dmmv5fygmfl6x" path="res://assets/lasers.png" id="2_47iyv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47iyv"]
-size = Vector2(307, 192)
+size = Vector2(595, 164)
 
 [node name="Laser" type="Area2D" unique_id=1032131061]
 script = ExtResource("1_47iyv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=83459180]
-position = Vector2(-0.7339604, -9.192408)
-rotation = 1.7182148
-scale = Vector2(15.921583, 0.03066632)
-texture = ExtResource("2_47iyv")
-
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1465571707]
-position = Vector2(46.000004, -8.000001)
-rotation = 1.907124
-scale = Vector2(15.921583, 0.03066632)
-texture = ExtResource("2_47iyv")
-
-[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1086930728]
-position = Vector2(46.000004, -8.000001)
-rotation = 1.1696374
-scale = Vector2(15.921583, 0.03066632)
-texture = ExtResource("2_47iyv")
-
-[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=840005421]
-position = Vector2(149, -11.000002)
-rotation = 1.1696374
-scale = Vector2(15.921583, 0.03066632)
-texture = ExtResource("2_47iyv")
-
-[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=1042624023]
-position = Vector2(251, -8.000002)
-rotation = 1.9696151
-scale = Vector2(15.921583, 0.03066632)
+position = Vector2(280, -9)
+scale = Vector2(0.77910054, 0.69246864)
 texture = ExtResource("2_47iyv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=217776779]
-position = Vector2(136.5, -10)
+position = Vector2(280.5, -9)
 shape = SubResource("RectangleShape2D_47iyv")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

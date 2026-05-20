@@ -8,6 +8,7 @@ signal slot_pressed(index: int)
 var index: int
 
 func _ready():
+	mouse_filter = Control.MOUSE_FILTER_PASS
 	pressed.connect(_on_pressed)
 
 func _on_pressed():

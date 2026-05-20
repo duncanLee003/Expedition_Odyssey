@@ -20,7 +20,11 @@
 [ext_resource type="Texture2D" uid="uid://bwib3320ivxl7" path="res://assets/computer1ON.png" id="17_4ia5g"]
 [ext_resource type="AudioStream" uid="uid://bt56dnst07w0h" path="res://assets/sound/brokenmelody.mp3" id="18_egxt0"]
 [ext_resource type="PackedScene" uid="uid://cydqsp11qk5jt" path="res://computers/computer.tscn" id="18_tmy8r"]
+[ext_resource type="Script" uid="uid://pp214c86xj5j" path="res://testststst/dialogue_ui.gd" id="19_qpj7g"]
+[ext_resource type="PackedScene" uid="uid://dp7jeiaxt55iw" path="res://wirepuzzles/wire_puzzle_ui.tscn" id="20_b14y1"]
+[ext_resource type="PackedScene" uid="uid://tqawc37ha1re" path="res://mappuzzles/map_puzzle_ui.tscn" id="21_6v3at"]
 [ext_resource type="PackedScene" uid="uid://bxuy1kjl20vrp" path="res://doortest2/metal_door.tscn" id="21_egxt0"]
+[ext_resource type="PackedScene" uid="uid://c720oe7bmdssk" path="res://testststst/map_piece_pickup.tscn" id="25_6v3at"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u001q"]
 texture = ExtResource("3_pgxt0")
@@ -820,6 +824,7 @@ process_mode = 3
 script = ExtResource("5_en00o")
 
 [node name="InventoryGui" parent="CanvasLayer" unique_id=1905662609 instance=ExtResource("6_xruum")]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -984,6 +989,53 @@ flat = true
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CanvasLayer/ComputerUI" unique_id=1075744168]
 stream = ExtResource("18_egxt0")
 
+[node name="DialogueUI" type="Control" parent="CanvasLayer" unique_id=1346680506]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("19_qpj7g")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/DialogueUI" unique_id=1512395084]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 180.0
+offset_right = 448.0
+offset_bottom = 235.0
+
+[node name="Label" type="Label" parent="CanvasLayer/DialogueUI/Panel" unique_id=1253012952]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 409.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 9
+
+[node name="ChoicesContainer" type="VBoxContainer" parent="CanvasLayer/DialogueUI/Panel" unique_id=1694777829]
+layout_mode = 0
+offset_left = 322.0
+offset_top = -12.0
+offset_right = 394.0
+offset_bottom = 28.0
+mouse_filter = 0
+
+[node name="WirePuzzleUI" parent="CanvasLayer" unique_id=774067453 groups=["wire_puzzle_ui"] instance=ExtResource("20_b14y1")]
+visible = false
+offset_left = 145.0
+offset_top = 203.0
+offset_right = 145.0
+offset_bottom = 203.0
+
+[node name="MapPuzzleUI" parent="CanvasLayer" unique_id=1303860885 instance=ExtResource("21_6v3at")]
+visible = false
+offset_left = 173.0
+offset_top = 68.0
+offset_right = 173.0
+offset_bottom = 68.0
+scale = Vector2(1.2, 1.2)
+
 [node name="GameManager" type="Node" parent="." unique_id=2109569889]
 script = ExtResource("9_5votm")
 
@@ -995,6 +1047,13 @@ position = Vector2(210, 23)
 z_index = -1
 position = Vector2(55, 48)
 next_scene = "TLevel1"
+
+[node name="MapPiecePickup2" parent="." unique_id=1050809837 instance=ExtResource("25_6v3at")]
+position = Vector2(333, 7.0000076)
+scale = Vector2(1.2, 1.2)
+collision_layer = 3
+collision_mask = 3
+item_id = "mappiece2"
 
 [connection signal="pressed" from="CanvasLayer/DeathScreen/RestartButton" to="CanvasLayer/DeathScreen" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/DeathScreen/QuitButton" to="CanvasLayer/DeathScreen" method="_on_quit_button_pressed"]

@@ -51,7 +51,6 @@ func collect(player):
 		if GameState.wires_collected == GameState.wires_required:
 			show_message("You have enough wires now")
 
-		print("Wires:", GameState.wires_collected)
 
 	# blaster unlock
 	if item_id == "blaster":

@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://bhqy7exi5o24d" path="res://assets/notifIcon.png" id="23_fgui7"]
 [ext_resource type="PackedScene" uid="uid://cb8aepe6mvbqr" path="res://collectables/keycard.tscn" id="24_53r3j"]
 [ext_resource type="Script" uid="uid://e4e5grjdpwpe" path="res://levels/damage_flash.gd" id="24_fgui7"]
+[ext_resource type="Script" uid="uid://pp214c86xj5j" path="res://testststst/dialogue_ui.gd" id="25_2jw00"]
 [ext_resource type="Resource" uid="uid://cg8oay53sc42n" path="res://inventory/items/keycard.tres" id="25_5wf4s"]
 [ext_resource type="PackedScene" uid="uid://bxuy1kjl20vrp" path="res://doortest2/metal_door.tscn" id="27_gbaff"]
 [ext_resource type="Texture2D" uid="uid://vvfcfeiuwg3f" path="res://assets/coreBackground.png" id="28_h4ced"]
@@ -710,7 +711,7 @@ z_index = 1
 scroll_offset = Vector2(36, 41)
 
 [node name="Player" parent="." index="7" unique_id=338436204]
-position = Vector2(410, 1)
+position = Vector2(3674, 21)
 
 [node name="Camera2D" parent="Player" index="3" unique_id=1679476865]
 position = Vector2(0, 0)
@@ -721,9 +722,11 @@ editor_draw_limits = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="8" unique_id=1487047208]
 process_mode = 3
+layer = 5
 script = ExtResource("8_h4ced")
 
 [node name="InventoryGui" parent="CanvasLayer" index="0" unique_id=1100111691 instance=ExtResource("9_2qtvr")]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -735,6 +738,7 @@ offset_right = 74.0
 offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Hotbar" parent="CanvasLayer" index="1" unique_id=2070727800 instance=ExtResource("10_wd1ub")]
@@ -769,11 +773,17 @@ metadata/_edit_use_anchors_ = true
 
 [node name="WirePuzzleUI" parent="CanvasLayer" index="3" unique_id=742371823 groups=["wire_puzzle_ui"] instance=ExtResource("12_hunqi")]
 visible = false
-position = Vector2(145, 203)
+offset_left = 152.0
+offset_top = 203.0
+offset_right = 152.0
+offset_bottom = 203.0
 
 [node name="MapPuzzleUI" parent="CanvasLayer" index="4" unique_id=1469025354 instance=ExtResource("35_apmpi")]
 visible = false
-position = Vector2(173, 68)
+offset_left = 182.0
+offset_top = 68.0
+offset_right = 182.0
+offset_bottom = 68.0
 scale = Vector2(1.2, 1.2)
 
 [node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer" index="5" unique_id=512840416 groups=["health_bar"]]
@@ -781,6 +791,7 @@ offset_left = 6.0
 offset_top = 5.0
 offset_right = 55.0
 offset_bottom = 16.0
+mouse_filter = 2
 texture_under = ExtResource("15_jle3n")
 texture_progress = ExtResource("16_3j2fo")
 
@@ -793,6 +804,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("17_n7idx")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/DeathScreen" index="0" unique_id=1796241820]
@@ -838,6 +850,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("18_vxdei")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/EndScreen" index="0" unique_id=1977487182]
@@ -894,6 +907,7 @@ offset_left = 11.0
 offset_top = -2.0
 offset_right = 16.0
 offset_bottom = 3.0
+mouse_filter = 2
 texture = ExtResource("23_fgui7")
 
 [node name="DamageFlash" type="ColorRect" parent="CanvasLayer" index="10" unique_id=1018220980 groups=["damage_flash"]]
@@ -905,6 +919,38 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
 script = ExtResource("24_fgui7")
+
+[node name="DialogueUI" type="Control" parent="CanvasLayer" index="11" unique_id=1630783143]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("25_2jw00")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/DialogueUI" index="0" unique_id=1344529694]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 180.0
+offset_right = 448.0
+offset_bottom = 235.0
+
+[node name="Label" type="Label" parent="CanvasLayer/DialogueUI/Panel" index="0" unique_id=1014758508]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 409.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 9
+
+[node name="ChoicesContainer" type="VBoxContainer" parent="CanvasLayer/DialogueUI/Panel" index="1" unique_id=1543218670]
+layout_mode = 0
+offset_left = 322.0
+offset_top = -12.0
+offset_right = 394.0
+offset_bottom = 28.0
+mouse_filter = 0
 
 [node name="key" parent="." index="9" unique_id=5038752 instance=ExtResource("14_apmpi")]
 position = Vector2(683, 35)
@@ -948,7 +994,7 @@ position = Vector2(4970, 4.5)
 position = Vector2(4508, 445)
 
 [node name="keycard" parent="." index="19" unique_id=2099837322 instance=ExtResource("24_53r3j")]
-position = Vector2(2576, -570)
+position = Vector2(3762, 53)
 collision_layer = 3
 collision_mask = 3
 itemRes = ExtResource("25_5wf4s")
@@ -991,47 +1037,47 @@ texture = ExtResource("32_c5kou")
 
 [node name="ElevatorDoor" parent="." index="26" unique_id=1247038156 instance=ExtResource("33_hunqi")]
 z_index = -2
-position = Vector2(5274, 51)
+position = Vector2(5138, 49)
 next_scene = "artifactLevel1"
 
 [node name="scrap7" parent="." index="27" unique_id=1705404427 instance=ExtResource("13_aqj6o")]
-position = Vector2(3432, -322)
+position = Vector2(4393, 34)
 collision_layer = 3
 collision_mask = 3
 item_id = "wire_1"
 
 [node name="scrap8" parent="." index="28" unique_id=370219150 instance=ExtResource("13_aqj6o")]
-position = Vector2(3901, -275)
+position = Vector2(4472, 25)
 collision_layer = 3
 collision_mask = 3
 item_id = "wire_2"
 
 [node name="scrap9" parent="." index="29" unique_id=398740898 instance=ExtResource("13_aqj6o")]
-position = Vector2(3763, -319)
+position = Vector2(4427, 26)
 collision_layer = 3
 collision_mask = 3
 item_id = "wire_3"
 
 [node name="scrap10" parent="." index="30" unique_id=1329468834 instance=ExtResource("13_aqj6o")]
-position = Vector2(2931, -216)
+position = Vector2(4444, 29)
 collision_layer = 3
 collision_mask = 3
 item_id = "wire_4"
 
 [node name="scrap11" parent="." index="31" unique_id=516093186 instance=ExtResource("13_aqj6o")]
-position = Vector2(2917, -427)
+position = Vector2(4493, 30)
 collision_layer = 3
 collision_mask = 3
 item_id = "wire_5"
 
 [node name="scrap12" parent="." index="32" unique_id=1485965429 instance=ExtResource("13_aqj6o")]
-position = Vector2(2873, -621)
+position = Vector2(4470, 33)
 collision_layer = 3
 collision_mask = 3
 item_id = "wire_7"
 
 [node name="scrap13" parent="." index="33" unique_id=364124979 instance=ExtResource("13_aqj6o")]
-position = Vector2(2696, -565)
+position = Vector2(4418, 30)
 collision_layer = 3
 collision_mask = 3
 item_id = "wire_6"
@@ -1066,9 +1112,9 @@ position = Vector2(1144, 65)
 message = "You must be close to interact with objects."
 trigger_once = false
 
-[node name="Blaster" parent="." index="40" unique_id=219974552 instance=ExtResource("36_fk3ig")]
+[node name="Blaster" parent="." index="40" unique_id=219974552 groups=["blaster"] instance=ExtResource("36_fk3ig")]
 visible = false
-position = Vector2(1271, -120)
+position = Vector2(1272, -136)
 collision_layer = 3
 collision_mask = 3
 
@@ -1135,48 +1181,42 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="MapPiecePickup" parent="." index="49" unique_id=1050809837 instance=ExtResource("50_dwq1a")]
-position = Vector2(3007, -561)
+position = Vector2(3800, 36)
 collision_layer = 3
 collision_mask = 3
 item_id = "mappiece1"
 
-[node name="MapPiecePickup2" parent="." index="50" unique_id=591162525 instance=ExtResource("50_dwq1a")]
-position = Vector2(3054, -179)
-collision_layer = 3
-collision_mask = 3
-item_id = "mappiece2"
-
-[node name="MapPiecePickup3" parent="." index="51" unique_id=751881145 instance=ExtResource("50_dwq1a")]
-position = Vector2(3572, -538)
+[node name="MapPiecePickup3" parent="." index="50" unique_id=751881145 instance=ExtResource("50_dwq1a")]
+position = Vector2(3913, 44)
 collision_layer = 3
 collision_mask = 3
 item_id = "mappiece3"
 
-[node name="MapPiecePickup4" parent="." index="52" unique_id=993183960 instance=ExtResource("50_dwq1a")]
-position = Vector2(3556, -319)
+[node name="MapPiecePickup4" parent="." index="51" unique_id=993183960 instance=ExtResource("50_dwq1a")]
+position = Vector2(3869, 40)
 collision_layer = 3
 collision_mask = 3
 item_id = "mappiece4"
 
-[node name="StaticBody2D" parent="." index="53" unique_id=1440706207 instance=ExtResource("51_d72ay")]
+[node name="StaticBody2D" parent="." index="52" unique_id=1440706207 instance=ExtResource("51_d72ay")]
 position = Vector2(1704, 38)
 
-[node name="TutorialTrigger7" parent="." index="54" unique_id=150253988 instance=ExtResource("34_aqj6o")]
+[node name="TutorialTrigger7" parent="." index="53" unique_id=150253988 instance=ExtResource("34_aqj6o")]
 position = Vector2(1647, 3)
 message = "You can destroy rubble by using the blaster."
 trigger_once = false
 
-[node name="TutorialTrigger8" parent="." index="55" unique_id=1912103672 instance=ExtResource("34_aqj6o")]
+[node name="TutorialTrigger8" parent="." index="54" unique_id=1912103672 instance=ExtResource("34_aqj6o")]
 position = Vector2(1891, 6)
 message = "You can also shoot enemies."
 trigger_once = false
 
-[node name="Newpcbuilding" type="Sprite2D" parent="." index="56" unique_id=335428731]
+[node name="Newpcbuilding" type="Sprite2D" parent="." index="55" unique_id=335428731]
 z_index = -2
 position = Vector2(3647, -142)
 texture = ExtResource("51_fgui7")
 
-[node name="ElectricEffect" parent="." index="57" unique_id=1149706390 groups=["electric_fx"] instance=ExtResource("53_ldamu")]
+[node name="ElectricEffect" parent="." index="56" unique_id=1149706390 groups=["electric_fx"] instance=ExtResource("53_ldamu")]
 visible = false
 
 [connection signal="closed" from="CanvasLayer/InventoryGui" to="Player" method="_on_inventory_gui_closed"]
