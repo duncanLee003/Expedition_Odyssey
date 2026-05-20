@@ -27,8 +27,13 @@
 [ext_resource type="PackedScene" uid="uid://cda2tdulf7h63" path="res://npcs/security_terminal_ui.tscn" id="25_ralq1"]
 [ext_resource type="Script" uid="uid://bakp3d72obny5" path="res://scripts/game_manager.gd" id="26_8mr3r"]
 [ext_resource type="Script" uid="uid://pp214c86xj5j" path="res://testststst/dialogue_ui.gd" id="26_xwxak"]
+[ext_resource type="Texture2D" uid="uid://b64cid824n8v1" path="res://assets/newstuff/dialogueUIbox.png" id="27_8yf87"]
 [ext_resource type="PackedScene" uid="uid://c14uved1ysb1n" path="res://npcs/npc.tscn" id="27_fx8xj"]
+[ext_resource type="Theme" uid="uid://ojeur7y35jcq" path="res://themes/dialoguechoices.tres" id="28_5b8r5"]
+[ext_resource type="FontFile" uid="uid://dioxmkl4sub8t" path="res://assets/at01.ttf" id="28_kn4lf"]
 [ext_resource type="Texture2D" uid="uid://drqr24is5bo4" path="res://assets/Static BluePurple.png" id="29_xwxak"]
+[ext_resource type="Texture2D" uid="uid://dh76ep8u4emgo" path="res://assets/newstuff/gameoverui1.png" id="30_l4gjo"]
+[ext_resource type="Theme" uid="uid://54m0yiuxclb0" path="res://themes/menubutton.tres" id="31_gmun5"]
 [ext_resource type="PackedScene" uid="uid://bxuy1kjl20vrp" path="res://doortest2/metal_door.tscn" id="31_xwxak"]
 [ext_resource type="PackedScene" uid="uid://5scuextb64bd" path="res://collectables/usb.tscn" id="32_wa22g"]
 
@@ -1521,7 +1526,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="WirePuzzleUI" parent="CanvasLayer" unique_id=676052484 instance=ExtResource("15_18acl")]
 visible = false
-position = Vector2(145, 203)
+offset_left = 145.0
+offset_top = 203.0
+offset_right = 145.0
+offset_bottom = 203.0
 
 [node name="MapPuzzleUI" parent="CanvasLayer" unique_id=1469025354 instance=ExtResource("16_8nwyp")]
 visible = false
@@ -1538,51 +1546,6 @@ offset_bottom = 16.0
 texture_under = ExtResource("17_by55u")
 texture_progress = ExtResource("18_803lg")
 metadata/_edit_use_anchors_ = true
-
-[node name="DeathScreen" type="Control" parent="CanvasLayer" unique_id=795046206 groups=["death_screen"]]
-process_mode = 2
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("19_o1al5")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/DeathScreen" unique_id=1167007002]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.93333334)
-
-[node name="Label" type="Label" parent="CanvasLayer/DeathScreen" unique_id=913801135]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="RestartButton" type="Button" parent="CanvasLayer/DeathScreen" unique_id=975075978]
-process_mode = 2
-layout_mode = 0
-offset_left = 197.0
-offset_top = 122.0
-offset_right = 272.0
-offset_bottom = 153.0
-text = "RESTART
-"
-
-[node name="QuitButton" type="Button" parent="CanvasLayer/DeathScreen" unique_id=1470911158]
-process_mode = 2
-layout_mode = 0
-offset_left = 186.0
-offset_top = 161.0
-offset_right = 277.0
-offset_bottom = 188.0
-text = "QUIT
-"
 
 [node name="EndScreen" type="Control" parent="CanvasLayer" unique_id=801082808 groups=["end_screen"]]
 process_mode = 2
@@ -1653,7 +1616,7 @@ metadata/_edit_use_anchors_ = true
 [node name="SecurityTerminalUI" parent="CanvasLayer" unique_id=1594816573 instance=ExtResource("25_ralq1")]
 visible = false
 
-[node name="DialogueUI" type="Control" parent="CanvasLayer" unique_id=1498970163]
+[node name="DialogueUI" type="Control" parent="CanvasLayer" unique_id=897281822]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1662,28 +1625,89 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("26_xwxak")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/DialogueUI" unique_id=819100928]
+[node name="Panel" type="Panel" parent="CanvasLayer/DialogueUI" unique_id=1280368604]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 30.0
 offset_top = 180.0
 offset_right = 448.0
 offset_bottom = 235.0
 
-[node name="Label" type="Label" parent="CanvasLayer/DialogueUI/Panel" unique_id=1508205036]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 409.0
-offset_bottom = 48.0
-theme_override_font_sizes/font_size = 9
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/DialogueUI/Panel" unique_id=1185605918]
+self_modulate = Color(1, 1, 1, 0.7294118)
+position = Vector2(212.5, 28.75)
+scale = Vector2(1.5141844, 0.8731343)
+texture = ExtResource("27_8yf87")
 
-[node name="ChoicesContainer" type="VBoxContainer" parent="CanvasLayer/DialogueUI/Panel" unique_id=710852101]
+[node name="Label" type="Label" parent="CanvasLayer/DialogueUI/Panel" unique_id=819681304]
 layout_mode = 0
-offset_left = 298.0
-offset_top = -2.0
-offset_right = 341.0
-offset_bottom = 22.0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 401.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("28_kn4lf")
+theme_override_font_sizes/font_size = 15
+
+[node name="ChoicesContainer" type="VBoxContainer" parent="CanvasLayer/DialogueUI/Panel" unique_id=1917388925]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -77.0
+offset_top = -49.0
+offset_right = -5.0
+offset_bottom = -9.0
+grow_horizontal = 0
 mouse_filter = 0
+theme = ExtResource("28_5b8r5")
+alignment = 1
+
+[node name="DeathScreen" type="Control" parent="CanvasLayer" unique_id=354449406 groups=["death_screen"]]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("19_o1al5")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/DeathScreen" unique_id=1168839559]
+self_modulate = Color(1, 1, 1, 0.7294118)
+scale = Vector2(1.9047618, 1.7307692)
+texture = ExtResource("30_l4gjo")
+centered = false
+
+[node name="Label" type="Label" parent="CanvasLayer/DeathScreen" unique_id=909892902]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/DeathScreen" unique_id=1034741806]
+process_mode = 2
+layout_mode = 0
+offset_left = 177.0
+offset_top = 139.0
+offset_right = 288.0
+offset_bottom = 170.0
+theme = ExtResource("31_gmun5")
+theme_override_fonts/font = ExtResource("14_ymqrr")
+text = "RESTART
+"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/DeathScreen" unique_id=1955466686]
+process_mode = 2
+layout_mode = 0
+offset_left = 190.0
+offset_top = 176.0
+offset_right = 276.0
+offset_bottom = 207.0
+theme = ExtResource("31_gmun5")
+theme_override_fonts/font = ExtResource("14_ymqrr")
+text = "QUIT
+"
 
 [node name="GameManager" type="Node" parent="." unique_id=566504949]
 script = ExtResource("26_8mr3r")
@@ -1703,9 +1727,9 @@ door_id = "door_3"
 [node name="USB" parent="." unique_id=370219150 instance=ExtResource("32_wa22g")]
 position = Vector2(313, 10)
 
-[connection signal="pressed" from="CanvasLayer/DeathScreen/RestartButton" to="CanvasLayer/DeathScreen" method="_on_restart_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/DeathScreen/QuitButton" to="CanvasLayer/DeathScreen" method="_on_quit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/EndScreen/Panel/VBoxContainer/restart_button" to="CanvasLayer/EndScreen" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/EndScreen/Panel/VBoxContainer/next_button" to="CanvasLayer/EndScreen" method="_on_next_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/EndScreen/Panel/VBoxContainer/menu_button" to="CanvasLayer/EndScreen" method="_on_menu_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/JournalButton" to="CanvasLayer/InventoryGui" method="_on_journal_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/DeathScreen/RestartButton" to="CanvasLayer/DeathScreen" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/DeathScreen/QuitButton" to="CanvasLayer/DeathScreen" method="_on_quit_button_pressed"]

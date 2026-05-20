@@ -19,8 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://dha0fwk668r5a" path="res://assets/journalicon.png" id="16_t4fow"]
 [ext_resource type="Texture2D" uid="uid://bhqy7exi5o24d" path="res://assets/notifIcon.png" id="17_qm1pe"]
 [ext_resource type="Script" uid="uid://pp214c86xj5j" path="res://testststst/dialogue_ui.gd" id="18_r2dfq"]
+[ext_resource type="Texture2D" uid="uid://b64cid824n8v1" path="res://assets/newstuff/dialogueUIbox.png" id="19_mriaj"]
 [ext_resource type="PackedScene" uid="uid://dno78xfkc2pso" path="res://collectables/artifact.tscn" id="19_qm1pe"]
+[ext_resource type="FontFile" uid="uid://dioxmkl4sub8t" path="res://assets/at01.ttf" id="20_6n06m"]
 [ext_resource type="Script" uid="uid://icghde6jabyo" path="res://levels/level_exit.gd" id="20_vg7hu"]
+[ext_resource type="Texture2D" uid="uid://dh76ep8u4emgo" path="res://assets/newstuff/gameoverui1.png" id="21_oqio1"]
+[ext_resource type="Theme" uid="uid://54m0yiuxclb0" path="res://themes/menubutton.tres" id="22_hpjrq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ltm7t"]
 texture = ExtResource("1_tw7vd")
@@ -1476,7 +1480,10 @@ vertical_alignment = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="WirePuzzleUI" parent="CanvasLayer" unique_id=676052484 instance=ExtResource("9_7s05e")]
-position = Vector2(81, 689)
+offset_left = 81.0
+offset_top = 689.0
+offset_right = 81.0
+offset_bottom = 689.0
 
 [node name="MapPuzzleUI" parent="CanvasLayer" unique_id=1469025354 instance=ExtResource("10_y80yt")]
 visible = false
@@ -1484,51 +1491,6 @@ offset_left = 179.0
 offset_top = 76.0
 offset_right = 179.0
 offset_bottom = 76.0
-
-[node name="DeathScreen" type="Control" parent="CanvasLayer" unique_id=565866539 groups=["death_screen"]]
-process_mode = 2
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("11_qhjve")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/DeathScreen" unique_id=2068733498]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.93333334)
-
-[node name="Label" type="Label" parent="CanvasLayer/DeathScreen" unique_id=1303037340]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="RestartButton" type="Button" parent="CanvasLayer/DeathScreen" unique_id=1365060974]
-process_mode = 2
-layout_mode = 0
-offset_left = 197.0
-offset_top = 122.0
-offset_right = 272.0
-offset_bottom = 153.0
-text = "RESTART
-"
-
-[node name="QuitButton" type="Button" parent="CanvasLayer/DeathScreen" unique_id=1699314945]
-process_mode = 2
-layout_mode = 0
-offset_left = 186.0
-offset_top = 161.0
-offset_right = 277.0
-offset_bottom = 188.0
-text = "QUIT
-"
 
 [node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=884899070 groups=["health_bar"]]
 offset_left = 6.0
@@ -1604,7 +1566,7 @@ text = "Next Level"
 [node name="menu_button" type="Button" parent="CanvasLayer/EndScreen/Panel/VBoxContainer" unique_id=276624994]
 layout_mode = 2
 
-[node name="DialogueUI" type="Control" parent="CanvasLayer" unique_id=809892002]
+[node name="DialogueUI" type="Control" parent="CanvasLayer" unique_id=1951321957]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1613,28 +1575,82 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("18_r2dfq")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/DialogueUI" unique_id=505945164]
+[node name="Panel" type="Panel" parent="CanvasLayer/DialogueUI" unique_id=1740998208]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 30.0
 offset_top = 180.0
 offset_right = 448.0
 offset_bottom = 235.0
 
-[node name="Label" type="Label" parent="CanvasLayer/DialogueUI/Panel" unique_id=690704275]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 409.0
-offset_bottom = 48.0
-theme_override_font_sizes/font_size = 9
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/DialogueUI/Panel" unique_id=993890571]
+self_modulate = Color(1, 1, 1, 0.7294118)
+position = Vector2(212.5, 28.75)
+scale = Vector2(1.5141844, 0.8731343)
+texture = ExtResource("19_mriaj")
 
-[node name="ChoicesContainer" type="VBoxContainer" parent="CanvasLayer/DialogueUI/Panel" unique_id=684315918]
+[node name="Label" type="Label" parent="CanvasLayer/DialogueUI/Panel" unique_id=175352302]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 401.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("20_6n06m")
+theme_override_font_sizes/font_size = 15
+
+[node name="ChoicesContainer" type="VBoxContainer" parent="CanvasLayer/DialogueUI/Panel" unique_id=186291035]
 layout_mode = 0
 offset_left = 322.0
 offset_top = -12.0
 offset_right = 394.0
 offset_bottom = 28.0
 mouse_filter = 0
+
+[node name="DeathScreen" type="Control" parent="CanvasLayer" unique_id=1459268755 groups=["death_screen"]]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("11_qhjve")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/DeathScreen" unique_id=1447753347]
+scale = Vector2(1.9047618, 1.7307692)
+texture = ExtResource("21_oqio1")
+centered = false
+
+[node name="Label" type="Label" parent="CanvasLayer/DeathScreen" unique_id=1816424269]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/DeathScreen" unique_id=155766696]
+process_mode = 2
+layout_mode = 0
+offset_left = 177.0
+offset_top = 139.0
+offset_right = 288.0
+offset_bottom = 170.0
+theme = ExtResource("22_hpjrq")
+theme_override_fonts/font = ExtResource("8_qhjve")
+text = "RESTART
+"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/DeathScreen" unique_id=1358659164]
+process_mode = 2
+layout_mode = 0
+offset_left = 190.0
+offset_top = 176.0
+offset_right = 276.0
+offset_bottom = 207.0
+theme = ExtResource("22_hpjrq")
+theme_override_fonts/font = ExtResource("8_qhjve")
+text = "QUIT
+"
 
 [node name="GameManager" type="Node" parent="." unique_id=1585369497]
 script = ExtResource("11_t4fow")
@@ -1652,10 +1668,10 @@ script = ExtResource("20_vg7hu")
 position = Vector2(-39, -29)
 shape = SubResource("RectangleShape2D_r2dfq")
 
-[connection signal="pressed" from="CanvasLayer/DeathScreen/RestartButton" to="CanvasLayer/DeathScreen" method="_on_restart_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/DeathScreen/QuitButton" to="CanvasLayer/DeathScreen" method="_on_quit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/JournalButton" to="CanvasLayer/InventoryGui" method="_on_journal_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/EndScreen/Panel/VBoxContainer/restart_button" to="CanvasLayer/EndScreen" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/EndScreen/Panel/VBoxContainer/next_button" to="CanvasLayer/EndScreen" method="_on_next_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/EndScreen/Panel/VBoxContainer/menu_button" to="CanvasLayer/EndScreen" method="_on_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/DeathScreen/RestartButton" to="CanvasLayer/DeathScreen" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/DeathScreen/QuitButton" to="CanvasLayer/DeathScreen" method="_on_quit_button_pressed"]
 [connection signal="body_entered" from="LevelExit" to="LevelExit" method="_on_body_entered"]
